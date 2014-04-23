@@ -3,23 +3,11 @@ CREATE TABLE IF NOT EXISTS `#__vppi_home` (
 
 `asset_id` INT(10) UNSIGNED NOT NULL DEFAULT '0',
 
-`ml_number` INT(11)  NOT NULL ,
 `street_address` VARCHAR(127)  NOT NULL ,
 `city` VARCHAR(127)  NOT NULL ,
 `state` VARCHAR(127)  NOT NULL ,
+`ml_number` INT(11)  NOT NULL ,
 `zip_code` INT(11)  NOT NULL ,
-`published` TINYINT(1)  NOT NULL ,
-`checked_out` INT(11)  NOT NULL ,
-`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-`created_by` INT(11)  NOT NULL ,
-PRIMARY KEY (`id`)
-) DEFAULT COLLATE=utf8_general_ci;
-
-CREATE TABLE IF NOT EXISTS `#__vppi_home_info` (
-`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-
-`home_id` INT(11) UNSIGNED NOT NULL DEFAULT '0',
-
 `area` VARCHAR(127)  NOT NULL ,
 `elem_school` VARCHAR(127)  NOT NULL ,
 `mid_school` VARCHAR(127)  NOT NULL ,
@@ -48,17 +36,6 @@ CREATE TABLE IF NOT EXISTS `#__vppi_home_info` (
 `water_sewer` VARCHAR(127)  NOT NULL ,
 `hot_water` VARCHAR(127)  NOT NULL ,
 `zoning` VARCHAR(127)  NOT NULL ,
-`checked_out` INT(11)  NOT NULL ,
-`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-`created_by` INT(11)  NOT NULL ,
-PRIMARY KEY (`id`)
-) DEFAULT COLLATE=utf8_general_ci;
-
-CREATE TABLE IF NOT EXISTS `#__vppi_home_features` (
-`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-
-`home_id` INT(11) UNSIGNED NOT NULL DEFAULT '0',
-
 `remarks` TEXT  NOT NULL ,
 `dining_room` VARCHAR(127)  NOT NULL ,
 `family_room` VARCHAR(127)  NOT NULL ,
@@ -69,6 +46,7 @@ CREATE TABLE IF NOT EXISTS `#__vppi_home_features` (
 `accessibility` VARCHAR(127)  NOT NULL ,
 `green_certification` VARCHAR(127)  NOT NULL ,
 `energy_eff_features` VARCHAR(127)  NOT NULL ,
+`published` TINYINT(1)  NOT NULL ,
 `checked_out` INT(11)  NOT NULL ,
 `checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
 `created_by` INT(11)  NOT NULL ,
