@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="1.0" method="upgrade">
+    <name>com_vppi</name>
+    <author>PDXfixIT</author>
+    <creationDate>April 23, 2014</creationDate>
+    <authorEmail>info@pdxfixit.com</authorEmail>
+    <authorUrl>http://www.pdxfixit.com/</authorUrl>
+    <copyright>Copyleft (C) 2014. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <version>1.0.0</version>
+    <description><![CDATA[<p style="font-size: 18px;"><img src="../media/com_vppi/images/48.png" alt="VPPI Logo" title="Vantage Point Properties, Inc." style="float: left; margin: 0 10px 10px 0;">VPPI component v1.1.2<br>Released: April 23, 2014</p><p style="clear: left;"><a href="http://www.pdxfixit.com/" target="_blank" title="Made by PDXfixIT."><img src="http://www.pdxfixit.com/logo.png" alt="PDXfixIT" title="PDXfixIT"></a></p>]]></description>
+
+    <files folder="components/com_vppi">
+        <filename>vppi.php</filename>
+        <filename>index.html</filename>
+    </files>
+
+    <administration>
+        <menu view="reports" img="../media/com_vppi/images/16.png">COM_VPPI</menu>
+        <files folder="administrator/components/com_vppi">
+            <folder>models</folder>
+            <folder>views</folder>
+            <filename>vppi.php</filename>
+            <filename>controller.php</filename>
+            <filename>index.html</filename>
+        </files>
+        <languages folder="administrator/language">
+            <language tag="en-GB">en-GB/en-GB.com_vppi.ini</language>
+            <language tag="en-GB">en-GB/en-GB.com_vppi.sys.ini</language>
+        </languages>
+    </administration>
+
+    <media folder="media/com_vppi" destination="com_vppi">
+        <folder>css</folder>
+        <folder>images</folder>
+    </media>
+</extension>
