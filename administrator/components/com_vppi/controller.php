@@ -14,7 +14,7 @@ class VppiController extends JController {
 
     public function display($cachable = false, $urlparams = false) {
         $input = JFactory::getApplication()->input;
-        $view = $input->getCmd('view', 'reports');
+        $view = $input->getCmd('view', 'homes');
         $input->set('view', $view);
 
         parent::display($cachable, $urlparams);
