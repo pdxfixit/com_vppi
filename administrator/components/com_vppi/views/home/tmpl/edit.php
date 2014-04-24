@@ -13,19 +13,32 @@ defined('_JEXEC') or die;
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
+
+$document = JFactory::getDocument();
+$document->addScriptDeclaration("
+    getScript('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js', function () {
+        js = jQuery.noConflict();
+        js(document).ready(function () {
+
+
+            Joomla.submitbutton = function (task) {
+                if (task == 'home.cancel') {
+                    Joomla.submitform(task, document.getElementById('home-form'));
+                }
+                else {
+
+                    if (task != 'home.cancel' && document.formvalidator.isValid(document.id('home-form'))) {
+
+                        Joomla.submitform(task, document.getElementById('home-form'));
+                    }
+                    else {
+                        alert('" . $this->escape(JText::_('JGLOBAL_VALIDATION_FORM_FAILED')) . "');
+                    }
+                }
+            }
+        });
+    });")
 ?>
-<script type="text/javascript">
-    Joomla.submitbutton = function(task)
-    {
-        if (task == 'home.cancel' || document.formvalidator.isValid(document.id('home-form'))) {
-            <?php echo $this->form->getField('description')->save(); ?>
-            Joomla.submitform(task, document.getElementById('home-form'));
-        }
-        else {
-            alert('<?php echo $this->escape(JText::_('JGLOBAL_VALIDATION_FORM_FAILED'));?>');
-        }
-    }
-</script>
 
 <form action="<?php echo JRoute::_('index.php?option=com_vppi&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="home-form" class="form-validate">
     <div class="width-60 fltlft">
@@ -187,10 +200,6 @@ JHtml::_('behavior.formvalidation');
                     <?php echo $this->form->getInput('created_by'); ?></li>
             </ul>
         </fieldset>
-
-        <?php echo $this->loadTemplate('params'); ?>
-
-        <?php echo $this->loadTemplate('metadata'); ?>
 
         <?php echo JHtml::_('sliders.end'); ?>
 

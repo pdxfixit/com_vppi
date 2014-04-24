@@ -29,7 +29,7 @@
                description="COM_VPPI_FORM_DESC_STATE"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="zip_code" type="text" size="40" class="inputbox"
@@ -38,7 +38,7 @@
                description="COM_VPPI_FORM_DESC_ZIP_CODE"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="ml_number" type="text" size="40" class="inputbox"
@@ -56,7 +56,7 @@
                description="COM_VPPI_FORM_DESC_AREA"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="elem_school" type="text" size="40" class="inputbox"
@@ -65,7 +65,7 @@
                description="COM_VPPI_FORM_DESC_ELEM_SCHOOL"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="mid_school" type="text" size="40" class="inputbox"
@@ -74,7 +74,7 @@
                description="COM_VPPI_FORM_DESC_MID_SCHOOL"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="high_school" type="text" size="40" class="inputbox"
@@ -83,7 +83,7 @@
                description="COM_VPPI_FORM_DESC_HIGH_SCHOOL"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="short_sale" type="text" size="40" class="inputbox"
@@ -92,7 +92,7 @@
                description="COM_VPPI_FORM_DESC_SHORT_SALE"
                default="0"
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="bank_owned" type="text" size="40" class="inputbox"
@@ -101,7 +101,7 @@
                description="COM_VPPI_FORM_DESC_BANK_OWNED"
                default="0"
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="waterfront" type="text" size="40" class="inputbox"
@@ -110,7 +110,7 @@
                description="COM_VPPI_FORM_DESC_WATERFRONT"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="body_of_water" type="text" size="40" class="inputbox"
@@ -119,7 +119,7 @@
                description="COM_VPPI_FORM_DESC_BODY_OF_WATER"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="tax_per_year" type="text" size="40" class="inputbox"
@@ -128,7 +128,7 @@
                description="COM_VPPI_FORM_DESC_TAX_PER_YEAR"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="property_type" type="text" size="40" class="inputbox"
@@ -137,7 +137,7 @@
                description="COM_VPPI_FORM_DESC_PROPERTY_TYPE"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="neighborhood_building" type="text" size="40" class="inputbox"
@@ -146,7 +146,7 @@
                description="COM_VPPI_FORM_DESC_NEIGHBORHOOD_BUILDING"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="levels" type="text" size="40" class="inputbox"
@@ -155,7 +155,7 @@
                description="COM_VPPI_FORM_DESC_LEVELS"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="garage" type="text" size="40" class="inputbox"
@@ -164,7 +164,7 @@
                description="COM_VPPI_FORM_DESC_GARAGE"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="roof" type="text" size="40" class="inputbox"
@@ -173,7 +173,7 @@
                description="COM_VPPI_FORM_DESC_ROOF"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="ext_description" type="text" size="40" class="inputbox"
@@ -182,7 +182,7 @@
                description="COM_VPPI_FORM_DESC_EXT_DESC"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="mast_bed_level" type="text" size="40" class="inputbox"
@@ -191,7 +191,7 @@
                description="COM_VPPI_FORM_DESC_MAST_BED_LEVEL"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="fireplace" type="text" size="40" class="inputbox"
@@ -200,7 +200,7 @@
                description="COM_VPPI_FORM_DESC_FIREPLACE"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="basement_foundation" type="text" size="40" class="inputbox"
@@ -209,7 +209,7 @@
                description="COM_VPPI_FORM_DESC_BASEMENT_FOUNDATION"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="view" type="text" size="40" class="inputbox"
@@ -218,7 +218,7 @@
                description="COM_VPPI_FORM_DESC_VIEW"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="acres" type="text" size="40" class="inputbox"
@@ -227,7 +227,7 @@
                description="COM_VPPI_FORM_DESC_ACRES"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="lot_size" type="text" size="40" class="inputbox"
@@ -236,7 +236,7 @@
                description="COM_VPPI_FORM_DESC_LOT_SIZE"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="lot_dimensions" type="text" size="40" class="inputbox"
@@ -245,7 +245,7 @@
                description="COM_VPPI_FORM_DESC_LOT_DIMENSIONS"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="lot_description" type="text" size="40" class="inputbox"
@@ -254,7 +254,7 @@
                description="COM_VPPI_FORM_DESC_LOT_DESC"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="heat_fuel" type="text" size="40" class="inputbox"
@@ -263,7 +263,7 @@
                description="COM_VPPI_FORM_DESC_HEAT_FUEL"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="cool" type="text" size="40" class="inputbox"
@@ -272,7 +272,7 @@
                description="COM_VPPI_FORM_DESC_COOL"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="water_sewer" type="text" size="40" class="inputbox"
@@ -281,7 +281,7 @@
                description="COM_VPPI_FORM_DESC_WATER_SEWER"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="how_water" type="text" size="40" class="inputbox"
@@ -290,7 +290,7 @@
                description="COM_VPPI_FORM_DESC_HOT_WATER"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="zoning" type="text" size="40" class="inputbox"
@@ -299,7 +299,7 @@
                description="COM_VPPI_FORM_DESC_ZONING"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="remarks" type="text" size="40" class="inputbox"
@@ -308,7 +308,7 @@
                description="COM_VPPI_FORM_DESC_REMARKS"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="dining_room" type="text" size="40" class="inputbox"
@@ -317,7 +317,7 @@
                description="COM_VPPI_FORM_DESC_DINING_ROOM"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="family_room" type="text" size="40" class="inputbox"
@@ -326,7 +326,7 @@
                description="COM_VPPI_FORM_DESC_FAMILY_ROOM"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="living_room" type="text" size="40" class="inputbox"
@@ -335,7 +335,7 @@
                description="COM_VPPI_FORM_DESC_LIVING_ROOM"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="kitchen" type="text" size="40" class="inputbox"
@@ -344,7 +344,7 @@
                description="COM_VPPI_FORM_DESC_KITCHEN"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="interior" type="text" size="40" class="inputbox"
@@ -353,7 +353,7 @@
                description="COM_VPPI_FORM_DESC_INTERIOR"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="exterior" type="text" size="40" class="inputbox"
@@ -362,7 +362,7 @@
                description="COM_VPPI_FORM_DESC_EXTERIOR"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="accessibility" type="text" size="40" class="inputbox"
@@ -371,7 +371,7 @@
                description="COM_VPPI_FORM_DESC_ACCESSIBILITY"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="green_certification" type="text" size="40" class="inputbox"
@@ -380,7 +380,7 @@
                description="COM_VPPI_FORM_DESC_GREEN_CERTIFICATION"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field name="energy_eff_features" type="text" size="40" class="inputbox"
@@ -389,7 +389,7 @@
                description="COM_VPPI_FORM_DESC_ENERGY_EFF_FEATURES"
                default=""
 
-               required="true"
+               required="false"
                filter="safehtml"/>
 
         <field

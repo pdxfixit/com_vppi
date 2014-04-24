@@ -9,14 +9,9 @@
 
 defined('_JEXEC') or die;
 
-/*
- * List of reports
- * 1 => Printed Roster
- * 2 => Volunteer List
- * 3 => Name Tags
- */
+jimport('joomla.application.component.modeladmin');
 
-class VppiModelHome extends JModelList {
+class VppiModelHome extends JModelAdmin {
 
     /**
      * @var		string	The prefix to use with controller messages.
@@ -33,7 +28,7 @@ class VppiModelHome extends JModelList {
      * @return	JTable	A database object
      * @since	1.6
      */
-    public function getTable($type = 'Home', $prefix = 'HomesTable', $config = array())
+    public function getTable($type = 'Home', $prefix = 'VppiTable', $config = array())
     {
         return JTable::getInstance($type, $prefix, $config);
     }
@@ -88,12 +83,7 @@ class VppiModelHome extends JModelList {
      */
     public function getItem($pk = null)
     {
-        if ($item = parent::getItem($pk)) {
-            // Convert the params field to an array.
-            $registry = new JRegistry;
-            $registry->loadString($item->metadata);
-            $item->metadata = $registry->toArray();
-        }
+        $item = parent::getItem($pk);
 
         return $item;
     }
@@ -111,7 +101,7 @@ class VppiModelHome extends JModelList {
             // Set ordering to the last item if not set
             if (empty($table->ordering)) {
                 $db = JFactory::getDbo();
-                $db->setQuery('SELECT MAX(ordering) FROM #__weblinks');
+                $db->setQuery('SELECT MAX(ordering) FROM #__vppi_home');
                 $max = $db->loadResult();
 
                 $table->ordering = $max+1;

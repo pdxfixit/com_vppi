@@ -56,7 +56,7 @@ class VppiViewHomes extends JViewLegacy {
         $user	= JFactory::getUser();
 
         JToolBarHelper::title(JText::_('COM_VPPI_MANAGER_VPPI'), '48.png');
-        if (count($user->getAuthorisedCategories('com_vppi', 'core.create')) > 0) {
+        if ($canDo->get('core.create')) {
             JToolBarHelper::addNew('home.add');
         }
         if ($canDo->get('core.edit')) {
