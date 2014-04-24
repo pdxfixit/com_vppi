@@ -71,6 +71,8 @@ class VppiModelHomes extends JModelList {
                 'published', 'a.published',
             );
         }
+
+        parent::__construct($config);
     }
 
     /**
