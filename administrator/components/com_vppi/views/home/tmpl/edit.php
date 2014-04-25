@@ -54,8 +54,8 @@ $document->addScriptDeclaration("
                 <li><?php echo $this->form->getLabel('city'); ?>
                     <?php echo $this->form->getInput('city'); ?></li>
 
-                <li><?php echo $this->form->getLabel('state'); ?>
-                    <?php echo $this->form->getInput('state'); ?></li>
+                <li><?php echo $this->form->getLabel('state_prov'); ?>
+                    <?php echo $this->form->getInput('state_prov'); ?></li>
 
                 <li><?php echo $this->form->getLabel('zip_code'); ?>
                     <?php echo $this->form->getInput('zip_code'); ?></li>
@@ -177,8 +177,8 @@ $document->addScriptDeclaration("
                 <li><?php echo $this->form->getLabel('energy_eff_features'); ?>
                     <?php echo $this->form->getInput('energy_eff_features'); ?></li>
 
-                <li><?php echo $this->form->getLabel('published'); ?>
-                    <?php echo $this->form->getInput('published'); ?></li>
+                <li><?php echo $this->form->getLabel('state'); ?>
+                    <?php echo $this->form->getInput('state'); ?></li>
             </ul>
 
             <div>

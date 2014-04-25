@@ -23,10 +23,10 @@
                required="true"
                filter="safehtml"/>
 
-        <field name="state" type="text" size="40" class="inputbox"
+        <field name="state_prov" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_STATE"
-               description="COM_VPPI_FORM_DESC_STATE"
+               label="COM_VPPI_FORM_LBL_STATE_PROVINCE"
+               description="COM_VPPI_FORM_DESC_STATE_PROVINCE"
                default=""
 
                required="false"
@@ -393,7 +393,7 @@
                filter="safehtml"/>
 
         <field
-                name="published"
+                name="state"
                 type="list"
                 label="JSTATUS"
                 description="JFIELD_PUBLISHED_DESC"

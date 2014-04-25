@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS `#__vppi_home` (
 
 `street_address` VARCHAR(127)  NOT NULL ,
 `city` VARCHAR(127)  NOT NULL ,
-`state` VARCHAR(127)  NOT NULL ,
+`state_prov` VARCHAR(127)  NOT NULL ,
 `zip_code` INT(11)  NOT NULL ,
 `ml_number` INT(11)  NOT NULL ,
 `area` VARCHAR(127)  NOT NULL ,
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `#__vppi_home` (
 `accessibility` VARCHAR(127)  NOT NULL ,
 `green_certification` VARCHAR(127)  NOT NULL ,
 `energy_eff_features` VARCHAR(127)  NOT NULL ,
-`published` TINYINT(1)  NOT NULL ,
+`state` TINYINT(1)  NOT NULL ,
 `checked_out` INT(11)  NOT NULL ,
 `checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
 `ordering` INT(11)  NOT NULL ,

@@ -27,7 +27,7 @@ class VppiModelHomes extends JModelList {
                 'id', 'a.id',
                 'street_address', 'a.street_address',
                 'city', 'a.city',
-                'state', 'a.state',
+                'state_prov', 'a.state_prov',
                 'zip_code', 'a.zip_code',
                 'ml_number', 'a.ml_number',
                 'area', 'a.area',
@@ -68,7 +68,7 @@ class VppiModelHomes extends JModelList {
                 'accessibility', 'a.accessibility',
                 'green_certification', 'a.green_certification',
                 'energy_eff_features', 'a.energy_eff_features',
-                'published', 'a.published',
+                'state', 'a.state',
             );
         }
 
@@ -150,9 +150,9 @@ class VppiModelHomes extends JModelList {
         // Filter by published state
         $published = $this->getState('filter.state');
         if (is_numeric($published)) {
-            $query->where('a.published = '.(int) $published);
+            $query->where('a.state = '.(int) $published);
         } elseif ($published === '') {
-            $query->where('(a.published IN (0, 1))');
+            $query->where('(a.state IN (0, 1))');
         }
 
         // Filter by search in ml_number

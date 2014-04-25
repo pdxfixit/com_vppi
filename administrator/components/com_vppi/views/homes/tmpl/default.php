@@ -59,10 +59,10 @@ $saveOrder = $listOrder == 'a.ordering';
                 <?php echo JHtml::_('grid.sort',  'COM_VPPI_CITY', 'a.city', $listDirn, $listOrder); ?>
             </th>
             <th width="left">
-                <?php echo JHtml::_('grid.sort',  'COM_VPPI_STATE', 'a.state', $listDirn, $listOrder); ?>
+                <?php echo JHtml::_('grid.sort',  'COM_VPPI_STATE_PROV', 'a.state_prov', $listDirn, $listOrder); ?>
             </th>
             <th width="left">
-                <?php echo JHtml::_('grid.sort',  'JPUBLISHED', 'a.published', $listDirn, $listOrder); ?>
+                <?php echo JHtml::_('grid.sort',  'JPUBLISHED', 'a.state', $listDirn, $listOrder); ?>
             </th>
             <th width="left">
                 <?php echo JHtml::_('grid.sort',  'JGRID_HEADING_ORDERING', 'a.ordering', $listDirn, $listOrder); ?>
@@ -112,11 +112,11 @@ $saveOrder = $listOrder == 'a.ordering';
                     <?php echo $item->city; ?>
                 </td>
                 <td class="center">
-                    <?php echo $item->state; ?>
+                    <?php echo $item->state_prov; ?>
                 </td>
-                <?php if (isset($this->items[0]->published)) { ?>
+                <?php if (isset($this->items[0]->state)) { ?>
                 <td class="center">
-                    <?php echo JHtml::_('jgrid.published', $item->published, $i, 'homes.', $canChange, 'cb'); ?>
+                    <?php echo JHtml::_('jgrid.published', $item->state, $i, 'homes.', $canChange, 'cb'); ?>
                 </td>
                 <?php
                 }
