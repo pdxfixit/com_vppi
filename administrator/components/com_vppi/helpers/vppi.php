@@ -21,7 +21,7 @@ class VppiHelper
 	public static function addSubmenu($vName = '')
 	{
 		JSubMenuHelper::addEntry(
-			JText::_('COM_VPPI_SUBMENU_VPPI'),
+			JText::_('COM_VPPI_SUBMENU_HOMES'),
 			'index.php?option=com_vppi&view=homes',
 			$vName == 'homes'
 		);
