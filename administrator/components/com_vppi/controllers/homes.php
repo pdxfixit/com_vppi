@@ -22,7 +22,7 @@ class VppiControllerHomes extends JControllerAdmin
 	 * Proxy for getModel.
 	 * @since	1.6
 	 */
-	public function getModel($name = 'Home', $prefix = 'HomesModel', $config = array('ignore_request' => true))
+	public function getModel($name = 'Home', $prefix = 'VppiModel', $config = array('ignore_request' => true))
 	{
 		$model = parent::getModel($name, $prefix, $config);
 		return $model;

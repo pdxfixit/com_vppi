@@ -36,8 +36,11 @@
     <administration>
         <menu view="reports" img="../media/com_vppi/images/16.png">COM_VPPI</menu>
         <files folder="administrator/components/com_vppi">
+            <folder>controllers</folder>
+            <folder>helpers</folder>
             <folder>models</folder>
             <folder>sql</folder>
+            <folder>tables</folder>
             <folder>views</folder>
             <filename>vppi.php</filename>
             <filename>controller.php</filename>

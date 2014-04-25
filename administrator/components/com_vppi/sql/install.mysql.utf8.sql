@@ -49,6 +49,10 @@ CREATE TABLE IF NOT EXISTS `#__vppi_home` (
 `published` TINYINT(1)  NOT NULL ,
 `checked_out` INT(11)  NOT NULL ,
 `checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+`ordering` INT(11)  NOT NULL ,
+`modified_by` INT(11)  NOT NULL ,
+`modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
 `created_by` INT(11)  NOT NULL ,
+`created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
 PRIMARY KEY (`id`)
 ) DEFAULT COLLATE=utf8_general_ci;

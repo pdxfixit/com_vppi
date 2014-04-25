@@ -114,9 +114,13 @@ $saveOrder = $listOrder == 'a.ordering';
                 <td class="center">
                     <?php echo $item->state; ?>
                 </td>
+                <?php if (isset($this->items[0]->published)) { ?>
                 <td class="center">
-                    <?php echo JHtml::_('jgrid.published', $item->state, $i, 'vppi.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
+                    <?php echo JHtml::_('jgrid.published', $item->published, $i, 'homes.', $canChange, 'cb'); ?>
                 </td>
+                <?php
+                }
+                ?>
                 <td class="order">
                     <?php if ($canChange) : ?>
                         <?php if ($saveOrder) :?>
