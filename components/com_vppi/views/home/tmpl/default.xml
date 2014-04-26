@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="COM_VPPI_HOME_TITLE" option="View">
+        <message>
+            <![CDATA[COM_VPPI_HOME_DESC]]>
+        </message>
+    </layout>
+    <fields name="params">
+        <fieldset
+                name="basic"
+                label="COM_VPPI_FIELDSET_HOME_SELECT_LABEL">
+            <field
+                    name="home_id"
+                    query="SELECT ml_number, id FROM #__vppi_home ORDER BY ml_number"
+                    type="sql"
+                    key_field="id"
+                    value_field="ml_number"
+                    label="COM_VPPI_HOME_SELECT_LABEL"
+                    require="true"
+                    description="COM_VPPI_HOME_SELECT_DESC">
+            </field>
+        </fieldset>
+    </fields>
+</metadata>

@@ -11,7 +11,8 @@
     <description><![CDATA[<p style="font-size: 18px;"><img src="../media/com_vppi/images/48.png" alt="VPPI Logo" title="Vantage Point Properties, Inc." style="float: left; margin: 0 10px 10px 0;">VPPI component v1.0.0<br>Released: April 23, 2014</p><p style="clear: left;"><a href="http://www.pdxfixit.com/" target="_blank" title="Made by PDXfixIT."><img src="http://www.pdxfixit.com/logo.png" alt="PDXfixIT" title="PDXfixIT"></a></p>]]></description>
 
     <files folder="components/com_vppi">
-    	<folder>models</folder>
+        <folder>controllers</folder>
+        <folder>models</folder>
         <folder>views</folder>
         <filename>controller.php</filename>
         <filename>vppi.php</filename>

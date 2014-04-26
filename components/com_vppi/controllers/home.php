@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @version     1.0.0
  * @package     com_vppi
@@ -7,11 +8,19 @@
  * @author      PDXfixIT <info@pdxfixit.com> - http://www.pdxfixit.com
  */
 
-// no direct access
+// No direct access
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.controller');
+jimport('joomla.application.component.controllerform');
 
-$controller	= JControllerLegacy::getInstance('Vppi');
-$controller->execute(JFactory::getApplication()->input->get('task'));
-$controller->redirect();
+/**
+ * VPPI controller class.
+ *
+ * @package		Joomla.Administrator
+ * @subpackage	com_vppi
+ * @since		1.6
+ */
+class VppiControllerHome extends VppiController
+{
+
+}

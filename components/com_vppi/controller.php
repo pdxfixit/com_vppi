@@ -10,11 +10,11 @@
 // No direct access
 defined('_JEXEC') or die;
 
-class VppiController extends JController {
+class VppiController extends JControllerLegacy {
 
     public function display($cachable = false, $urlparams = false) {
         $input = JFactory::getApplication()->input;
-        $view = $input->getCmd('view', 'reports');
+        $view = $input->getCmd('view', 'home');
         $input->set('view', $view);
 
         parent::display($cachable, $urlparams);

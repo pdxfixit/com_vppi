@@ -51,7 +51,7 @@ class VppiModelHomes extends JModelList {
                 'view', 'a.view',
                 'acres', 'a.acres',
                 'lot_size', 'a.lot_size',
-                'lot_dimension', 'a.lot_dimension',
+                'lot_dimensions', 'a.lot_dimensions',
                 'lot_description', 'a.lot_description',
                 'heat_fuel', 'a.heat_fuel',
                 'cool', 'a.cool',

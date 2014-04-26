@@ -1,1 +1,19 @@
+
 .icon-48-vppi { background-image: url(../images/48.png); }
+
+#remarks,
+#basic-home-info,
+#feature-home-info {
+    clear: both;
+}
+
+#main #basic-home-info ul,
+#main #feature-home-info ul {
+    list-style-position: inside;
+}
+
+#basic-home-info ul li,
+#feature-home-info ul li {
+    float: left;
+    margin-right: 15px;
+}
