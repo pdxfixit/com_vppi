@@ -35,7 +35,7 @@
     </uninstall>
 
     <administration>
-        <menu view="reports" img="../media/com_vppi/images/16.png">COM_VPPI</menu>
+        <menu view="homes" img="../media/com_vppi/images/16.png">COM_VPPI</menu>
         <files folder="administrator/components/com_vppi">
             <folder>controllers</folder>
             <folder>helpers</folder>

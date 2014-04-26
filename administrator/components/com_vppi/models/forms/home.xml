@@ -306,7 +306,7 @@
                required="false"
                filter="safehtml"/>
 
-        <field name="remarks" type="text" size="40" class="inputbox"
+        <field name="remarks" type="editor" class="inputbox"
 
                label="COM_VPPI_FORM_LBL_REMARKS"
                description="COM_VPPI_FORM_DESC_REMARKS"

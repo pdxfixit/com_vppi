@@ -1,5 +1,12 @@
 
-.icon-48-vppi { background-image: url(../images/48.png); }
+div.icon-48-48,
+div.icon-48-vppi {
+    background-image: url(../images/48.png);
+}
+
+div#toolbar-box div.icon-48-48 h2 {
+    margin-left: 150px;
+}
 
 div#remarks,
 div#basic-home-info,
