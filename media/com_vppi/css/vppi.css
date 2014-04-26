@@ -1,19 +1,27 @@
 
 .icon-48-vppi { background-image: url(../images/48.png); }
 
-#remarks,
-#basic-home-info,
-#feature-home-info {
+div#remarks,
+div#basic-home-info,
+div#feature-home-info {
     clear: both;
 }
 
-#main #basic-home-info ul,
-#main #feature-home-info ul {
-    list-style-position: inside;
+div#main div#basic-home-info ul,
+div#main div#feature-home-info ul {
+    list-style-type: none;
 }
 
-#basic-home-info ul li,
-#feature-home-info ul li {
+div#main div#basic-home-info ul li,
+div#main div#feature-home-info ul li {
     float: left;
     margin-right: 15px;
+}
+
+div#home-listing p {
+    margin-left: 15px;
+}
+
+div#remarks {
+    padding-top: 5px;
 }
