@@ -19,9 +19,9 @@ class VppiModelHome extends JModelItem {
      * @since    1.6
      */
     protected function populateState() {
-        $app = JFactory::getApplication('com_fbfantasy');
+        $app = JFactory::getApplication('com_vppi');
 
-        $id = JFactory::getApplication()->input->get('id');
+        $id = $app->getParams()->get('home_id');
         $this->setState('home.id', $id);
 
         // Load the parameters.

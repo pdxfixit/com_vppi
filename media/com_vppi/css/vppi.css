@@ -29,6 +29,7 @@ div#home-listing p {
     margin-left: 15px;
 }
 
-div#remarks {
+div#remarks,
+div#feature-home-info {
     padding-top: 5px;
 }

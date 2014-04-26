@@ -183,56 +183,58 @@ if (!$this->item) {
             <p><b><?php echo JText::_('COM_VPPI_LBL_REMARKS'); ?>:</b></p>
             <p><?php echo $this->item->remarks; ?></p>
         </div>
+    <?php }
+    if (!empty($this->item->dining_room) || !empty($this->item->family_room) || !empty($this->item->living_room) || !empty($this->item->kitchen) || !empty($this->item->interior) || !empty($this->item->exterior) || !empty($this->item->accessibility) || !empty($this->item->green_certification) || !empty($this->item->energy_eff_features)) {?>
+        <div id="feature-home-info">
+            <p><b><?php echo JText::_('COM_VPPI_LBL_FEATURES'); ?>:</b></p>
+            <ul>
+                <?php if (!empty($this->item->dining_room)) { ?>
+                    <li>
+                        <b><?php echo JText::_('COM_VPPI_LBL_DINING_ROOM'); ?>:</b>  <?php echo $this->item->dining_room; ?>
+                    </li>
+                <?php }?>
+                <?php if (!empty($this->item->family_room)) { ?>
+                    <li>
+                        <b><?php echo JText::_('COM_VPPI_LBL_FAMILY_ROOM'); ?>:</b>  <?php echo $this->item->family_room; ?>
+                    </li>
+                <?php }?>
+                <?php if (!empty($this->item->living_room)) { ?>
+                    <li>
+                        <b><?php echo JText::_('COM_VPPI_LBL_LIVING_ROOM'); ?>:</b>  <?php echo $this->item->living_room; ?>
+                    </li>
+                <?php }?>
+                <?php if (!empty($this->item->kitchen)) { ?>
+                    <li>
+                        <b><?php echo JText::_('COM_VPPI_LBL_KITCHEN'); ?>:</b>  <?php echo $this->item->kitchen; ?>
+                    </li>
+                <?php }?>
+                <?php if (!empty($this->item->interior)) { ?>
+                    <li>
+                        <b><?php echo JText::_('COM_VPPI_LBL_INTERIOR'); ?>:</b>  <?php echo $this->item->interior; ?>
+                    </li>
+                <?php }?>
+                <?php if (!empty($this->item->exterior)) { ?>
+                    <li>
+                        <b><?php echo JText::_('COM_VPPI_LBL_EXTERIOR'); ?>:</b>  <?php echo $this->item->exterior; ?>
+                    </li>
+                <?php }?>
+                <?php if (!empty($this->item->accessibility)) { ?>
+                    <li>
+                        <b><?php echo JText::_('COM_VPPI_LBL_ACCESSIBILITY'); ?>:</b>  <?php echo $this->item->accessibility; ?>
+                    </li>
+                <?php }?>
+                <?php if (!empty($this->item->green_certification)) { ?>
+                    <li>
+                        <b><?php echo JText::_('COM_VPPI_LBL_GREEN_CERT'); ?>:</b>  <?php echo $this->item->green_certification; ?>
+                    </li>
+                <?php }?>
+                <?php if (!empty($this->item->energy_eff_features)) { ?>
+                    <li>
+                        <b><?php echo JText::_('COM_VPPI_LBL_ENERGY_EFF_FEATURES'); ?>:</b>  <?php echo $this->item->energy_eff_features; ?>
+                    </li>
+                <?php }?>
+            </ul>
+        </div>
     <?php }?>
-    <div id="feature-home-info">
-        <p><b><?php echo JText::_('COM_VPPI_LBL_FEATURES'); ?>:</b></p>
-        <ul>
-            <?php if (!empty($this->item->dining_room)) { ?>
-                <li>
-                    <b><?php echo JText::_('COM_VPPI_LBL_DINING_ROOM'); ?>:</b>  <?php echo $this->item->dining_room; ?>
-                </li>
-            <?php }?>
-            <?php if (!empty($this->item->family_room)) { ?>
-                <li>
-                    <b><?php echo JText::_('COM_VPPI_LBL_FAMILY_ROOM'); ?>:</b>  <?php echo $this->item->family_room; ?>
-                </li>
-            <?php }?>
-            <?php if (!empty($this->item->living_room)) { ?>
-                <li>
-                    <b><?php echo JText::_('COM_VPPI_LBL_LIVING_ROOM'); ?>:</b>  <?php echo $this->item->living_room; ?>
-                </li>
-            <?php }?>
-            <?php if (!empty($this->item->kitchen)) { ?>
-                <li>
-                    <b><?php echo JText::_('COM_VPPI_LBL_KITCHEN'); ?>:</b>  <?php echo $this->item->kitchen; ?>
-                </li>
-            <?php }?>
-            <?php if (!empty($this->item->interior)) { ?>
-                <li>
-                    <b><?php echo JText::_('COM_VPPI_LBL_INTERIOR'); ?>:</b>  <?php echo $this->item->interior; ?>
-                </li>
-            <?php }?>
-            <?php if (!empty($this->item->exterior)) { ?>
-                <li>
-                    <b><?php echo JText::_('COM_VPPI_LBL_EXTERIOR'); ?>:</b>  <?php echo $this->item->exterior; ?>
-                </li>
-            <?php }?>
-            <?php if (!empty($this->item->accessibility)) { ?>
-                <li>
-                    <b><?php echo JText::_('COM_VPPI_LBL_ACCESSIBILITY'); ?>:</b>  <?php echo $this->item->accessibility; ?>
-                </li>
-            <?php }?>
-            <?php if (!empty($this->item->green_certification)) { ?>
-                <li>
-                    <b><?php echo JText::_('COM_VPPI_LBL_GREEN_CERT'); ?>:</b>  <?php echo $this->item->green_certification; ?>
-                </li>
-            <?php }?>
-            <?php if (!empty($this->item->energy_eff_features)) { ?>
-                <li>
-                    <b><?php echo JText::_('COM_VPPI_LBL_ENERGY_EFF_FEATURES'); ?>:</b>  <?php echo $this->item->energy_eff_features; ?>
-                </li>
-            <?php }?>
-        </ul>
-    </div>
     <div class="clear"></div>
 </div>
