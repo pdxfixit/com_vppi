@@ -42,35 +42,55 @@ class VppiViewHome extends JViewLegacy {
     protected function addToolbar() {
         JFactory::getApplication()->input->set('hidemainmenu', true);
 
-        $user = JFactory::getUser();
-        $isNew = ($this->item->id == 0);
-        if (isset($this->item->checked_out)) {
-            $checkedOut = !($this->item->checked_out == 0 || $this->item->checked_out == $user->get('id'));
-        } else {
-            $checkedOut = false;
-        }
-        require_once( JPATH_COMPONENT.DS.'helpers'.DS.'vppi.php' );
-        $canDo = VppiHelper::getActions();
+        $user		= JFactory::getUser();
+        $userId		= $user->get('id');
+        $isNew		= ($this->item->id == 0);
+        $checkedOut	= !($this->item->checked_out == 0 || $this->item->checked_out == $userId);
 
-        JToolBarHelper::title(JText::_('COM_VPPI_MANAGER_VPPI'), '48.png');
+        require_once( JPATH_COMPONENT . '/helpers/vppi.php' );
+        $canDo		= VppiHelper::getActions();
 
-        // If not checked out, can save the item.
-        if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create')))) {
+        JToolbarHelper::title(JText::_('COM_VPPI_MANAGER_VPPI'), '48.png');
 
-            JToolBarHelper::apply('home.apply', 'JTOOLBAR_APPLY');
-            JToolBarHelper::save('home.save', 'JTOOLBAR_SAVE');
+        // Build the actions for new and existing records.
+        if ($isNew)
+        {
+            // For new records, check the create permission.
+            if ($isNew && $canDo->get('core.create'))
+            {
+                JToolbarHelper::apply('home.apply');
+                JToolbarHelper::save('home.save');
+                JToolbarHelper::save2new('home.save2new');
+            }
+
+            JToolbarHelper::cancel('home.cancel');
         }
-        if (!$checkedOut && ($canDo->get('core.create'))) {
-            JToolBarHelper::custom('home.save2new', 'save-new.png', 'save-new_f2.png', 'JTOOLBAR_SAVE_AND_NEW', false);
-        }
-        // If an existing item, can save to a copy.
-        if (!$isNew && $canDo->get('core.create')) {
-            JToolBarHelper::custom('home.save2copy', 'save-copy.png', 'save-copy_f2.png', 'JTOOLBAR_SAVE_AS_COPY', false);
-        }
-        if (empty($this->item->id)) {
-            JToolBarHelper::cancel('home.cancel', 'JTOOLBAR_CANCEL');
-        } else {
-            JToolBarHelper::cancel('home.cancel', 'JTOOLBAR_CLOSE');
+        else
+        {
+            // Can't save the record if it's checked out.
+            if (!$checkedOut)
+            {
+                // Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
+                if ($canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == $userId))
+                {
+                    JToolbarHelper::apply('home.apply');
+                    JToolbarHelper::save('home.save');
+
+                    // We can save this record, but check the create permission to see if we can return to make a new one.
+                    if ($canDo->get('core.create'))
+                    {
+                        JToolbarHelper::save2new('home.save2new');
+                    }
+                }
+            }
+
+            // If checked out, we can still save
+            if ($canDo->get('core.create'))
+            {
+                JToolbarHelper::save2copy('home.save2copy');
+            }
+
+            JToolbarHelper::cancel('home.cancel', 'JTOOLBAR_CLOSE');
         }
 
     }
