@@ -17,24 +17,7 @@ JHtml::_('behavior.formvalidation');
 // Import CSS
 $document = JFactory::getDocument();
 $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
-$document->addStyleSheet(JURI::root() . 'media/system/js/formcheck/theme/classic/formcheck.css');
-$document->addScript(JURI::root() . 'media/system/js/formcheck/lang/en.js');
-$document->addScript(JURI::root() . 'media/system/js/formcheck/formcheck.js');
-$document->addScriptDeclaration("
-    window.addEvent('domready', function(){
-       new formCheck('home-form')
-    });");
 ?>
-<script type="text/javascript">
-    Joomla.submitbutton = function(task)
-    {
-        if (task == 'home.cancel' || document.formvalidator.isValid(document.id('home-form')))
-        {
-            Joomla.submitform(task, document.getElementById('home-form'));
-        }
-    }
-</script>
-
 <form action="<?php echo JRoute::_('index.php?option=com_vppi&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="home-form" class="form-validate">
     <div>
         <h1><?php echo JText::_('COM_VPPI_HOME'); ?></h1>

@@ -18,6 +18,7 @@ class VppiViewHome extends JViewLegacy {
     protected $state;
     protected $item;
     protected $form;
+    protected $script;
 
     /**
      * Display the view
@@ -26,6 +27,7 @@ class VppiViewHome extends JViewLegacy {
         $this->state = $this->get('State');
         $this->item = $this->get('Item');
         $this->form = $this->get('Form');
+        $this->script = $this->get('Script');
 
         // Check for errors.
         if (count($errors = $this->get('Errors'))) {
@@ -34,6 +36,7 @@ class VppiViewHome extends JViewLegacy {
 
         $this->addToolbar();
         parent::display($tpl);
+        $this->setDocument();
     }
 
     /**
@@ -93,5 +96,17 @@ class VppiViewHome extends JViewLegacy {
             JToolbarHelper::cancel('home.cancel', 'JTOOLBAR_CLOSE');
         }
 
+    }
+
+    /**
+     * Method to set up the document properties
+     *
+     * @return void
+     */
+    protected function setDocument()
+    {
+        $document = JFactory::getDocument();
+        $document->addScript(JURI::root() . $this->script);
+        $document->addScript(JURI::root() . "/administrator/components/com_vppi/views/home/submitbutton.js");
     }
 }

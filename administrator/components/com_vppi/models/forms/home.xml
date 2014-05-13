@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<form>
+<form
+        addrulepath="/administrator/components/com_vppi/models/rules"
+        >
 	<fieldset>
 		<field name="id" type="text" default="0" label="JGLOBAL_FIELD_ID_LABEL"
 			readonly="true" class="readonly"
@@ -41,12 +43,13 @@
                required="false"
                filter="safehtml"/>
 
-        <field name="ml_number" type="text" size="40" class="inputbox vaildate['required', 'number', 'length:8']"
+        <field name="ml_number" type="text" size="40" class="inputbox vaildate-mlnumber"
 
                label="COM_VPPI_FORM_LBL_ML_NUMBER"
                description="COM_VPPI_FORM_DESC_ML_NUMBER"
                default=""
 
+               validate="mlnumber"
                required="true"
                filter="safehtml"/>
 
