@@ -69,6 +69,7 @@ class VppiModelHomes extends JModelList {
                 'green_certification', 'a.green_certification',
                 'energy_eff_features', 'a.energy_eff_features',
                 'state', 'a.state',
+                'ordering', 'a.ordering',
             );
         }
 
@@ -96,7 +97,7 @@ class VppiModelHomes extends JModelList {
         $this->setState('params', $params);
 
         // List state information.
-        parent::populateState('a.ml_number', 'asc');
+        parent::populateState('a.id', 'asc');
     }
 
     /**
