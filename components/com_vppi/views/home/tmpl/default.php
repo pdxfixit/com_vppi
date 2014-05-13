@@ -238,3 +238,4 @@ if (!$this->item) {
     <?php }?>
     <div class="clear"></div>
 </div>
+<br/>

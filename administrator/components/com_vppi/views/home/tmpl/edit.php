@@ -16,13 +16,13 @@ JHtml::_('behavior.formvalidation');
 
 // Import CSS
 $document = JFactory::getDocument();
-$document->addStyleSheet(JURI::root() . '/media/com_vppi/css/vppi.css');
+$document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
+$document->addStyleSheet(JURI::root() . 'media/system/js/formcheck/theme/classic/formcheck.css');
+$document->addScript(JURI::root() . 'media/system/js/formcheck/lang/en.js');
+$document->addScript(JURI::root() . 'media/system/js/formcheck/formcheck.js');
 $document->addScriptDeclaration("
     window.addEvent('domready', function(){
-       document.formvalidator.setHandler('mlnumber', function(value) {
-          regex=/\d{8}/;
-          return regex.test(value);
-       });
+       new formCheck('home-form')
     });");
 ?>
 <script type="text/javascript">

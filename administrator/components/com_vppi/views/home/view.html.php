@@ -50,7 +50,7 @@ class VppiViewHome extends JViewLegacy {
         require_once( JPATH_COMPONENT . '/helpers/vppi.php' );
         $canDo		= VppiHelper::getActions();
 
-        JToolbarHelper::title(JText::_('COM_VPPI_MANAGER_VPPI'), '48.png');
+        JToolbarHelper::title(JText::_('COM_VPPI_MANAGER_VPPI'), 'VPPI-logo.png');
 
         // Build the actions for new and existing records.
         if ($isNew)

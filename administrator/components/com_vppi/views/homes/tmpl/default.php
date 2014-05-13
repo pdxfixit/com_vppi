@@ -16,7 +16,7 @@ JHtml::_('behavior.multiselect');
 
 // Import CSS
 $document = JFactory::getDocument();
-$document->addStyleSheet(JURI::root() . '/media/com_vppi/css/vppi.css');
+$document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
 
 $user = JFactory::getUser();
 $userId = $user->get('id');

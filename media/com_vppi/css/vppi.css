@@ -1,11 +1,8 @@
 
-div.icon-48-48,
-div.icon-48-vppi {
-    background-image: url(../images/48.png);
-}
-
-div#toolbar-box div.icon-48-48 h2 {
-    margin-left: 150px;
+span.icon-VPPI-logo {
+    background-image: url(../images/VPPI-logo.png);
+    width: 200px;
+    height: 48px;
 }
 
 div#remarks,
@@ -14,22 +11,26 @@ div#feature-home-info {
     clear: both;
 }
 
-div#main div#basic-home-info ul,
-div#main div#feature-home-info ul {
+div#basic-home-info ul,
+div#feature-home-info ul {
     list-style-type: none;
 }
 
-div#main div#basic-home-info ul li,
-div#main div#feature-home-info ul li {
+div#basic-home-info ul li,
+div#feature-home-info ul li {
     float: left;
     margin-right: 15px;
 }
 
 div#home-listing p {
-    margin-left: 15px;
+    margin-left: 25px;
 }
 
 div#remarks,
 div#feature-home-info {
-    padding-top: 5px;
+    padding-top: 15px;
+}
+
+div#feature-home-info {
+    padding-bottom: 30px;
 }

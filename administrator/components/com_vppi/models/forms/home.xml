@@ -41,7 +41,7 @@
                required="false"
                filter="safehtml"/>
 
-        <field name="ml_number" type="text" size="40" class="inputbox vaildate-mlnumber"
+        <field name="ml_number" type="text" size="40" class="inputbox vaildate['required', 'number', 'length:8']"
 
                label="COM_VPPI_FORM_LBL_ML_NUMBER"
                description="COM_VPPI_FORM_DESC_ML_NUMBER"
