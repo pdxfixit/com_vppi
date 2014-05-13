@@ -17,13 +17,19 @@ JHtml::_('behavior.formvalidation');
 // Import CSS
 $document = JFactory::getDocument();
 $document->addStyleSheet(JURI::root() . '/media/com_vppi/css/vppi.css');
+$document->addScriptDeclaration("
+    window.addEvent('domready', function(){
+       document.formvalidator.setHandler('mlnumber', function(value) {
+          regex=/\d{8}/;
+          return regex.test(value);
+       });
+    });");
 ?>
 <script type="text/javascript">
     Joomla.submitbutton = function(task)
     {
         if (task == 'home.cancel' || document.formvalidator.isValid(document.id('home-form')))
         {
-            <?php echo $this->form->getField('remarks')->save(); ?>
             Joomla.submitform(task, document.getElementById('home-form'));
         }
     }

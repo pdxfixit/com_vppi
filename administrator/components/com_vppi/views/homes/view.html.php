@@ -65,27 +65,44 @@ class VppiViewHomes extends JViewLegacy {
         if ($canDo->get('core.edit.state')) {
 
             JToolBarHelper::divider();
-            JToolBarHelper::publish('vppi.publish', 'JTOOLBAR_PUBLISH', true);
-            JToolBarHelper::unpublish('vppi.unpublish', 'JTOOLBAR_UNPUBLISH', true);
+            JToolBarHelper::publish('homes.publish', 'JTOOLBAR_PUBLISH', true);
+            JToolBarHelper::unpublish('homes.unpublish', 'JTOOLBAR_UNPUBLISH', true);
 
 
             JToolBarHelper::divider();
-            JToolBarHelper::archiveList('vppi.archive');
-            JToolBarHelper::checkin('vppi.checkin');
+            JToolBarHelper::checkin('homes.checkin');
         }
         if ($state->get('filter.state') == -2 && $canDo->get('core.delete')) {
-            JToolBarHelper::deleteList('', 'vppi.delete', 'JTOOLBAR_EMPTY_TRASH');
+            JToolBarHelper::deleteList('', 'home.delete', 'JTOOLBAR_EMPTY_TRASH');
             JToolBarHelper::divider();
         } elseif ($canDo->get('core.edit.state')) {
-            JToolBarHelper::trash('vppi.trash');
-            JToolBarHelper::divider();
+            JToolBarHelper::trash('homes.trash');
         }
-        if ($canDo->get('core.admin')) {
+        /* if ($canDo->get('core.admin')) {
             JToolBarHelper::preferences('com_vppi');
             JToolBarHelper::divider();
-        }
+        } */
 
-        JToolBarHelper::help('JHELP_COMPONENTS_VPPI_HOMES');
+    }
+
+    /**
+     * Returns an array of fields the table can be sorted by
+     *
+     * @return  array  Array containing the field name to sort by as the key and display text as value
+     *
+     * @since   3.0
+     */
+    protected function getSortFields()
+    {
+        return array(
+            'a.ordering' => JText::_('JGRID_HEADING_ORDERING'),
+            'a.published' => JText::_('JSTATUS'),
+            'a.ml_number' => JText::_('COM_VPPI_ML_NUMBER'),
+            'a.street_address' => JText::_('COM_VPPI_STREET_ADDRESS'),
+            'a.city' => JText::_('COM_VPPI_CITY'),
+            'a.state_prov' => JText::_('COM_VPPI_STATE_PROV'),
+            'a.id' => JText::_('JGRID_HEADING_ID')
+        );
     }
 
 }
