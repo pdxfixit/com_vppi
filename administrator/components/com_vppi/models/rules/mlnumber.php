@@ -6,7 +6,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      PDXfixIT <info@pdxfixit.com> - http://www.pdxfixit.com
  */
- 
+
 defined('_JEXEC') or die();
 
 // import Joomla formrule library
@@ -15,11 +15,10 @@ jimport('joomla.form.formrule');
 /**
  * Form Rule class for the Joomla Framework.
  */
-class JFormRuleMlnumber extends JFormRule
-{
+class JFormRuleMlnumber extends JFormRule {
+
     /**
      * The regular expression.
-     *
      * @access      protected
      * @var         string
      * @since       2.5

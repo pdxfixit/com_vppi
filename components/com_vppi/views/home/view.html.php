@@ -14,10 +14,9 @@ class VppiViewHome extends JViewLegacy {
 
     protected $item;
 
-    function display($tpl = null)
-    {
-        $this->state    = $this->get('State');
-        $this->item		= $this->get('Item');
+    function display($tpl = null) {
+        $this->state = $this->get('State');
+        $this->item = $this->get('Item');
 
         // Check for errors.
         if (count($errors = $this->get('Errors'))) {

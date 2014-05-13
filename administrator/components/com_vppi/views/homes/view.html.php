@@ -22,11 +22,10 @@ class VppiViewHomes extends JViewLegacy {
     /**
      * Display the view
      */
-    public function display($tpl = null)
-    {
-        $this->state		= $this->get('State');
-        $this->items		= $this->get('Items');
-        $this->pagination	= $this->get('Pagination');
+    public function display($tpl = null) {
+        $this->state = $this->get('State');
+        $this->items = $this->get('Items');
+        $this->pagination = $this->get('Pagination');
 
         // Check for errors.
         if (count($errors = $this->get('Errors'))) {
@@ -44,16 +43,14 @@ class VppiViewHomes extends JViewLegacy {
 
     /**
      * Add the page title and toolbar.
-     *
-     * @since	1.6
+     * @since    1.6
      */
-    protected function addToolbar()
-    {
+    protected function addToolbar() {
         require_once JPATH_COMPONENT . '/helpers/vppi.php';
 
-        $state	= $this->get('State');
-        $canDo	= VppiHelper::getActions($state->get('filter.category_id'));
-        $user	= JFactory::getUser();
+        $state = $this->get('State');
+        $canDo = VppiHelper::getActions($state->get('filter.category_id'));
+        $user = JFactory::getUser();
 
         JToolBarHelper::title(JText::_('COM_VPPI_MANAGER_VPPI'), 'VPPI-logo.png');
         if ($canDo->get('core.create')) {
@@ -67,7 +64,6 @@ class VppiViewHomes extends JViewLegacy {
             JToolBarHelper::divider();
             JToolBarHelper::publish('homes.publish', 'JTOOLBAR_PUBLISH', true);
             JToolBarHelper::unpublish('homes.unpublish', 'JTOOLBAR_UNPUBLISH', true);
-
 
             JToolBarHelper::divider();
             JToolBarHelper::checkin('homes.checkin');
@@ -87,13 +83,10 @@ class VppiViewHomes extends JViewLegacy {
 
     /**
      * Returns an array of fields the table can be sorted by
-     *
      * @return  array  Array containing the field name to sort by as the key and display text as value
-     *
      * @since   3.0
      */
-    protected function getSortFields()
-    {
+    protected function getSortFields() {
         return array(
             'a.ordering' => JText::_('JGRID_HEADING_ORDERING'),
             'a.published' => JText::_('JSTATUS'),

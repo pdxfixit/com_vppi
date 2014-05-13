@@ -15,12 +15,10 @@ jimport('joomla.application.component.controllerform');
 
 /**
  * VPPI controller class.
- *
- * @package		Joomla.Administrator
- * @subpackage	com_vppi
- * @since		1.6
+ * @package        Joomla.Administrator
+ * @subpackage     com_vppi
+ * @since          1.6
  */
-class VppiControllerHome extends VppiController
-{
+class VppiControllerHome extends VppiController {
 
 }

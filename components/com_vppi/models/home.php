@@ -37,12 +37,11 @@ class VppiModelHome extends JModelItem {
     /**
      * Method to get home data.
      *
-     * @param	integer	The id of the home.
+     * @param    integer    The id of the home.
      *
-     * @return	mixed	Menu item data object on success, false on failure.
+     * @return    mixed    Menu item data object on success, false on failure.
      */
-    public function getItem($id = null)
-    {
+    public function getItem($id = null) {
 
         if (empty($id)) {
             $id = $this->getState('home.id');
@@ -69,7 +68,7 @@ class VppiModelHome extends JModelItem {
             );
             $query->from('#__vppi_home AS a');
 
-            $query->where('a.id = ' . (int) $id);
+            $query->where('a.id = ' . (int)$id);
             $query->where('a.state = 1');
 
             $db->setQuery($query);

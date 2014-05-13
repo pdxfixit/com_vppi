@@ -10,6 +10,6 @@
 // no direct access
 defined('_JEXEC') or die;
 
-$controller	= JControllerLegacy::getInstance('Vppi');
+$controller = JControllerLegacy::getInstance('Vppi');
 $controller->execute(JFactory::getApplication()->input->get('task'));
 $controller->redirect();

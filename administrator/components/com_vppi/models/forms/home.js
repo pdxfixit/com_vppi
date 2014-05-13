@@ -6,10 +6,10 @@
  * @author      PDXfixIT <info@pdxfixit.com> - http://www.pdxfixit.com
  */
 
-window.addEvent('domready', function() {
+window.addEvent('domready', function () {
     document.formvalidator.setHandler('mlnumber',
         function (value) {
-            regex=/\d{6,10}/;
+            regex = /\d{6,10}/;
             return regex.test(value);
         });
 });

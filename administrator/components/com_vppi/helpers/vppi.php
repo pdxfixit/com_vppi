@@ -10,35 +10,35 @@
 // No direct access
 defined('_JEXEC') or die;
 
-class VppiHelper
-{
-	/**
-	 * Configure the Linkbar.
-	 *
-	 * @param	string	The name of the active view.
-	 * @since	1.6
-	 */
-	public static function addSubmenu($vName = '')
-	{
-		JSubMenuHelper::addEntry(
-			JText::_('COM_VPPI_SUBMENU_HOMES'),
-			'index.php?option=com_vppi&view=homes',
-			$vName == 'homes'
-		);
+class VppiHelper {
 
-	}
+    /**
+     * Configure the Linkbar.
+     *
+     * @param    string    The name of the active view.
+     *
+     * @since    1.6
+     */
+    public static function addSubmenu($vName = '') {
+        JSubMenuHelper::addEntry(
+                      JText::_('COM_VPPI_SUBMENU_HOMES'),
+                      'index.php?option=com_vppi&view=homes',
+                      $vName == 'homes'
+        );
 
-	/**
-	 * Gets a list of the actions that can be performed.
-	 *
-	 * @param	int		The category ID.
-	 * @return	JObject
-	 * @since	1.6
-	 */
-	public static function getActions()
-	{
-		$user	= JFactory::getUser();
-		$result	= new JObject;
+    }
+
+    /**
+     * Gets a list of the actions that can be performed.
+     *
+     * @param    int        The category ID.
+     *
+     * @return    JObject
+     * @since    1.6
+     */
+    public static function getActions() {
+        $user = JFactory::getUser();
+        $result = new JObject;
 
         $assetName = 'com_vppi';
 
@@ -46,10 +46,10 @@ class VppiHelper
             'core.admin', 'core.manage', 'core.create', 'core.edit', 'core.edit.own', 'core.edit.state', 'core.delete'
         );
 
-		foreach ($actions as $action) {
-			$result->set($action, $user->authorise($action, $assetName));
-		}
+        foreach ($actions as $action) {
+            $result->set($action, $user->authorise($action, $assetName));
+        }
 
-		return $result;
-	}
+        return $result;
+    }
 }

@@ -19,11 +19,11 @@
         <filename>index.html</filename>
     </files>
     <languages folder="language">
-			<language tag="en-GB">en-GB/en-GB.com_vppi.ini</language>
-			<language tag="en-GB">en-GB/en-GB.com_vppi.sys.ini</language>
+        <language tag="en-GB">en-GB/en-GB.com_vppi.ini</language>
+        <language tag="en-GB">en-GB/en-GB.com_vppi.sys.ini</language>
     </languages>
 
-	<install> <!-- Runs on install -->
+    <install> <!-- Runs on install -->
         <sql>
             <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
         </sql>

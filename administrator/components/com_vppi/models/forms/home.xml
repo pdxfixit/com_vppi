@@ -1,423 +1,273 @@
 <?xml version="1.0" encoding="utf-8"?>
-<form
-        addrulepath="/administrator/components/com_vppi/models/rules"
-        >
-	<fieldset>
-		<field name="id" type="text" default="0" label="JGLOBAL_FIELD_ID_LABEL"
-			readonly="true" class="readonly"
-			description="JGLOBAL_FIELD_ID_DESC"/>
+<form addrulepath="/administrator/components/com_vppi/models/rules">
+    <fieldset>
+        <field name="id" type="text" default="0" label="JGLOBAL_FIELD_ID_LABEL" readonly="true" class="readonly" description="JGLOBAL_FIELD_ID_DESC" />
 
         <field name="street_address" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_STREET_ADDRESS"
-               description="COM_VPPI_FORM_DESC_STREET_ADDRESS"
-               default=""
+               label="COM_VPPI_FORM_LBL_STREET_ADDRESS" description="COM_VPPI_FORM_DESC_STREET_ADDRESS" default=""
 
-               required="true"
-               filter="safehtml"/>
+               required="true" filter="safehtml" />
 
         <field name="city" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_CITY"
-               description="COM_VPPI_FORM_DESC_CITY"
-               default=""
+               label="COM_VPPI_FORM_LBL_CITY" description="COM_VPPI_FORM_DESC_CITY" default=""
 
-               required="true"
-               filter="safehtml"/>
+               required="true" filter="safehtml" />
 
         <field name="state_prov" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_STATE_PROVINCE"
-               description="COM_VPPI_FORM_DESC_STATE_PROVINCE"
-               default=""
+               label="COM_VPPI_FORM_LBL_STATE_PROVINCE" description="COM_VPPI_FORM_DESC_STATE_PROVINCE" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="zip_code" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_ZIP_CODE"
-               description="COM_VPPI_FORM_DESC_ZIP_CODE"
-               default=""
+               label="COM_VPPI_FORM_LBL_ZIP_CODE" description="COM_VPPI_FORM_DESC_ZIP_CODE" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="ml_number" type="text" size="40" class="inputbox vaildate-mlnumber"
 
-               label="COM_VPPI_FORM_LBL_ML_NUMBER"
-               description="COM_VPPI_FORM_DESC_ML_NUMBER"
-               default=""
+               label="COM_VPPI_FORM_LBL_ML_NUMBER" description="COM_VPPI_FORM_DESC_ML_NUMBER" default=""
 
-               validate="mlnumber"
-               required="true"
-               filter="safehtml"/>
+               validate="mlnumber" required="true" filter="safehtml" />
 
         <field name="area" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_AREA"
-               description="COM_VPPI_FORM_DESC_AREA"
-               default=""
+               label="COM_VPPI_FORM_LBL_AREA" description="COM_VPPI_FORM_DESC_AREA" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="elem_school" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_ELEM_SCHOOL"
-               description="COM_VPPI_FORM_DESC_ELEM_SCHOOL"
-               default=""
+               label="COM_VPPI_FORM_LBL_ELEM_SCHOOL" description="COM_VPPI_FORM_DESC_ELEM_SCHOOL" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="mid_school" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_MID_SCHOOL"
-               description="COM_VPPI_FORM_DESC_MID_SCHOOL"
-               default=""
+               label="COM_VPPI_FORM_LBL_MID_SCHOOL" description="COM_VPPI_FORM_DESC_MID_SCHOOL" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="high_school" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_HIGH_SCHOOL"
-               description="COM_VPPI_FORM_DESC_HIGH_SCHOOL"
-               default=""
+               label="COM_VPPI_FORM_LBL_HIGH_SCHOOL" description="COM_VPPI_FORM_DESC_HIGH_SCHOOL" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
-        <field name="short_sale"
-               type="radio"
-               label="COM_VPPI_FORM_LBL_SHORT_SALE"
-               description="COM_VPPI_FORM_DESC_SHORT_SALE"
-               default="0"
-               size="1"
-               required="false">
+        <field name="short_sale" type="radio" label="COM_VPPI_FORM_LBL_SHORT_SALE" description="COM_VPPI_FORM_DESC_SHORT_SALE" default="0" size="1" required="false">
             <option value="0">No</option>
             <option value="1">Yes</option>
         </field>
 
-        <field name="bank_owned"
-               type="radio"
-               label="COM_VPPI_FORM_LBL_BANK_OWNED"
-               description="COM_VPPI_FORM_DESC_BANK_OWNED"
-               default="0"
-               size="1"
-               required="false">
+        <field name="bank_owned" type="radio" label="COM_VPPI_FORM_LBL_BANK_OWNED" description="COM_VPPI_FORM_DESC_BANK_OWNED" default="0" size="1" required="false">
             <option value="0">No</option>
             <option value="1">Yes</option>
         </field>
 
         <field name="waterfront" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_WATERFRONT"
-               description="COM_VPPI_FORM_DESC_WATERFRONT"
-               default=""
+               label="COM_VPPI_FORM_LBL_WATERFRONT" description="COM_VPPI_FORM_DESC_WATERFRONT" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="body_of_water" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_BODY_OF_WATER"
-               description="COM_VPPI_FORM_DESC_BODY_OF_WATER"
-               default=""
+               label="COM_VPPI_FORM_LBL_BODY_OF_WATER" description="COM_VPPI_FORM_DESC_BODY_OF_WATER" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="tax_per_year" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_TAX_PER_YEAR"
-               description="COM_VPPI_FORM_DESC_TAX_PER_YEAR"
-               default=""
+               label="COM_VPPI_FORM_LBL_TAX_PER_YEAR" description="COM_VPPI_FORM_DESC_TAX_PER_YEAR" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="property_type" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_PROPERTY_TYPE"
-               description="COM_VPPI_FORM_DESC_PROPERTY_TYPE"
-               default=""
+               label="COM_VPPI_FORM_LBL_PROPERTY_TYPE" description="COM_VPPI_FORM_DESC_PROPERTY_TYPE" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="neighborhood_building" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_NEIGHBORHOOD_BUILDING"
-               description="COM_VPPI_FORM_DESC_NEIGHBORHOOD_BUILDING"
-               default=""
+               label="COM_VPPI_FORM_LBL_NEIGHBORHOOD_BUILDING" description="COM_VPPI_FORM_DESC_NEIGHBORHOOD_BUILDING" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="levels" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_LEVELS"
-               description="COM_VPPI_FORM_DESC_LEVELS"
-               default=""
+               label="COM_VPPI_FORM_LBL_LEVELS" description="COM_VPPI_FORM_DESC_LEVELS" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="garage" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_GARAGE"
-               description="COM_VPPI_FORM_DESC_GARAGE"
-               default=""
+               label="COM_VPPI_FORM_LBL_GARAGE" description="COM_VPPI_FORM_DESC_GARAGE" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="roof" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_ROOF"
-               description="COM_VPPI_FORM_DESC_ROOF"
-               default=""
+               label="COM_VPPI_FORM_LBL_ROOF" description="COM_VPPI_FORM_DESC_ROOF" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="ext_description" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_EXT_DESC"
-               description="COM_VPPI_FORM_DESC_EXT_DESC"
-               default=""
+               label="COM_VPPI_FORM_LBL_EXT_DESC" description="COM_VPPI_FORM_DESC_EXT_DESC" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="mast_bed_level" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_MAST_BED_LEVEL"
-               description="COM_VPPI_FORM_DESC_MAST_BED_LEVEL"
-               default=""
+               label="COM_VPPI_FORM_LBL_MAST_BED_LEVEL" description="COM_VPPI_FORM_DESC_MAST_BED_LEVEL" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="fireplace" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_FIREPLACE"
-               description="COM_VPPI_FORM_DESC_FIREPLACE"
-               default=""
+               label="COM_VPPI_FORM_LBL_FIREPLACE" description="COM_VPPI_FORM_DESC_FIREPLACE" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="basement_foundation" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_BASEMENT_FOUNDATION"
-               description="COM_VPPI_FORM_DESC_BASEMENT_FOUNDATION"
-               default=""
+               label="COM_VPPI_FORM_LBL_BASEMENT_FOUNDATION" description="COM_VPPI_FORM_DESC_BASEMENT_FOUNDATION" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="view" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_VIEW"
-               description="COM_VPPI_FORM_DESC_VIEW"
-               default=""
+               label="COM_VPPI_FORM_LBL_VIEW" description="COM_VPPI_FORM_DESC_VIEW" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="acres" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_ACRES"
-               description="COM_VPPI_FORM_DESC_ACRES"
-               default=""
+               label="COM_VPPI_FORM_LBL_ACRES" description="COM_VPPI_FORM_DESC_ACRES" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="lot_size" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_LOT_SIZE"
-               description="COM_VPPI_FORM_DESC_LOT_SIZE"
-               default=""
+               label="COM_VPPI_FORM_LBL_LOT_SIZE" description="COM_VPPI_FORM_DESC_LOT_SIZE" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="lot_dimensions" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_LOT_DIMENSIONS"
-               description="COM_VPPI_FORM_DESC_LOT_DIMENSIONS"
-               default=""
+               label="COM_VPPI_FORM_LBL_LOT_DIMENSIONS" description="COM_VPPI_FORM_DESC_LOT_DIMENSIONS" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="lot_description" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_LOT_DESC"
-               description="COM_VPPI_FORM_DESC_LOT_DESC"
-               default=""
+               label="COM_VPPI_FORM_LBL_LOT_DESC" description="COM_VPPI_FORM_DESC_LOT_DESC" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="heat_fuel" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_HEAT_FUEL"
-               description="COM_VPPI_FORM_DESC_HEAT_FUEL"
-               default=""
+               label="COM_VPPI_FORM_LBL_HEAT_FUEL" description="COM_VPPI_FORM_DESC_HEAT_FUEL" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="cool" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_COOL"
-               description="COM_VPPI_FORM_DESC_COOL"
-               default=""
+               label="COM_VPPI_FORM_LBL_COOL" description="COM_VPPI_FORM_DESC_COOL" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="water_sewer" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_WATER_SEWER"
-               description="COM_VPPI_FORM_DESC_WATER_SEWER"
-               default=""
+               label="COM_VPPI_FORM_LBL_WATER_SEWER" description="COM_VPPI_FORM_DESC_WATER_SEWER" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="how_water" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_HOT_WATER"
-               description="COM_VPPI_FORM_DESC_HOT_WATER"
-               default=""
+               label="COM_VPPI_FORM_LBL_HOT_WATER" description="COM_VPPI_FORM_DESC_HOT_WATER" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="zoning" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_ZONING"
-               description="COM_VPPI_FORM_DESC_ZONING"
-               default=""
+               label="COM_VPPI_FORM_LBL_ZONING" description="COM_VPPI_FORM_DESC_ZONING" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="remarks" type="editor" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_REMARKS"
-               description="COM_VPPI_FORM_DESC_REMARKS"
-               default=""
+               label="COM_VPPI_FORM_LBL_REMARKS" description="COM_VPPI_FORM_DESC_REMARKS" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="dining_room" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_DINING_ROOM"
-               description="COM_VPPI_FORM_DESC_DINING_ROOM"
-               default=""
+               label="COM_VPPI_FORM_LBL_DINING_ROOM" description="COM_VPPI_FORM_DESC_DINING_ROOM" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="family_room" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_FAMILY_ROOM"
-               description="COM_VPPI_FORM_DESC_FAMILY_ROOM"
-               default=""
+               label="COM_VPPI_FORM_LBL_FAMILY_ROOM" description="COM_VPPI_FORM_DESC_FAMILY_ROOM" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="living_room" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_LIVING_ROOM"
-               description="COM_VPPI_FORM_DESC_LIVING_ROOM"
-               default=""
+               label="COM_VPPI_FORM_LBL_LIVING_ROOM" description="COM_VPPI_FORM_DESC_LIVING_ROOM" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="kitchen" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_KITCHEN"
-               description="COM_VPPI_FORM_DESC_KITCHEN"
-               default=""
+               label="COM_VPPI_FORM_LBL_KITCHEN" description="COM_VPPI_FORM_DESC_KITCHEN" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="interior" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_INTERIOR"
-               description="COM_VPPI_FORM_DESC_INTERIOR"
-               default=""
+               label="COM_VPPI_FORM_LBL_INTERIOR" description="COM_VPPI_FORM_DESC_INTERIOR" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="exterior" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_EXTERIOR"
-               description="COM_VPPI_FORM_DESC_EXTERIOR"
-               default=""
+               label="COM_VPPI_FORM_LBL_EXTERIOR" description="COM_VPPI_FORM_DESC_EXTERIOR" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="accessibility" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_ACCESSIBILITY"
-               description="COM_VPPI_FORM_DESC_ACCESSIBILITY"
-               default=""
+               label="COM_VPPI_FORM_LBL_ACCESSIBILITY" description="COM_VPPI_FORM_DESC_ACCESSIBILITY" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="green_certification" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_GREEN_CERTIFICATION"
-               description="COM_VPPI_FORM_DESC_GREEN_CERTIFICATION"
-               default=""
+               label="COM_VPPI_FORM_LBL_GREEN_CERTIFICATION" description="COM_VPPI_FORM_DESC_GREEN_CERTIFICATION" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
         <field name="energy_eff_features" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_ENERGY_EFF_FEATURES"
-               description="COM_VPPI_FORM_DESC_ENERGY_EFF_FEATURES"
-               default=""
+               label="COM_VPPI_FORM_LBL_ENERGY_EFF_FEATURES" description="COM_VPPI_FORM_DESC_ENERGY_EFF_FEATURES" default=""
 
-               required="false"
-               filter="safehtml"/>
+               required="false" filter="safehtml" />
 
-        <field
-                name="state"
-                type="list"
-                label="JSTATUS"
-                description="JFIELD_PUBLISHED_DESC"
-                class="inputbox"
-                size="1"
-                default="1">
+        <field name="state" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox" size="1" default="1">
             <option value="1">JPUBLISHED</option>
             <option value="0">JUNPUBLISHED</option>
         </field>
 
-        <field name="created_by" type="createdby" default=""
-               label="COM_VPPI_FORM_LBL_CREATED_BY"
-               description="COM_VPPI_FORM_DESC_CREATED_BY"
-               readonly="true" class="readonly"/>
+        <field name="created_by" type="createdby" default="" label="COM_VPPI_FORM_LBL_CREATED_BY" description="COM_VPPI_FORM_DESC_CREATED_BY" readonly="true" class="readonly" />
 
-        <field name="checked_out" type="hidden" filter="unset"/>
-        <field name="checked_out_time" type="hidden" filter="unset"/>
+        <field name="checked_out" type="hidden" filter="unset" />
+        <field name="checked_out_time" type="hidden" filter="unset" />
 
     </fieldset>
 </form>

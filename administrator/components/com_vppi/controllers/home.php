@@ -1,6 +1,6 @@
 <?php
 /**
-/**
+ * /**
  * @version     1.0.0
  * @package     com_vppi
  * @copyright   Copyright (C) 2014. All rights reserved.
@@ -15,12 +15,10 @@ jimport('joomla.application.component.controllerform');
 
 /**
  * VPPI controller class.
- *
- * @package		Joomla.Administrator
- * @subpackage	com_vppi
- * @since		1.6
+ * @package        Joomla.Administrator
+ * @subpackage     com_vppi
+ * @since          1.6
  */
-class VppiControllerHome extends JControllerForm
-{
+class VppiControllerHome extends JControllerForm {
 
 }

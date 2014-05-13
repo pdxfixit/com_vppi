@@ -14,22 +14,22 @@ jimport('joomla.application.component.modeladmin');
 class VppiModelHome extends JModelAdmin {
 
     /**
-     * @var		string	The prefix to use with controller messages.
-     * @since	1.6
+     * @var        string    The prefix to use with controller messages.
+     * @since    1.6
      */
     protected $text_prefix = 'COM_VPPI';
 
     /**
      * Returns a reference to the a Table object, always creating it.
      *
-     * @param	type	The table type to instantiate
-     * @param	string	A prefix for the table class name. Optional.
-     * @param	array	Configuration array for model. Optional.
-     * @return	JTable	A database object
-     * @since	1.6
+     * @param    type      The table type to instantiate
+     * @param    string    A prefix for the table class name. Optional.
+     * @param    array     Configuration array for model. Optional.
+     *
+     * @return    JTable    A database object
+     * @since    1.6
      */
-    public function getTable($type = 'Home', $prefix = 'VppiTable', $config = array())
-    {
+    public function getTable($type = 'Home', $prefix = 'VppiTable', $config = array()) {
         return JTable::getInstance($type, $prefix, $config);
     }
 
@@ -76,13 +76,12 @@ class VppiModelHome extends JModelAdmin {
     /**
      * Method to get a single record.
      *
-     * @param	integer	The id of the primary key.
+     * @param    integer    The id of the primary key.
      *
-     * @return	mixed	Object on success, false on failure.
-     * @since	1.6
+     * @return    mixed    Object on success, false on failure.
+     * @since    1.6
      */
-    public function getItem($pk = null)
-    {
+    public function getItem($pk = null) {
         $item = parent::getItem($pk);
 
         return $item;
@@ -90,11 +89,9 @@ class VppiModelHome extends JModelAdmin {
 
     /**
      * Prepare and sanitise the table prior to saving.
-     *
-     * @since	1.6
+     * @since    1.6
      */
-    protected function prepareTable(&$table)
-    {
+    protected function prepareTable(&$table) {
         if (empty($table->id)) {
             // Set the values
 
@@ -104,18 +101,16 @@ class VppiModelHome extends JModelAdmin {
                 $db->setQuery('SELECT MAX(ordering) FROM #__vppi_home');
                 $max = $db->loadResult();
 
-                $table->ordering = $max+1;
+                $table->ordering = $max + 1;
             }
         }
     }
 
     /**
      * Method to get the script that have to be included on the form
-     *
      * @return string       Script files
      */
-    public function getScript()
-    {
+    public function getScript() {
         return 'administrator/components/com_vppi/models/forms/home.js';
     }
 }

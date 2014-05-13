@@ -52,18 +52,18 @@ class VppiTableHome extends JTable {
     /**
      * Overload the store method for the Homes table.
      *
-     * @param	boolean	Toggle whether null values should be updated.
-     * @return	boolean	True on success, false on failure.
-     * @since	1.6
+     * @param    boolean    Toggle whether null values should be updated.
+     *
+     * @return    boolean    True on success, false on failure.
+     * @since    1.6
      */
-    public function store($updateNulls = false)
-    {
-        $date	= JFactory::getDate();
-        $user	= JFactory::getUser();
+    public function store($updateNulls = false) {
+        $date = JFactory::getDate();
+        $user = JFactory::getUser();
         if ($this->id) {
             // Existing item
-            $this->modified		= $date->toSql();
-            $this->modified_by	= $user->get('id');
+            $this->modified = $date->toSql();
+            $this->modified_by = $user->get('id');
         } else {
             if (!intval($this->created)) {
                 $this->created = $date->toSql();
