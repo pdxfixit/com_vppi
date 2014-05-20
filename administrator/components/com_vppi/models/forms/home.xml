@@ -264,6 +264,25 @@
             <option value="0">JUNPUBLISHED</option>
         </field>
 
+        <field name="ordering"
+               type="ordering"
+               class="inputbox"
+               label="JFIELD_ORDERING_LABEL"
+               description="JFIELD_ORDERING_DESC"
+               content_type="com_vppi.home"
+                />
+
+        <field name="featured"
+               type="radio"
+               class="btn-group btn-group-yesno"
+               label="JFEATURED"
+               description="COM_VPPI_FIELD_FEATURED_DESC"
+               default="0"
+                >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
         <field name="created_by" type="createdby" default="" label="COM_VPPI_FORM_LBL_CREATED_BY" description="COM_VPPI_FORM_DESC_CREATED_BY" readonly="true" class="readonly" />
 
         <field name="checked_out" type="hidden" filter="unset" />

@@ -1,5 +1,5 @@
 /**
- * @version     1.0.0
+ * @version     1.0.1
  * @package     com_vppi
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -9,7 +9,7 @@
 window.addEvent('domready', function () {
     document.formvalidator.setHandler('mlnumber',
         function (value) {
-            regex = /\d{6,10}/;
+            regex = /\d{8}/;
             return regex.test(value);
         });
 });

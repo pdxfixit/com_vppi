@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     1.0.0
+ * @version     1.0.1
  * @package     com_vppi
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -102,6 +102,9 @@ $sortFields = $this->getSortFields();
                     <th class="left">
                         <?php echo JHtml::_('grid.sort', 'COM_VPPI_ML_NUMBER', 'a.ml_number', $listDirn, $listOrder); ?>
                     </th>
+                    <th width="5%" class="nowrap hidden-phone">
+                        <?php echo JHtml::_('grid.sort', 'JFEATURED', 'a.featured', $listDirn, $listOrder); ?>
+                    </th>
                     <th width="left" class="nowrap hidden-phone">
                         <?php echo JHtml::_('grid.sort', 'COM_VPPI_STREET_ADDRESS', 'a.street_address', $listDirn, $listOrder); ?>
                     </th>
@@ -176,6 +179,9 @@ $sortFields = $this->getSortFields();
                             <?php
                             }
                             ?>
+                        </td>
+                        <td class="center hidden-phone">
+                            <?php echo JHtml::_('home.featured', $item->featured, $i, $canChange); ?>
                         </td>
                         <td class="center hidden-phone">
                             <?php echo $item->street_address; ?>

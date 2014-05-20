@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     1.0.0
+ * @version     1.0.1
  * @package     com_vppi
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -90,6 +90,7 @@ class VppiViewHomes extends JViewLegacy {
         return array(
             'a.ordering' => JText::_('JGRID_HEADING_ORDERING'),
             'a.published' => JText::_('JSTATUS'),
+            'a.featured' => JText::_('JFEATURED'),
             'a.ml_number' => JText::_('COM_VPPI_ML_NUMBER'),
             'a.street_address' => JText::_('COM_VPPI_STREET_ADDRESS'),
             'a.city' => JText::_('COM_VPPI_CITY'),

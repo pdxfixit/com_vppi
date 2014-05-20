@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     1.0.0
+ * @version     1.0.1
  * @package     com_vppi
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -112,6 +112,50 @@ class VppiModelHome extends JModelAdmin {
      */
     public function getScript() {
         return 'administrator/components/com_vppi/models/forms/home.js';
+    }
+
+    /**
+     * Method to toggle the featured setting of homes.
+     *
+     * @param   array    $pks      The ids of the items to toggle.
+     * @param   integer  $value    The value to toggle to.
+     *
+     * @return  boolean  True on success.
+     * @since   1.6
+     */
+    public function featured($pks, $value = 0) {
+        // Sanitize the ids.
+        $pks = (array) $pks;
+        JArrayHelper::toInteger($pks);
+
+        if (empty($pks)) {
+            $this->setError(JText::_('COM_VPPI_NO_ITEM_SELECTED'));
+            return false;
+        }
+
+        $table = $this->getTable();
+
+        try {
+            $db = $this->getDbo();
+
+            $query = $db->getQuery(true);
+            $query->update('#__vppi_home');
+            $query->set('featured = ' . (int) $value);
+            $query->where('id IN (' . implode(',', $pks) . ')');
+            $db->setQuery($query);
+
+            $db->execute();
+        } catch (Exception $e) {
+            $this->setError($e->getMessage());
+            return false;
+        }
+
+        $table->reorder();
+
+        // Clean component's cache
+        $this->cleanCache();
+
+        return true;
     }
 }
 

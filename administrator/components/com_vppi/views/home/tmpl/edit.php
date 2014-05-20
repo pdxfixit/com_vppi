@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     1.0.0
+ * @version     1.0.1
  * @package     com_vppi
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -28,11 +28,6 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
             <div class="span4">
                 <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
                 <br />
-
-                <div class="control-group">
-                    <div class="control-label"><?php echo $this->form->getLabel('id'); ?></div>
-                    <div class="controls"><?php echo $this->form->getInput('id'); ?></div>
-                </div>
                 <div class="control-group">
                     <div class="control-label"><?php echo $this->form->getLabel('street_address'); ?></div>
                     <div class="controls"><?php echo $this->form->getInput('street_address'); ?></div>

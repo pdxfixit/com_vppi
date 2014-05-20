@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     1.0.0
+ * @version     1.0.1
  * @package     com_vppi
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -70,6 +70,7 @@ class VppiModelHomes extends JModelList {
                 'energy_eff_features', 'a.energy_eff_features',
                 'state', 'a.state',
                 'ordering', 'a.ordering',
+                'featured', 'a.featured',
             );
         }
 
