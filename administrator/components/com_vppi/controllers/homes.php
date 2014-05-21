@@ -59,16 +59,16 @@ class VppiControllerHomes extends JControllerAdmin {
             if (!$user->authorise('core.edit.state', 'com_vppi')) {
                 // Prune items that you can't change.
                 unset($ids[$i]);
-                JError::raiseNotice(403, JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+                throw new Exception(JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
             }
         }
 
         if (empty($ids)) {
-            JError::raiseWarning(500, JText::_('COM_VPPI_NO_ITEM_SELECTED'));
+            throw new Exception(JText::_('COM_VPPI_NO_ITEM_SELECTED'));
         } else {
             // Publish the items.
             if (!$model->featured($ids, $value)) {
-                JError::raiseWarning(500, $model->getError());
+                throw new Exception(JText::_('COM_VPPI_ERROR_MESSAGE'));
             }
         }
 

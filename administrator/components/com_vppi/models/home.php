@@ -129,7 +129,7 @@ class VppiModelHome extends JModelAdmin {
         JArrayHelper::toInteger($pks);
 
         if (empty($pks)) {
-            $this->setError(JText::_('COM_VPPI_NO_ITEM_SELECTED'));
+            throw new Exception(JText::_('COM_VPPI_NO_ITEM_SELECTED'));
             return false;
         }
 
@@ -146,7 +146,7 @@ class VppiModelHome extends JModelAdmin {
 
             $db->execute();
         } catch (Exception $e) {
-            $this->setError($e->getMessage());
+            echo $e->getMessage();
             return false;
         }
 

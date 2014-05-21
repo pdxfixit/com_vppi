@@ -71,16 +71,15 @@ class VppiModelHome extends JModelItem {
             $query->where('a.id = ' . (int)$id);
             $query->where('a.state = 1');
 
-            $db->setQuery($query);
-
-            $data = $db->loadObject();
-
-            if ($error = $db->getErrorMsg()) {
-                throw new Exception($error);
+            try {
+                $db->setQuery($query);
+                $data = $db->loadObject();
+            } catch (Exception $e) {
+                echo $e->getMessage();
             }
 
             if (empty($data)) {
-                return JError::raiseError(404, JText::_('COM_VPPI_ERROR_HOME_DATA_NOT_FOUND'));
+                throw new Exception(JText::_('COM_VPPI_ERROR_HOME_DATA_NOT_FOUND'));
             }
 
             $this->_item[$id] = $data;

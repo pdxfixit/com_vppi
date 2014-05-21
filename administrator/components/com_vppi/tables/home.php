@@ -118,7 +118,7 @@ class VppiTableHome extends JTable {
                 $pks = array($this->$k);
             } // Nothing to set publishing state on, return false.
             else {
-                $this->setError(JText::_('JLIB_DATABASE_ERROR_NO_ROWS_SELECTED'));
+                throw new Exception(JText::_('JLIB_DATABASE_ERROR_NO_ROWS_SELECTED'));
 
                 return false;
             }
@@ -141,12 +141,12 @@ class VppiTableHome extends JTable {
                   ' WHERE (' . $where . ')' .
                   $checkin
         );
-        $this->_db->query();
 
         // Check for a database error.
-        if ($this->_db->getErrorNum()) {
-            $this->setError($this->_db->getErrorMsg());
-
+        try {
+            $this->_db->execute();
+        } catch (Exception $e) {
+            echo $e->getMessage();
             return false;
         }
 
@@ -162,8 +162,6 @@ class VppiTableHome extends JTable {
         if (in_array($this->$k, $pks)) {
             $this->state = $state;
         }
-
-        $this->setError('');
 
         return true;
     }
