@@ -35,7 +35,7 @@ class JFormFieldHomeOrdering extends JFormFieldList {
 
         $db = JFactory::getDbo();
         $query = $db->getQuery(true)
-                    ->select('a.id AS value, CONCAT (a.ordering, ". ", a.street_address) AS text')
+                    ->select('a.ordering AS value, CONCAT (a.ordering, ". ", a.street_address) AS text')
                     ->from('#__vppi_home AS a')
                     ->order('ordering');
 
@@ -48,7 +48,7 @@ class JFormFieldHomeOrdering extends JFormFieldList {
         }
         catch (RuntimeException $e)
         {
-            echo $e->getMessage();
+            throw new Exception($e->getMessage());
         }
 
         // Merge any additional options in the XML definition.
@@ -67,7 +67,7 @@ class JFormFieldHomeOrdering extends JFormFieldList {
     {
         if ($this->form->getValue('id', 0) == 0)
         {
-            return '<span class="readonly">' . JText::_('COM_VPPI_ORDERING_TEXT') . '</span>';
+            return '<span class="readonly">' . JText::_('COM_VPPI_HOME_ITEM_ORDERING_TEXT') . '</span>';
         }
         else
         {

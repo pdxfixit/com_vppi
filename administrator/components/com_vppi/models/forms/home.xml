@@ -21,11 +21,11 @@
 
                required="false" filter="safehtml" />
 
-        <field name="zip_code" type="text" size="40" class="inputbox"
+        <field name="zip_code" type="text" size="40" class="inputbox validate-zipcode"
 
-               label="COM_VPPI_FORM_LBL_ZIP_CODE" description="COM_VPPI_FORM_DESC_ZIP_CODE" default=""
+               label="COM_VPPI_FORM_LBL_ZIP_CODE" description="COM_VPPI_FORM_DESC_ZIP_CODE" default="00000"
 
-               required="false" filter="safehtml" />
+               validate="zipcode" required="false" filter="safehtml" />
 
         <field name="ml_number" type="text" size="40" class="inputbox vaildate-mlnumber"
 
@@ -97,11 +97,11 @@
 
                required="false" filter="safehtml" />
 
-        <field name="levels" type="text" size="40" class="inputbox"
+        <field name="levels" type="text" size="40" class="inputbox validate-levels"
 
-               label="COM_VPPI_FORM_LBL_LEVELS" description="COM_VPPI_FORM_DESC_LEVELS" default=""
+               label="COM_VPPI_FORM_LBL_LEVELS" description="COM_VPPI_FORM_DESC_LEVELS" default="0"
 
-               required="false" filter="safehtml" />
+               validate="levels" required="false" filter="safehtml" />
 
         <field name="garage" type="text" size="40" class="inputbox"
 
@@ -145,11 +145,11 @@
 
                required="false" filter="safehtml" />
 
-        <field name="acres" type="text" size="40" class="inputbox"
+        <field name="acres" type="text" size="40" class="inputbox validate-acres"
 
-               label="COM_VPPI_FORM_LBL_ACRES" description="COM_VPPI_FORM_DESC_ACRES" default=""
+               label="COM_VPPI_FORM_LBL_ACRES" description="COM_VPPI_FORM_DESC_ACRES" default="0.00"
 
-               required="false" filter="safehtml" />
+               validate="acres" required="false" filter="safehtml" />
 
         <field name="lot_size" type="text" size="40" class="inputbox"
 

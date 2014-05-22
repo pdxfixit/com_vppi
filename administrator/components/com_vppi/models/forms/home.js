@@ -13,3 +13,27 @@ window.addEvent('domready', function () {
             return regex.test(value);
         });
 });
+
+window.addEvent('domready', function () {
+    document.formvalidator.setHandler('zipcode',
+        function (value) {
+            regex = /\d{5}(?:[-\s]\d{4})?/;
+            return regex.test(value);
+        });
+});
+
+window.addEvent('domready', function () {
+    document.formvalidator.setHandler('levels',
+        function (value) {
+            regex = /\d{1,2}/;
+            return regex.test(value);
+        });
+});
+
+window.addEvent('domready', function () {
+    document.formvalidator.setHandler('acres',
+        function (value) {
+            regex = /(?:\d*\.)?\d+/;
+            return regex.test(value);
+        });
+});

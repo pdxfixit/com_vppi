@@ -75,7 +75,7 @@ class VppiModelHome extends JModelItem {
                 $db->setQuery($query);
                 $data = $db->loadObject();
             } catch (Exception $e) {
-                echo $e->getMessage();
+                throw new Exception($e->getMessage());
             }
 
             if (empty($data)) {

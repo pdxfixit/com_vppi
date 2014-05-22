@@ -146,7 +146,7 @@ class VppiModelHome extends JModelAdmin {
 
             $db->execute();
         } catch (Exception $e) {
-            echo $e->getMessage();
+            throw new Exception($e->getMessage());
             return false;
         }
 
@@ -232,7 +232,7 @@ class VppiModelHome extends JModelAdmin {
                         }
                     }
                 } catch (Exception $e) {
-                    echo $e->getMessage();
+                    throw new Exception($e->getMessage());
                 }
             }
 
@@ -242,7 +242,6 @@ class VppiModelHome extends JModelAdmin {
             // Check the data.
             if (!$table->check()) {
                 throw new Exception('There was an error with the data');
-                return false;
             }
 
             // Trigger the onContentBeforeSave event.
@@ -266,7 +265,7 @@ class VppiModelHome extends JModelAdmin {
             $dispatcher->trigger($this->event_after_save, array($this->option . '.' . $this->name, $table, $isNew));
         }
         catch (Exception $e) {
-            echo $e->getMessage();
+            throw new Exception($e->getMessage());
 
             return false;
         }

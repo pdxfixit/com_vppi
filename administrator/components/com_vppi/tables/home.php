@@ -146,8 +146,7 @@ class VppiTableHome extends JTable {
         try {
             $this->_db->execute();
         } catch (Exception $e) {
-            echo $e->getMessage();
-            return false;
+            throw new Exception($e->getMessage());
         }
 
         // If checkin is supported and all rows were adjusted, check them in.
