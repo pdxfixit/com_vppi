@@ -26,6 +26,21 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
     <div class="row-fluid">
         <div class="row-fluid form-horizontal-desktop">
             <div class="span4">
+                <?php
+                // Set main fields.
+                $this->fields = array(
+                    array('category', 'catid'),
+                    array('parent', 'parent_id'),
+                    'tags',
+                    array('published', 'state', 'enabled'),
+                    'featured',
+                    'sticky',
+                    'access',
+                    'language',
+                    'ordering',
+                    'version_note'
+                );
+                ?>
                 <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
                 <br />
                 <div class="control-group">

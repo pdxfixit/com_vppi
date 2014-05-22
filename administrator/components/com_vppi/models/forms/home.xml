@@ -264,12 +264,9 @@
             <option value="0">JUNPUBLISHED</option>
         </field>
 
-        <field name="ordering"
-               type="ordering"
-               class="inputbox"
+        <field name="ordering" type="homeordering" class="inputbox" size="1"
                label="JFIELD_ORDERING_LABEL"
                description="JFIELD_ORDERING_DESC"
-               content_type="com_vppi.home"
                 />
 
         <field name="featured"

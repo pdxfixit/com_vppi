@@ -157,5 +157,130 @@ class VppiModelHome extends JModelAdmin {
 
         return true;
     }
+
+    /**
+     * Method to save the form data.
+     *
+     * @param   array  $data  The form data.
+     *
+     * @return  boolean  True on success, False on error.
+     *
+     * @since   12.2
+     */
+    public function save($data) {
+        $dispatcher = JEventDispatcher::getInstance();
+        $table = $this->getTable();
+
+
+        $key = $table->getKeyName();
+        $pk = (!empty($data[$key])) ? $data[$key] : (int) $this->getState($this->getName() . '.id');
+        $isNew = true;
+
+        // Include the content plugins for the on save events.
+        JPluginHelper::importPlugin('content');
+
+        // Allow an exception to be thrown.
+        try {
+            // Load the row if saving an existing record.
+            if ($pk > 0) {
+                $table->load($pk);
+                // check if ordering was changed
+                if ($table->ordering != $data['ordering']) {
+                    $oldOrder = $table->ordering;
+                    $newOrder = $data['ordering'];
+                }
+                $isNew = false;
+            }
+
+            // Bind the data.
+            if (!$table->bind($data)) {
+                throw new Exception('There was an error with the data');
+
+                return false;
+            }
+
+            // Reorder home items
+            if (!empty($oldOrder) && !empty($newOrder)) {
+                try {
+                    $db = $this->getDbo();
+
+                    if ($oldOrder < $newOrder) {
+                        $newValue = $oldOrder;
+                        $oldValue = $oldOrder + 1;
+                        for ($i = $oldValue; $i <= $newOrder; $i++) {
+                            $query = $db->getQuery(true);
+                            $query->update('#__vppi_home');
+                            $query->set('ordering = ' . (int) $newValue);
+                            $query->where('ordering = ' . (int) $oldValue);
+                            $db->setQuery($query);
+                            $db->execute();
+                            $newValue++;
+                            $oldValue++;
+                        }
+                    } else {
+                        $newValue = $newOrder + 1;
+                        $oldValue = $newOrder;
+                        for ($i = $oldValue; $i <= $oldOrder - 1; $i++) {
+                            $query = $db->getQuery(true);
+                            $query->update('#__vppi_home');
+                            $query->set('ordering = ' . (int) $newValue);
+                            $query->where('ordering = ' . (int) $oldValue);
+                            $db->setQuery($query);
+                            $db->execute();
+                            $newValue++;
+                            $oldValue++;
+                        }
+                    }
+                } catch (Exception $e) {
+                    echo $e->getMessage();
+                }
+            }
+
+            // Prepare the row for saving
+            $this->prepareTable($table);
+
+            // Check the data.
+            if (!$table->check()) {
+                throw new Exception('There was an error with the data');
+                return false;
+            }
+
+            // Trigger the onContentBeforeSave event.
+            $result = $dispatcher->trigger($this->event_before_save, array($this->option . '.' . $this->name, $table, $isNew));
+
+            if (in_array(false, $result, true)) {
+                throw new Exception('There was an error with the data');
+                return false;
+            }
+
+            // Store the data.
+            if (!$table->store()) {
+                throw new Exception('There was an error storing the data');
+                return false;
+            }
+
+            // Clean the cache.
+            $this->cleanCache();
+
+            // Trigger the onContentAfterSave event.
+            $dispatcher->trigger($this->event_after_save, array($this->option . '.' . $this->name, $table, $isNew));
+        }
+        catch (Exception $e) {
+            echo $e->getMessage();
+
+            return false;
+        }
+
+
+        $pkName = $table->getKeyName();
+
+        if (isset($table->$pkName)) {
+            $this->setState($this->getName() . '.id', $table->$pkName);
+        }
+        $this->setState($this->getName() . '.new', $isNew);
+
+        return true;
+    }
+
 }
 
