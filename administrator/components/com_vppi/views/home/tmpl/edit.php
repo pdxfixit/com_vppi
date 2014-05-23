@@ -18,7 +18,7 @@ JHtml::_('behavior.formvalidation');
 $document = JFactory::getDocument();
 $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_vppi&layout=edit&id=' . (int)$this->item->id); ?>" method="post" name="adminForm" id="home-form" class="form-validate">
+<form action="<?php echo JRoute::_('index.php?option=com_vppi&view=home&layout=edit&id=' . (int)$this->item->id); ?>" method="post" name="adminForm" id="home-form" class="form-validate">
 <div>
     <h1><?php echo JText::_('COM_VPPI_HOME'); ?></h1>
 </div>

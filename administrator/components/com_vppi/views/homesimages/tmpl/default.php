@@ -96,14 +96,11 @@ $sortFields = $this->getSortFields();
                     <th width="1%" class="hidden-phone">
                         <?php echo JHtml::_('grid.checkall'); ?>
                     </th>
-                    <th width="left" style="min-width:55px" class="nowrap center">
-                        <?php echo JHtml::_('grid.sort', 'JPUBLISHED', 'a.state', $listDirn, $listOrder); ?>
+                    <th width="left" class="nowrap hidden-phone">
+                        <?php echo JText::_('COM_VPPI_IMAGE_LIST_LABEL'); ?>
                     </th>
                     <th class="left">
                         <?php echo JHtml::_('grid.sort', 'COM_VPPI_ML_NUMBER', 'a.ml_number', $listDirn, $listOrder); ?>
-                    </th>
-                    <th width="5%" class="nowrap hidden-phone">
-                        <?php echo JHtml::_('grid.sort', 'JFEATURED', 'a.featured', $listDirn, $listOrder); ?>
                     </th>
                     <th width="left" class="nowrap hidden-phone">
                         <?php echo JHtml::_('grid.sort', 'COM_VPPI_STREET_ADDRESS', 'a.street_address', $listDirn, $listOrder); ?>
@@ -157,9 +154,14 @@ $sortFields = $this->getSortFields();
                         <td class="center hidden-phone">
                             <?php echo JHtml::_('grid.id', $i, $item->id); ?>
                         </td>
-                        <?php if (isset($this->items[0]->state)) { ?>
+                        <?php if (file_exists(JPATH_BASE . 'images/homes/' . $item->id . 'poster.jpg')) { ?>
                             <td class="center">
-                                <?php echo JHtml::_('jgrid.published', $item->state, $i, 'homes.', $canChange, 'cb'); ?>
+                                <img class="thumbnail" title="<?php echo $item->street_address ?>" src="<?php echo '/images/homes/' . $item->id . 'poster.jpg'?>">
+                            </td>
+                        <?php
+                        } else { ?>
+                            <td class="center">
+                                <img class="thumbnail" title="<?php echo $item->street_address ?>" src="<?php echo '/media/com_vppi/images/image-not-available.jpg'?>">
                             </td>
                         <?php
                         }
@@ -171,7 +173,7 @@ $sortFields = $this->getSortFields();
                             }
                             ?>
                             <?php if ($canEdit) { ?>
-                                <a href="<?php echo JRoute::_('index.php?option=com_vppi&task=home.edit&id=' . (int)$item->id); ?>">
+                                <a href="<?php echo JRoute::_('index.php?option=com_vppi&task=homeimages.edit&id=' . (int)$item->id); ?>">
                                     <?php echo $this->escape($item->ml_number); ?></a>
                             <?php
                             } else {
@@ -179,9 +181,6 @@ $sortFields = $this->getSortFields();
                             <?php
                             }
                             ?>
-                        </td>
-                        <td class="center hidden-phone">
-                            <?php echo JHtml::_('home.featured', $item->featured, $i, $canChange); ?>
                         </td>
                         <td class="center hidden-phone">
                             <?php echo $item->street_address; ?>
