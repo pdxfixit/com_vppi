@@ -18,7 +18,7 @@ JHtml::_('behavior.formvalidation');
 $document = JFactory::getDocument();
 $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_vppi&view=homeimages&layout=edit&id=' . (int)$this->item->id); ?>" method="post" name="adminForm" id="home-images-form" enctype="multipart/form-data">
+<form action="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$this->item->id); ?>" method="post" name="adminForm" id="home-images-form" enctype="multipart/form-data">
 <div>
     <h1><?php echo JText::_('COM_VPPI_HOME_IMAGES'); ?></h1>
 </div>
@@ -31,6 +31,6 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
         </fieldset>
     </div>
 </div>
-    <input type="hidden" name="task" value="homeimages.upload" />
+    <input type="hidden" name="task" value="photomanage.upload" />
 <?php echo JHtml::_('form.token'); ?>
 </form>

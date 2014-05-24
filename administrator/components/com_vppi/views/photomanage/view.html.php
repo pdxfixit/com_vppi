@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 /**
  * View a list of available homes.
  */
-class VppiViewHomeImages extends JViewLegacy {
+class VppiViewPhotoManage extends JViewLegacy {
 
     protected $state;
     protected $item;
@@ -51,12 +51,12 @@ class VppiViewHomeImages extends JViewLegacy {
         // Add a delete button
         if ($canDo->get('core.delete')) {
             // Instantiate a new JLayoutFile instance and render the layout
-            JToolbarHelper::deleteList('COM_VPPI_VERIFY_DELETE_IMAGES', 'homeimages.delete');
+            JToolbarHelper::deleteList('COM_VPPI_VERIFY_DELETE_IMAGES', 'photomanage.delete');
 
             JToolbarHelper::divider();
         }
 
-        JToolbarHelper::cancel('homeimages.cancel', 'JTOOLBAR_CLOSE');
+        JToolbarHelper::cancel('photomanage.cancel', 'JTOOLBAR_CLOSE');
     }
 
 }

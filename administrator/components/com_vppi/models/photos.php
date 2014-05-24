@@ -13,7 +13,7 @@ jimport('joomla.filesystem.folder');
 jimport('joomla.filesystem.file');
 require_once __DIR__ . '/homes.php';
 
-class VppiModelHomesImages extends VppiModelHomes {
+class VppiModelPhotos extends VppiModelHomes {
 
     /**
      * Constructor.

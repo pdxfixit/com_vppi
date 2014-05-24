@@ -18,7 +18,7 @@ require_once __DIR__ . '/homes.php';
  * @subpackage     com_vppi
  * @since          1.6
  */
-class VppiControllerHomesImages extends VppiControllerHomes {
+class VppiControllerPhotos extends VppiControllerHomes {
 
     /**
      * Proxy for getModel.

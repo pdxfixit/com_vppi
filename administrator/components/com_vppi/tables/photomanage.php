@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 /**
  * home Table class
  */
-class VppiTableHomeImages extends JTable {
+class VppiTablePhotoManage extends JTable {
 
     /**
      * Constructor

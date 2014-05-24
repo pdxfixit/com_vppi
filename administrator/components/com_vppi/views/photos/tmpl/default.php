@@ -156,31 +156,23 @@ $sortFields = $this->getSortFields();
                         </td>
                         <?php if (file_exists(JPATH_BASE . 'images/homes/' . $item->id . 'poster.jpg')) { ?>
                             <td class="center">
-                                <img class="thumbnail" title="<?php echo $item->street_address ?>" src="<?php echo '/images/homes/' . $item->id . 'poster.jpg'?>">
+                                <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$item->id); ?>">
+                                    <img class="thumbnail" title="<?php echo $item->street_address ?>" src="<?php echo '/images/homes/' . $item->id . 'poster.jpg'?>">
+                                </a>
                             </td>
                         <?php
                         } else { ?>
                             <td class="center">
-                                <img class="thumbnail" title="<?php echo $item->street_address ?>" src="<?php echo '/media/com_vppi/images/image-not-available.jpg'?>">
+                                <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$item->id); ?>">
+                                    <img class="thumbnail" title="<?php echo $item->street_address ?>" src="<?php echo '/media/com_vppi/images/image-not-available.jpg'?>">
+                                </a>
                             </td>
                         <?php
                         }
                         ?>
                         <td class="nowrap has-context">
-                            <?php if ($item->checked_out) { ?>
-                                <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'homes.', $canCheckin); ?>
-                            <?php
-                            }
-                            ?>
-                            <?php if ($canEdit) { ?>
-                                <a href="<?php echo JRoute::_('index.php?option=com_vppi&task=homeimages.edit&id=' . (int)$item->id); ?>">
-                                    <?php echo $this->escape($item->ml_number); ?></a>
-                            <?php
-                            } else {
-                                echo $this->escape($item->ml_number); ?>
-                            <?php
-                            }
-                            ?>
+                            <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$item->id); ?>">
+                                <?php echo $this->escape($item->ml_number); ?></a>
                         </td>
                         <td class="center hidden-phone">
                             <?php echo $item->street_address; ?>

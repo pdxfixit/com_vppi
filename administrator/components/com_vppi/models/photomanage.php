@@ -11,7 +11,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.modeladmin');
 
-class VppiModelHomeImages extends JModelAdmin {
+class VppiModelPhotoManage extends JModelAdmin {
 
     /**
      * @var        string    The prefix to use with controller messages.
@@ -29,7 +29,7 @@ class VppiModelHomeImages extends JModelAdmin {
      * @return    JTable    A database object
      * @since    1.6
      */
-    public function getTable($type = 'HomeImages', $prefix = 'VppiTable', $config = array()) {
+    public function getTable($type = 'PhotoManage', $prefix = 'VppiTable', $config = array()) {
         return JTable::getInstance($type, $prefix, $config);
     }
 

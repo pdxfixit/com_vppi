@@ -27,8 +27,8 @@ class VppiHelper {
         );
         JSubMenuHelper::addEntry(
                     JText::_('COM_VPPI_SUBMENU_HOME_IMAGES'),
-                    'index.php?option=com_vppi&view=homesimages',
-                    $vName == 'homesimages'
+                    'index.php?option=com_vppi&view=photos',
+                    $vName == 'photos'
         );
     }
 

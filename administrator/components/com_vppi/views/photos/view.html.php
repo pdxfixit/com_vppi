@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 /**
  * View a list of available homes.
  */
-class VppiViewHomesImages extends JViewLegacy {
+class VppiViewPhotos extends JViewLegacy {
 
     protected $items;
     protected $pagination;
@@ -56,7 +56,7 @@ class VppiViewHomesImages extends JViewLegacy {
 
         if ($canDo->get('core.edit.state')) {
             JToolBarHelper::divider();
-            JToolBarHelper::checkin('homesimages.checkin');
+            JToolBarHelper::checkin('photos.checkin');
         }
 
     }
