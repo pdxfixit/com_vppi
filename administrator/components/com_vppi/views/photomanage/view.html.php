@@ -43,20 +43,9 @@ class VppiViewPhotoManage extends JViewLegacy {
     protected function addToolbar() {
         JFactory::getApplication()->input->set('hidemainmenu', true);
 
-        require_once(JPATH_COMPONENT . '/helpers/vppi.php');
-        $canDo = VppiHelper::getActions();
-
         JToolbarHelper::title(JText::_('COM_VPPI_IMAGE_MANAGER_VPPI'), 'VPPI-logo.png');
 
-        // Add a delete button
-        if ($canDo->get('core.delete')) {
-            // Instantiate a new JLayoutFile instance and render the layout
-            JToolbarHelper::deleteList('COM_VPPI_VERIFY_DELETE_IMAGES', 'photomanage.delete');
-
-            JToolbarHelper::divider();
-        }
-
-        JToolbarHelper::cancel('photomanage.cancel', 'JTOOLBAR_CLOSE');
+        JToolbarHelper::back('JTOOLBAR_CLOSE', '/administrator/index.php?option=com_vppi&view=photos');
     }
 
 }

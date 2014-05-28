@@ -48,16 +48,7 @@ class VppiViewPhotos extends JViewLegacy {
     protected function addToolbar() {
         require_once JPATH_COMPONENT . '/helpers/vppi.php';
 
-        $state = $this->get('State');
-        $canDo = VppiHelper::getActions($state->get('filter.category_id'));
-        $user = JFactory::getUser();
-
         JToolBarHelper::title(JText::_('COM_VPPI_MANAGER_VPPI'), 'VPPI-logo.png');
-
-        if ($canDo->get('core.edit.state')) {
-            JToolBarHelper::divider();
-            JToolBarHelper::checkin('photos.checkin');
-        }
 
     }
 

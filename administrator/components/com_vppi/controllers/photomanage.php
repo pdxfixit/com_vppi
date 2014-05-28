@@ -42,8 +42,22 @@ class VppiControllerPhotoManage extends JControllerForm {
         $params = JComponentHelper::getParams('com_vppi');
 
         // Get some data from the request
-        $files        = $this->input->files->get('homeImageFiles', '', 'array');
-        $this->folder = $this->input->get('folder', '', 'path');
+        $poster         = $this->input->get('poster');
+        if ($poster) {
+            $files      = array($this->input->files->get('homeImageFiles')) ;
+        } else {
+            $files      = $this->input->files->get('homeImageFiles', '', 'array');
+
+        }
+        $returnId       = $this->input->get('id');
+        $this->folder   = $this->input->get('folder', '', 'path');
+
+        // Set the redirect
+        try {
+            $this->setRedirect(JUri::root() . 'administrator/index.php?option=com_vppi&view=photomanage&layout=default&id=' . $returnId);
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
 
         // Authorize the user
         require_once(JPATH_COMPONENT . '/helpers/vppi.php');
@@ -59,68 +73,83 @@ class VppiControllerPhotoManage extends JControllerForm {
                 || $_SERVER['CONTENT_LENGTH'] > (int) (ini_get('post_max_size')) * 1024 * 1024
                 || (($_SERVER['CONTENT_LENGTH'] > (int) (ini_get('memory_limit')) * 1024 * 1024) && ((int) (ini_get('memory_limit')) != -1))
             ) {
-                JError::raiseWarning(100, JText::_('COM_MEDIA_ERROR_WARNFILETOOLARGE'));
-                return false;
+                throw new Exception(JText::_('COM_VPPI_ERROR_WARN_FILE_TOO_LARGE'));
             }
         }
 
         // Perform basic checks on file info before attempting anything
         foreach ($files as &$file) {
             $file['name']     = JFile::makeSafe($file['name']);
-            $file['filepath'] = JPath::clean('/images/homes/' . $this->input->get('id') . '/' .  $file['name']);
+            if ($poster) {
+                $file['filepath'] = JPath::clean(JPATH_SITE . '/images/homes/' . $this->input->get('id') . '/poster.jpg');
+            } else {
+                $file['filepath'] = JPath::clean(JPATH_SITE . '/images/homes/' . $this->input->get('id') . '/' .  $file['name']);
+            }
 
             if ($file['error'] == 1) {
-                JError::raiseWarning(100, JText::_('COM_MEDIA_ERROR_WARNFILETOOLARGE'));
-                return false;
+                throw new Exception(JText::_('COM_VPPI_ERROR_WARN_FILE_TOO_LARGE'));
             }
 
             if (($params->get('upload_maxsize', 0) * 1024 * 1024) != 0 && $file['size'] > ($params->get('upload_maxsize', 0) * 1024 * 1024)) {
-                JError::raiseNotice(100, JText::_('COM_MEDIA_ERROR_WARNFILETOOLARGE'));
-                return false;
-            }
-
-            if (JFile::exists($file['filepath'])) {
-                // A file with this name already exists
-                JError::raiseWarning(100, JText::_('COM_MEDIA_ERROR_FILE_EXISTS'));
-                return false;
+                throw new Exception(JText::_('COM_VPPI_ERROR_WARN_FILE_TOO_LARGE'));
             }
 
             if (!isset($file['name'])) {
                 // No filename (after the name was cleaned by JFile::makeSafe)
-                $this->setRedirect('index.php', JText::_('COM_MEDIA_INVALID_REQUEST'), 'error');
+                $this->setRedirect('index.php', JText::_('COM_VPPI_NO_FILE_SELECTED'), 'error');
                 return false;
             }
         }
-
-        $dispatcher	= JEventDispatcher::getInstance();
 
         foreach ($files as &$file) {
 
             require_once(JPATH_SITE . '/libraries/cms/helper/media.php');
             if (!JHelperMedia::canUpload($file)) {
                 // The file can't be uploaded
-
-                return false;
+                throw new Exception('COM_VPPI_ERROR_UNABLE_TO_UPLOAD_FILE');
             }
 
-            // Trigger the onContentBeforeSave event.
+            $format = strtolower(JFile::getExt($file['name']));
+            if ($format != 'jpg') {
+                throw new Exception('COM_VPPI_FILE_MUST_BE_JPG_FORMAT');
+            }
+
             $object_file = new JObject($file);
-            $result = $dispatcher->trigger('onContentBeforeSave', array('com_media.file', &$object_file, true));
-
-            if (in_array(false, $result, true)) {
-                // There are some errors in the plugins
-                JError::raiseWarning(100, JText::plural('COM_MEDIA_ERROR_BEFORE_SAVE', count($errors = $object_file->getErrors()), implode('<br />', $errors)));
-                return false;
-            }
 
             if (!JFile::upload($object_file->tmp_name, $object_file->filepath)) {
                 // Error in upload
-                JError::raiseWarning(100, JText::_('COM_MEDIA_ERROR_UNABLE_TO_UPLOAD_FILE'));
-                return false;
+                throw new Exception(JText::_('COM_VPPI_ERROR_UNABLE_TO_UPLOAD_FILE'));
             } else {
-                // Trigger the onContentAfterSave event.
-                $dispatcher->trigger('onContentAfterSave', array('com_media.file', &$object_file, true));
-                $this->setMessage(JText::sprintf('COM_MEDIA_UPLOAD_COMPLETE', substr($object_file->filepath, strlen(COM_MEDIA_BASE))));
+                $app = JFactory::getApplication();
+                $app->enqueueMessage(JText::sprintf('COM_VPPI_UPLOAD_COMPLETE', substr($object_file->filepath, strlen(JPATH_SITE))), 'message');
+            }
+        }
+
+        return true;
+    }
+
+    public function delete() {
+        // Check for request forgeries
+        JSession::checkToken('request') or jexit(JText::_('JINVALID_TOKEN'));
+
+        // Set the redirect
+        try {
+            $this->setRedirect(JUri::root() . 'administrator/index.php?option=com_vppi&view=photomanage&layout=default&id=' . $this->input->get('id'));
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
+
+        // Authorize the user
+        require_once(JPATH_COMPONENT . '/helpers/vppi.php');
+        $canDo = VppiHelper::getActions();
+        if (!$canDo->get('core.edit')) {
+            return false;
+        }
+
+        $deletePhotos = $this->input->get('photo', ' ', 'array');
+        if ($deletePhotos) {
+            foreach ($deletePhotos as $photo) {
+                JFile::delete(JPATH_SITE . '/images/homes/' . $this->input->get('id') . '/' . $photo);
             }
         }
 

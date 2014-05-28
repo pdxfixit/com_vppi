@@ -154,17 +154,17 @@ $sortFields = $this->getSortFields();
                         <td class="center hidden-phone">
                             <?php echo JHtml::_('grid.id', $i, $item->id); ?>
                         </td>
-                        <?php if (file_exists(JPATH_BASE . 'images/homes/' . $item->id . 'poster.jpg')) { ?>
+                        <?php if (file_exists(JPATH_SITE . '/images/homes/' . $item->id . '/poster.jpg')) { ?>
                             <td class="center">
                                 <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$item->id); ?>">
-                                    <img class="thumbnail" title="<?php echo $item->street_address ?>" src="<?php echo '/images/homes/' . $item->id . 'poster.jpg'?>">
+                                    <img class="thumbnail" style="width: 150px" title="<?php echo $item->street_address ?>" src="<?php echo '/images/homes/' . $item->id . '/poster.jpg'?>">
                                 </a>
                             </td>
                         <?php
                         } else { ?>
                             <td class="center">
                                 <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$item->id); ?>">
-                                    <img class="thumbnail" title="<?php echo $item->street_address ?>" src="<?php echo '/media/com_vppi/images/image-not-available.jpg'?>">
+                                    <img class="thumbnail" style="width: 150px" title="<?php echo $item->street_address ?>" src="<?php echo '/media/com_vppi/images/image-not-available.jpg'?>">
                                 </a>
                             </td>
                         <?php
