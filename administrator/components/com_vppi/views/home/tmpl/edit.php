@@ -43,6 +43,7 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
                 ?>
                 <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
                 <br />
+
                 <div class="control-group">
                     <div class="control-label"><?php echo $this->form->getLabel('street_address'); ?></div>
                     <div class="controls"><?php echo $this->form->getInput('street_address'); ?></div>

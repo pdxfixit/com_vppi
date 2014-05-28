@@ -23,7 +23,7 @@ class VppiControllerHomes extends JControllerAdmin {
     /**
      * Constructor.
      *
-     * @param   array  $config	An optional associative array of configuration settings.
+     * @param   array $config An optional associative array of configuration settings.
      *
      * @return  VppiControllerHomes
      * @see     JController
@@ -32,12 +32,11 @@ class VppiControllerHomes extends JControllerAdmin {
     public function __construct($config = array()) {
         parent::__construct($config);
 
-        $this->registerTask('unfeatured',	'featured');
+        $this->registerTask('unfeatured', 'featured');
     }
 
     /**
      * Method to toggle the featured setting of a list of homes.
-     *
      * @return  void
      * @since   1.6
      */
@@ -45,14 +44,14 @@ class VppiControllerHomes extends JControllerAdmin {
         // Check for request forgeries
         JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
-        $user   = JFactory::getUser();
-        $ids    = $this->input->get('cid', array(), 'array');
+        $user = JFactory::getUser();
+        $ids = $this->input->get('cid', array(), 'array');
         $values = array('featured' => 1, 'unfeatured' => 0);
-        $task   = $this->getTask();
-        $value  = JArrayHelper::getValue($values, $task, 0, 'int');
+        $task = $this->getTask();
+        $value = JArrayHelper::getValue($values, $task, 0, 'int');
 
         // Get the model.
-        $model  = $this->getModel();
+        $model = $this->getModel();
 
         // Access checks.
         foreach ($ids as $i => $id) {

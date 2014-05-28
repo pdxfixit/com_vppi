@@ -117,19 +117,20 @@ class VppiModelHome extends JModelAdmin {
     /**
      * Method to toggle the featured setting of homes.
      *
-     * @param   array    $pks      The ids of the items to toggle.
-     * @param   integer  $value    The value to toggle to.
+     * @param   array   $pks   The ids of the items to toggle.
+     * @param   integer $value The value to toggle to.
      *
      * @return  boolean  True on success.
      * @since   1.6
      */
     public function featured($pks, $value = 0) {
         // Sanitize the ids.
-        $pks = (array) $pks;
+        $pks = (array)$pks;
         JArrayHelper::toInteger($pks);
 
         if (empty($pks)) {
             throw new Exception(JText::_('COM_VPPI_NO_ITEM_SELECTED'));
+
             return false;
         }
 
@@ -140,13 +141,14 @@ class VppiModelHome extends JModelAdmin {
 
             $query = $db->getQuery(true);
             $query->update('#__vppi_home');
-            $query->set('featured = ' . (int) $value);
+            $query->set('featured = ' . (int)$value);
             $query->where('id IN (' . implode(',', $pks) . ')');
             $db->setQuery($query);
 
             $db->execute();
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
+
             return false;
         }
 
@@ -161,19 +163,17 @@ class VppiModelHome extends JModelAdmin {
     /**
      * Method to save the form data.
      *
-     * @param   array  $data  The form data.
+     * @param   array $data The form data.
      *
      * @return  boolean  True on success, False on error.
-     *
      * @since   12.2
      */
     public function save($data) {
         $dispatcher = JEventDispatcher::getInstance();
         $table = $this->getTable();
 
-
         $key = $table->getKeyName();
-        $pk = (!empty($data[$key])) ? $data[$key] : (int) $this->getState($this->getName() . '.id');
+        $pk = (!empty($data[$key])) ? $data[$key] : (int)$this->getState($this->getName() . '.id');
         $isNew = true;
 
         // Include the content plugins for the on save events.
@@ -210,8 +210,8 @@ class VppiModelHome extends JModelAdmin {
                         for ($i = $oldValue; $i <= $newOrder; $i++) {
                             $query = $db->getQuery(true);
                             $query->update('#__vppi_home');
-                            $query->set('ordering = ' . (int) $newValue);
-                            $query->where('ordering = ' . (int) $oldValue);
+                            $query->set('ordering = ' . (int)$newValue);
+                            $query->where('ordering = ' . (int)$oldValue);
                             $db->setQuery($query);
                             $db->execute();
                             $newValue++;
@@ -223,8 +223,8 @@ class VppiModelHome extends JModelAdmin {
                         for ($i = $oldValue; $i <= $oldOrder - 1; $i++) {
                             $query = $db->getQuery(true);
                             $query->update('#__vppi_home');
-                            $query->set('ordering = ' . (int) $newValue);
-                            $query->where('ordering = ' . (int) $oldValue);
+                            $query->set('ordering = ' . (int)$newValue);
+                            $query->where('ordering = ' . (int)$oldValue);
                             $db->setQuery($query);
                             $db->execute();
                             $newValue++;
@@ -249,12 +249,14 @@ class VppiModelHome extends JModelAdmin {
 
             if (in_array(false, $result, true)) {
                 throw new Exception('There was an error with the data');
+
                 return false;
             }
 
             // Store the data.
             if (!$table->store()) {
                 throw new Exception('There was an error storing the data');
+
                 return false;
             }
 
@@ -263,13 +265,11 @@ class VppiModelHome extends JModelAdmin {
 
             // Trigger the onContentAfterSave event.
             $dispatcher->trigger($this->event_after_save, array($this->option . '.' . $this->name, $table, $isNew));
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             throw new Exception($e->getMessage());
 
             return false;
         }
-
 
         $pkName = $table->getKeyName();
 

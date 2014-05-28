@@ -56,7 +56,7 @@ class VppiModelPhotos extends VppiModelHomes {
         $query->select(
               $this->getState(
                    'list.select', 'a.id, a.street_address, a.city, a.state_prov, a.zip_code, a.ml_number, a.state, a.checked_out, ' .
-                   'a.checked_out_time, a.ordering, a.featured, a.modified_by, a.modified, a.created_by, a.created'
+                                'a.checked_out_time, a.ordering, a.featured, a.modified_by, a.modified, a.created_by, a.created'
               )
         );
         $query->from($db->quoteName('#__vppi_home') . ' AS a');

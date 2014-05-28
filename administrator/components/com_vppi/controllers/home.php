@@ -1,5 +1,5 @@
 <?php
- /**
+/**
  * @version     1.0.1
  * @package     com_vppi
  * @copyright   Copyright (C) 2014. All rights reserved.

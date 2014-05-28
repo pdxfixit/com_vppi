@@ -1,5 +1,5 @@
 <?php
- /**
+/**
  * @version     1.0.1
  * @package     com_vppi
  * @copyright   Copyright (C) 2014. All rights reserved.
@@ -21,36 +21,33 @@ jimport('joomla.filesystem.folder');
  * @since          1.6
  */
 class VppiControllerPhotoManage extends JControllerForm {
+
     /**
      * The folder we are uploading into
-     *
      * @var   string
      */
     protected $folder = '';
 
     /**
      * Upload one or more files
-     *
      * @return  boolean
-     *
      * @since   1.5
      */
-    public function upload()
-    {
+    public function upload() {
         // Check for request forgeries
         JSession::checkToken('request') or jexit(JText::_('JINVALID_TOKEN'));
         $params = JComponentHelper::getParams('com_vppi');
 
         // Get some data from the request
-        $poster         = $this->input->get('poster');
+        $poster = $this->input->get('poster');
         if ($poster) {
-            $files      = array($this->input->files->get('homeImageFiles')) ;
+            $files = array($this->input->files->get('homeImageFiles'));
         } else {
-            $files      = $this->input->files->get('homeImageFiles', '', 'array');
+            $files = $this->input->files->get('homeImageFiles', '', 'array');
 
         }
-        $returnId       = $this->input->get('id');
-        $this->folder   = $this->input->get('folder', '', 'path');
+        $returnId = $this->input->get('id');
+        $this->folder = $this->input->get('folder', '', 'path');
 
         // Set the redirect
         try {
@@ -69,9 +66,9 @@ class VppiControllerPhotoManage extends JControllerForm {
         if (($params->get('upload_maxsize', 0) * 1024 * 1024) != 0) {
             if (
                 $_SERVER['CONTENT_LENGTH'] > ($params->get('upload_maxsize', 0) * 1024 * 1024)
-                || $_SERVER['CONTENT_LENGTH'] > (int) (ini_get('upload_max_filesize')) * 1024 * 1024
-                || $_SERVER['CONTENT_LENGTH'] > (int) (ini_get('post_max_size')) * 1024 * 1024
-                || (($_SERVER['CONTENT_LENGTH'] > (int) (ini_get('memory_limit')) * 1024 * 1024) && ((int) (ini_get('memory_limit')) != -1))
+                || $_SERVER['CONTENT_LENGTH'] > (int)(ini_get('upload_max_filesize')) * 1024 * 1024
+                || $_SERVER['CONTENT_LENGTH'] > (int)(ini_get('post_max_size')) * 1024 * 1024
+                || (($_SERVER['CONTENT_LENGTH'] > (int)(ini_get('memory_limit')) * 1024 * 1024) && ((int)(ini_get('memory_limit')) != -1))
             ) {
                 throw new Exception(JText::_('COM_VPPI_ERROR_WARN_FILE_TOO_LARGE'));
             }
@@ -79,11 +76,11 @@ class VppiControllerPhotoManage extends JControllerForm {
 
         // Perform basic checks on file info before attempting anything
         foreach ($files as &$file) {
-            $file['name']     = strtolower(JFile::makeSafe($file['name']));
+            $file['name'] = strtolower(JFile::makeSafe($file['name']));
             if ($poster) {
                 $file['filepath'] = JPath::clean(JPATH_SITE . '/images/homes/' . $this->input->get('id') . '/poster.jpg');
             } else {
-                $file['filepath'] = JPath::clean(JPATH_SITE . '/images/homes/' . $this->input->get('id') . '/' .  $file['name']);
+                $file['filepath'] = JPath::clean(JPATH_SITE . '/images/homes/' . $this->input->get('id') . '/' . $file['name']);
             }
 
             if ($file['error'] == 1) {
@@ -97,6 +94,7 @@ class VppiControllerPhotoManage extends JControllerForm {
             if (!isset($file['name'])) {
                 // No filename (after the name was cleaned by JFile::makeSafe)
                 $this->setRedirect('index.php', JText::_('COM_VPPI_NO_FILE_SELECTED'), 'error');
+
                 return false;
             }
         }

@@ -171,7 +171,7 @@ $sortFields = $this->getSortFields();
                             }
                             ?>
                             <?php if ($canEdit) { ?>
-                                <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=home&layout=edit&id=' . (int)$item->id); ?>">
+                                <a href="<?php echo JRoute::_('index.php?option=com_vppi&task=home.edit&id=' . (int)$item->id); ?>">
                                     <?php echo $this->escape($item->ml_number); ?></a>
                             <?php
                             } else {

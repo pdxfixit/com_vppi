@@ -25,12 +25,10 @@ class JFormFieldHomeOrdering extends JFormFieldList {
 
     /**
      * Method to get the list of homes
-     *
      * @return  array  The field option objects
      * @since   1.7
      */
-    protected function getOptions()
-    {
+    protected function getOptions() {
         $options = array();
 
         $db = JFactory::getDbo();
@@ -42,12 +40,9 @@ class JFormFieldHomeOrdering extends JFormFieldList {
         // Get the options.
         $db->setQuery($query);
 
-        try
-        {
+        try {
             $options = $db->loadObjectList();
-        }
-        catch (RuntimeException $e)
-        {
+        } catch (RuntimeException $e) {
             throw new Exception($e->getMessage());
         }
 
@@ -59,18 +54,13 @@ class JFormFieldHomeOrdering extends JFormFieldList {
 
     /**
      * Method to get the field input markup
-     *
      * @return  string  The field input markup.
      * @since   1.7
      */
-    protected function getInput()
-    {
-        if ($this->form->getValue('id', 0) == 0)
-        {
+    protected function getInput() {
+        if ($this->form->getValue('id', 0) == 0) {
             return '<span class="readonly">' . JText::_('COM_VPPI_HOME_ITEM_ORDERING_TEXT') . '</span>';
-        }
-        else
-        {
+        } else {
             return parent::getInput();
         }
     }
