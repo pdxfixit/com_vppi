@@ -10,6 +10,8 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.modeladmin');
+jimport('joomla.filesystem.file');
+jimport('joomla.filesystem.folder');
 
 class VppiModelPhotoManage extends JModelAdmin {
 
@@ -104,6 +106,26 @@ class VppiModelPhotoManage extends JModelAdmin {
                 $table->ordering = $max + 1;
             }
         }
+    }
+
+    public function getPoster () {
+        $poster = array();
+        $item = $this->getItem();
+        if (JFile::exists(JPATH_SITE . '/images/homes/' . (int)$item->id . '/poster.jpg')) {
+            $poster[] = 'poster.jpg';
+        }
+        return $poster;
+    }
+
+    public function getPhotos() {
+        $photos = array();
+        $poster = $this->getPoster();
+        $item = $this->getItem();
+        if (!empty($poster)) {
+            $photos = JFolder::files(JPATH_SITE . '/images/homes/' . (int)$item->id . '/');
+            $photos = array_diff($photos, $poster);
+        }
+        return $photos;
     }
 
 }

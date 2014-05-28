@@ -34,3 +34,13 @@ div#feature-home-info {
 div#feature-home-info {
     padding-bottom: 30px;
 }
+
+div.pics {
+    width:   100%;
+    padding: 0;
+    margin:  0;
+}
+
+div.pics img {
+    width:  95%;
+}

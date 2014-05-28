@@ -12,11 +12,16 @@ defined('_JEXEC') or die;
 
 class VppiViewHome extends JViewLegacy {
 
+    protected $state;
     protected $item;
+    protected $poster;
+    protected $photos;
 
     function display($tpl = null) {
         $this->state = $this->get('State');
         $this->item = $this->get('Item');
+        $this->poster = $this->get('Poster');
+        $this->photos = $this->get('Photos');
 
         // Check for errors.
         if (count($errors = $this->get('Errors'))) {

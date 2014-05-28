@@ -14,9 +14,6 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 
-jimport('joomla.filesystem.file');
-jimport('joomla.filesystem.folder');
-
 // Import CSS
 $document = JFactory::getDocument();
 $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
@@ -42,7 +39,7 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
             </form>
         </div>
         <?php //TODO: fix so that when a new image is uploaded to overwrite poster.jpg, the new photo renders as the poster image
-        if (JFile::exists(JPATH_SITE . '/images/homes/' . (int)$this->item->id . '/poster.jpg')) {
+        if (!empty($this->poster)) {
             ?>
             <div class="span9">
                 <img src="/images/homes/<?php echo (int)$this->item->id ?>/poster.jpg" style="width: 300px">
@@ -51,7 +48,7 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
         }
         ?>
     </div>
-<?php if (JFile::exists(JPATH_SITE . '/images/homes/' . (int)$this->item->id . '/poster.jpg')) { ?>
+<?php if (!empty($this->poster)) { ?>
     <p></p>
     <div class="row-fluid form-horizontal">
         <div class="span3">
@@ -74,17 +71,13 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
             </form>
         </div>
         <div class="span9 row-fluid form-horizontal">
-            <?php if (JFolder::exists(JPATH_SITE . '/images/homes/' . (int)$this->item->id . '/')) {
-                $photos = JFolder::files(JPATH_SITE . '/images/homes/' . (int)$this->item->id . '/');
-                $poster = array('poster.jpg');
-                $photos = array_diff($photos, $poster);
-            }
+            <?php
             // TODO: fix how photos of different height render for multiple photos
-            if (!empty($photos)) {
+            if (!empty($this->photos)) {
                 ?>
                 <form action="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$this->item->id); ?>" method="post" name="adminForm" id="home-images-delete-form">
                     <div style="overflow: hidden;">
-                        <?php foreach ($photos as $photo) { ?>
+                        <?php foreach ($this->photos as $photo) { ?>
                             <div class="span3">
                                 <input type="checkbox" name="photo[]" value="<?php echo $photo ?>">
                                 <img src="/images/homes/<?php echo (int)$this->item->id ?>/<?php echo $photo ?>" style="width: 200px"><br />
