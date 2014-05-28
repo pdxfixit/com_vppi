@@ -31,7 +31,7 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
                 <div class="control-group">
                     <fieldset class="actions">
                         <label for="homeImageUpload"><?php echo JText::_('COM_VPPI_UPLOAD_POSTER_BUTTON_LABEL') ?></label>
-                        <input type="file" name="homeImageFiles" id="homeImageUpload" class="multi" /><br/>
+                        <input type="file" name="homeImageFiles" id="homeImageUpload" /><br/>
                         <input type="submit" class="btn btn-primary" value="Upload Image" />
                     </fieldset>
                 </div>
@@ -41,7 +41,8 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
             <?php echo JHtml::_('form.token'); ?>
         </form>
     </div>
-    <?php if (JFile::exists(JPATH_SITE . '/images/homes/' . (int)$this->item->id . '/poster.jpg')) { ?>
+    <?php //TODO: fix so that when a new image is uploaded to overwrite poster.jpg, the new photo renders as the poster image
+    if (JFile::exists(JPATH_SITE . '/images/homes/' . (int)$this->item->id . '/poster.jpg')) { ?>
         <div class="span9">
             <img src="/images/homes/<?php echo (int)$this->item->id ?>/poster.jpg" style="width: 300px">
         </div>
@@ -61,7 +62,7 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
                     <div class="control-group">
                         <fieldset class="actions">
                             <label for="homeImageUpload"><?php echo JText::_('COM_VPPI_UPLOAD_BUTTON_LABEL') ?></label>
-                            <input type="file" name="homeImageFiles[]" id="homeImageUpload" class="multi" /><br/>
+                            <input type="file" name="homeImageFiles[]" id="homeImageUpload" multiple /><br/>
                             <input type="submit" class="btn btn-primary" value="Upload Images" />
                         </fieldset>
                     </div>
@@ -77,6 +78,7 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
                 $poster = array('poster.jpg');
                 $photos = array_diff($photos, $poster);
             }
+            // TODO: fix how photos of different height render for multiple photos
             if (!empty($photos)) { ?>
                 <form action="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$this->item->id); ?>" method="post" name="adminForm" id="home-images-delete-form">
                     <div style="overflow: hidden;">

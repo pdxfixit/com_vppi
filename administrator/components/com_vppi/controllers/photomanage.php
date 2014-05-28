@@ -79,7 +79,7 @@ class VppiControllerPhotoManage extends JControllerForm {
 
         // Perform basic checks on file info before attempting anything
         foreach ($files as &$file) {
-            $file['name']     = JFile::makeSafe($file['name']);
+            $file['name']     = strtolower(JFile::makeSafe($file['name']));
             if ($poster) {
                 $file['filepath'] = JPath::clean(JPATH_SITE . '/images/homes/' . $this->input->get('id') . '/poster.jpg');
             } else {
