@@ -17,8 +17,12 @@ $document->addStyleSheet('/media/com_vppi/css/vppi.css');
 $document->addScriptDeclaration("
     $(document).ready(function() {
         $('#home-slideshow').cycle({
-            fx:     'fade',
-            speed:  5000
+            fx:         'fade',
+            speed:      500,
+            timeout:    5000,
+            next:       '#next',
+            prev:       '#prev',
+            pause:      1
         });
     });
 ");
@@ -32,16 +36,18 @@ if (!$this->item) {
 <div id="home-listing">
     <?php if (!empty($this->poster)) { ?>
     <div id="home-slideshow" class="pics">
-        <img src="/images/homes/<?php echo $this->item->id ?>/<?php echo $this->poster[0] ?>" width="80%" height="auto">
+        <img src="/images/homes/<?php echo $this->item->id ?>/<?php echo $this->poster[0] ?>" width="100%" height="auto">
         <?php if (!empty($this->photos)) {
             foreach ($this->photos as $photo) { ?>
-                <img src="/images/homes/<?php echo $this->item->id ?>/<?php echo $photo ?>" width="80%" height="auto">
+                <img src="/images/homes/<?php echo $this->item->id ?>/<?php echo $photo ?>" width="100%" height="auto">
         <?php
             }
         }
         ?>
     </div>
-    <div class="clear"></div>
+    <div id="next" class="arrow"><span>></span></div>
+    <div id="prev" class="arrow"><span><</span></div>
+    <div class="clear"></div><br />
     <?php
     }
     ?>

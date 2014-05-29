@@ -34,13 +34,83 @@ div#feature-home-info {
 div#feature-home-info {
     padding-bottom: 30px;
 }
+div#homes-slideshow-listings,
+div#home-listing {
+    position: relative;
+}
 
-div.pics {
+div#homes-slideshow-listings {
+    width: 100%;
+    max-height: none;
+    height: auto;
+}
+
+div#poster-pics {
     width:   100%;
     padding: 0;
     margin:  0;
 }
 
+div#poster-pics img {
+    width:  100%;
+
+}
+
+div.pics {
+    width:   100%;
+    height: 498px;
+    padding: 0;
+    margin:  0;
+}
+
 div.pics img {
-    width:  95%;
+    width:  100%;
+    height: 498px;
+}
+
+div#homes-slideshow-listings div.arrow{
+    top: 50%;
+}
+
+div.arrow {
+    color: #c3c3c3;
+	position: absolute;
+	display: block;
+	width: 50px;
+	height: 54px;
+	top: 249px;
+	margin-top: -12px;
+	cursor: pointer;
+	z-index: 10;
+	text-align: center;
+	font-size: 2.2em;
+}
+
+div.arrow span {
+    font-family:"Euphemia UCAS", Euphemia, Helvetica;
+	font-size: 65px;
+	line-height:45px;
+	display: block;
+	width: 50px;
+	height: 54px;
+	cursor: pointer;
+	z-index: 10;
+	text-align: center;
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	-o-transition: all 0.2s ease-in;
+	-ms-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+
+div.arrow:hover {
+    opacity: 1;
+}
+
+div#next {
+    right: -5px;
+}
+
+div#prev {
+    left: -5px;
 }
