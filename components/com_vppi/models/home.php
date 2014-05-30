@@ -96,20 +96,44 @@ class VppiModelHome extends JModelItem {
 
     public function getPoster () {
         $poster = array();
+        $poster['slide'] = '';
+        $poster['thumb'] = '';
         $item = $this->getItem();
         if (JFile::exists(JPATH_SITE . '/images/homes/' . (int)$item->id . '/poster.jpg')) {
-            $poster[] = 'poster.jpg';
+            $poster['slide'] = 'poster.jpg';
+        }
+        if (JFile::exists(JPATH_SITE . '/images/homes/' . (int)$item->id . '/poster-thumb.jpg')) {
+            $poster['thumb'] = 'poster-thumb.jpg';
         }
         return $poster;
     }
 
     public function getPhotos() {
         $photos = array();
+        $slide = array();
+        $thumb = array();
         $poster = $this->getPoster();
         $item = $this->getItem();
-        if (!empty($poster)) {
-            $photos = JFolder::files(JPATH_SITE . '/images/homes/' . (int)$item->id . '/');
-            $photos = array_diff($photos, $poster);
+        if (!empty($poster['slide']) || !empty($poster['thumb'])) {
+            $filePhotos = JFolder::files(JPATH_SITE . '/images/homes/' . (int)$item->id . '/');
+            foreach ($filePhotos as $photo) {
+                if (strpos($photo, '-thumb.jpg')) {
+                    $thumb[] = $photo;
+                } else {
+                    $slide[] = $photo;
+                }
+            }
+
+            $slide = array_diff($slide, array($poster['slide']));
+            if (!empty($slide)) {
+                $photos['slide'] = $slide;
+            }
+
+            $thumb = array_diff($thumb, array($poster['thumb']));
+            if (!empty($thumb)) {
+                $photos['thumb'] = $thumb;
+            }
+
         }
         return $photos;
     }

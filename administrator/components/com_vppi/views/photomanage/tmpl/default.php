@@ -38,17 +38,25 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
                 <?php echo JHtml::_('form.token'); ?>
             </form>
         </div>
-        <?php //TODO: fix so that when a new image is uploaded to overwrite poster.jpg, the new photo renders as the poster image
-        if (!empty($this->poster)) {
-            ?>
-            <div class="span9">
-                <img src="/images/homes/<?php echo (int)$this->item->id ?>/poster.jpg" style="width: 300px">
-            </div>
         <?php
+        if (!empty($this->poster['slide']) || !empty($this->poster['thumb'])) {
+            if (!empty($this->poster['thumb'])) {
+                ?>
+                <div class="span9">
+                    <img src="/images/homes/<?php echo (int)$this->item->id ?>/poster-thumb.jpg" style="width: 250px">
+                </div>
+            <?php
+            } else {
+                ?>
+                <div class="span9">
+                    <img src="/media/com_vppi/images/image-not-available.jpg" style="width: 250px">
+                </div>
+            <?php
+            }
         }
         ?>
     </div>
-<?php if (!empty($this->poster)) { ?>
+<?php if (!empty($this->poster['slide']) || !empty($this->poster['thumb'])) { ?>
     <p></p>
     <div class="row-fluid form-horizontal">
         <div class="span3">
@@ -72,23 +80,20 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
         </div>
         <div class="span9 row-fluid form-horizontal">
             <?php
-            if (!empty($this->photos)) {
+            if (!empty($this->photos['thumb'])) {
                 ?>
                 <form action="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$this->item->id); ?>" method="post" name="adminForm" id="home-images-delete-form">
                     <div style="overflow: hidden;">
-                        <?php foreach ($this->photos as $photo) { ?>
+                        <?php foreach ($this->photos['thumb'] as $photo) { ?>
                             <div class="span3">
                                 <input type="checkbox" name="photo[]" value="<?php echo $photo ?>">
                                 <img src="/images/homes/<?php echo (int)$this->item->id ?>/<?php echo $photo ?>" style="width: 200px"><br />
-
                                 <p><?php echo $photo ?></p>
                             </div>
                         <?php
                         }
                         ?>
-                    </div>
-                    <br />
-
+                    </div><br />
                     <div>
                         <input type="submit" class="btn btn-primary" value="Delete Images" />
                         <input type="hidden" name="task" value="photomanage.delete" />

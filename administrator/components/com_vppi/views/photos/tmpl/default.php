@@ -154,10 +154,10 @@ $sortFields = $this->getSortFields();
                         <td class="center hidden-phone">
                             <?php echo JHtml::_('grid.id', $i, $item->id); ?>
                         </td>
-                        <?php if (file_exists(JPATH_SITE . '/images/homes/' . $item->id . '/poster.jpg')) { ?>
+                        <?php if (!empty($this->poster['thumb'][$item->id])) { ?>
                             <td class="center">
                                 <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$item->id); ?>">
-                                    <img class="thumbnail" style="width: 150px" title="<?php echo $item->street_address ?>" src="<?php echo '/images/homes/' . $item->id . '/poster.jpg' ?>">
+                                    <img class="thumbnail" style="width: 150px" title="<?php echo $item->street_address ?>" src="<?php echo '/images/homes/' . $item->id . '/poster-thumb.jpg' ?>">
                                 </a>
                             </td>
                         <?php

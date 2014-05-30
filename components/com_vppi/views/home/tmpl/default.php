@@ -34,11 +34,11 @@ if (!$this->item) {
 }
 ?>
 <div id="home-listing">
-    <?php if (!empty($this->poster)) { ?>
+    <?php if (!empty($this->poster['slide'])) { ?>
     <div id="home-slideshow" class="pics">
-        <img src="/images/homes/<?php echo $this->item->id ?>/<?php echo $this->poster[0] ?>" width="100%" height="auto">
+        <img src="/images/homes/<?php echo $this->item->id ?>/<?php echo $this->poster['slide'] ?>" width="100%" height="auto">
         <?php if (!empty($this->photos)) {
-            foreach ($this->photos as $photo) { ?>
+            foreach ($this->photos['slide'] as $photo) { ?>
                 <img src="/images/homes/<?php echo $this->item->id ?>/<?php echo $photo ?>" width="100%" height="auto">
         <?php
             }

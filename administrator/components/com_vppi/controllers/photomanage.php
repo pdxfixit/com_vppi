@@ -190,7 +190,14 @@ class VppiControllerPhotoManage extends JControllerForm {
         $deletePhotos = $this->input->get('photo', ' ', 'array');
         if ($deletePhotos) {
             foreach ($deletePhotos as $photo) {
-                JFile::delete(JPATH_SITE . '/images/homes/' . $this->input->get('id') . '/' . $photo);
+                $slidePhoto = str_replace('-thumb.jpg', '.jpg', $photo);
+                try {
+                    JFile::delete(JPATH_SITE . '/images/homes/' . $this->input->get('id') . '/' . $slidePhoto);
+                    JFile::delete(JPATH_SITE . '/images/homes/' . $this->input->get('id') . '/' . $photo);
+                } catch (Exception $e) {
+                    throw new Exception($e->getMessage());
+                }
+
             }
         }
 

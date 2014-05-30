@@ -93,4 +93,21 @@ class VppiModelPhotos extends VppiModelHomes {
 
         return $query;
     }
+
+    public function getPoster () {
+        $poster = array();
+        $poster['slide'] = array();
+        $poster['thumb'] = array();
+        $items = $this->getItems();
+        foreach ($items as $item) {
+            if (JFile::exists(JPATH_SITE . '/images/homes/' . (int)$item->id . '/poster.jpg')) {
+                $poster['slide'][$item->id] = 'poster.jpg';
+            }
+            if (JFile::exists(JPATH_SITE . '/images/homes/' . (int)$item->id . '/poster-thumb.jpg')) {
+                $poster['thumb'][$item->id] = 'poster-thumb.jpg';
+            }
+        }
+
+        return $poster;
+    }
 }

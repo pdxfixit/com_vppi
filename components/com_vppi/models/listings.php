@@ -87,12 +87,19 @@ class VppiModelListings extends JModelList {
 
     public function getPosters () {
         $posters = array();
+        $posters['slide'] = array();
+        $posters['thumb'] = array();
         $items = $this->getItems();
         foreach ($items as $item) {
             if (JFile::exists(JPATH_SITE . '/images/homes/' . (int)$item->id . '/poster.jpg')) {
-                $posters[$item->id] = $item->id . '/poster.jpg';
+                $posters['slide'][$item->id] = $item->id . '/poster.jpg';
             } else {
-                $posters[$item->id] = '';
+                $posters['slide'][$item->id] = '';
+            }
+            if (JFile::exists(JPATH_SITE . '/images/homes/' . (int)$item->id . '/poster-thumb.jpg')) {
+                $posters['thumb'][$item->id] = $item->id . '/poster-thumb.jpg';
+            } else {
+                $posters['thumb'][$item->id] = '';
             }
         }
 

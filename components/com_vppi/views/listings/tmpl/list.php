@@ -21,12 +21,12 @@ if (!$this->items) {
 ?>
 <div id="homes-list-listings">
     <div id="slideshow-listings" id="poster-pics">
-    <?php if (!empty($this->posters) && !empty($this->items)) {
+    <?php if (!empty($this->posters['thumb']) && !empty($this->items)) {
         foreach ($this->items as $item) {
-            if (!empty($this->posters[$item->id]) && $item->state) { ?>
+            if (!empty($this->posters['thumb'][$item->id]) && $item->state) { ?>
                 <div class="thumbnail home-list-listing">
                     <a href="index.php?option=com_vppi&view=home&layout=default&id=<?php echo $item->id ?>">
-                        <img src="/images/homes/<?php echo $this->posters[$item->id] ?>" width="100%" height="auto">
+                        <img src="/images/homes/<?php echo $this->posters['thumb'][$item->id] ?>" width="100%" height="auto">
                     </a>
                     <div class="caption-full">
                         <a href="index.php?option=com_vppi&view=home&layout=default&id=<?php echo $item->id ?>">
