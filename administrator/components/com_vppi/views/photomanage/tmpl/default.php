@@ -72,7 +72,6 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
         </div>
         <div class="span9 row-fluid form-horizontal">
             <?php
-            // TODO: fix how photos of different height render for multiple photos
             if (!empty($this->photos)) {
                 ?>
                 <form action="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$this->item->id); ?>" method="post" name="adminForm" id="home-images-delete-form">

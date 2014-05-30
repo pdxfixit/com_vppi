@@ -112,14 +112,57 @@ class VppiControllerPhotoManage extends JControllerForm {
                 throw new Exception('COM_VPPI_FILE_MUST_BE_JPG_FORMAT');
             }
 
-            $object_file = new JObject($file);
+            // resize upload photo
+            $destWidth = 910;
+            $destHeight = 500;
+            $sourceImage = imagecreatefromjpeg($file['tmp_name']);
+            $sourceWidth = imagesx($sourceImage);
+            $sourceHeight = imagesy($sourceImage);
+            $ratio = $sourceHeight/$sourceWidth;
+            if ($ratio != 0) {
+                if ($ratio <= ($destHeight/$destWidth)) {
+                    $newSourceWidth = ($sourceHeight*$destWidth)/$destHeight;
+                    $sourceX = (int)(($sourceWidth-$newSourceWidth)/2);
+                    $sourceY = 0;
+                    $sourceWidth = (int)$newSourceWidth;
+                } else {
+                    $newSourceHeight = ($sourceWidth*$destHeight)/$destWidth;
+                    $sourceY = (int)(($sourceHeight-$newSourceHeight)/2);
+                    $sourceX = 0;
+                    $sourceHeight = (int)$newSourceHeight;
+                }
+            }
 
-            if (!JFile::upload($object_file->tmp_name, $object_file->filepath)) {
+            $destImage = imagecreatetruecolor($destWidth, $destHeight);
+            imagecopyresampled($destImage, $sourceImage, 0, 0, $sourceX, $sourceY, $destWidth, $destHeight, $sourceWidth, $sourceHeight);
+            imagejpeg($destImage, $file['tmp_name']);
+
+            $objectFile = new JObject($file);
+
+            if (!JFile::upload($objectFile->tmp_name, $objectFile->filepath)) {
                 // Error in upload
                 throw new Exception(JText::_('COM_VPPI_ERROR_UNABLE_TO_UPLOAD_FILE'));
             } else {
                 $app = JFactory::getApplication();
-                $app->enqueueMessage(JText::sprintf('COM_VPPI_UPLOAD_COMPLETE', substr($object_file->filepath, strlen(JPATH_SITE))), 'message');
+                $app->enqueueMessage(JText::sprintf('COM_VPPI_UPLOAD_COMPLETE', substr($objectFile->filepath, strlen(JPATH_SITE))), 'message');
+            }
+
+            // create thumbnail images
+            $thumbFilepath = JFile::stripExt($file['filepath']) . '-thumb.jpg';
+            $thumbWidth = 250;
+            $thumbHeight = (int)(($thumbWidth*$destHeight)/$destWidth);
+            $slideImage = imagecreatefromjpeg($objectFile->filepath);
+            $slideWidth = imagesx($slideImage);
+            $slideHeight = imagesy($slideImage);
+            $thumbImage = imagecreatetruecolor($thumbWidth, $thumbHeight);
+            imagecopyresampled($thumbImage, $slideImage, 0, 0, 0, 0, $thumbWidth, $thumbHeight, $slideWidth, $slideHeight);
+
+            if (!imagejpeg($thumbImage, $thumbFilepath)) {
+                // Error in upload
+                throw new Exception(JText::_('COM_VPPI_ERROR_UNABLE_TO_UPLOAD_THUMB_FILE'));
+            } else {
+                $app = JFactory::getApplication();
+                $app->enqueueMessage(JText::sprintf('COM_VPPI_UPLOAD_THUMB_COMPLETE', substr($objectFile->filepath, strlen(JPATH_SITE))), 'message');
             }
         }
 
