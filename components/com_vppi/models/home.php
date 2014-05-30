@@ -47,6 +47,10 @@ class VppiModelHome extends JModelItem {
 
         if (empty($id)) {
             $id = $this->getState('home.id');
+            if (empty($id)) {
+                // TODO: Ask Ben what he thinks about this
+                $id = $_GET['id'];
+            }
         }
         if ($this->_item === null) {
             $this->_item = array();

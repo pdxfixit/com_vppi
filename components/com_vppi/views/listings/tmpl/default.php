@@ -31,14 +31,16 @@ if (!$this->items) {
     echo JText::_('COM_VPPI_ITEM_NOT_LOADED');
 
     return;
-}
+} // TODO: fix image container to have dynamic height & overlay address and sold images
 ?>
 <div id="homes-slideshow-listings">
     <div id="slideshow-listings" id="poster-pics">
     <?php if (!empty($this->posters) && !empty($this->items)) {
         foreach ($this->items as $item) {
             if (!empty($this->posters[$item->id]) && $item->state && $item->featured) { ?>
-                <img src="/images/homes/<?php echo $this->posters[$item->id] ?>" width="100%" height="auto">
+                <a href="index.php?option=com_vppi&view=home&layout=default&id=<?php echo $item->id ?>">
+                    <img src="/images/homes/<?php echo $this->posters[$item->id] ?>" width="100%" height="auto">
+                </a>
             <?php
             }
         }

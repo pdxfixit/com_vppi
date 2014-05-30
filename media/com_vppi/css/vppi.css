@@ -114,3 +114,18 @@ div#next {
 div#prev {
     left: -5px;
 }
+
+div#next:hover span {
+    color: #6b7a28;
+    text-shadow: 0 0 6px #a0b83c;
+}
+
+div#prev:hover span {
+    color: #6b7a28;
+    text-shadow: 0 0 6px #a0b83c;
+}
+
+div.home-list-listing {
+    display: inline-block;
+    width: 31%;
+}
