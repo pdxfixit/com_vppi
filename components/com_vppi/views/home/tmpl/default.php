@@ -11,42 +11,59 @@
 defined('_JEXEC') or die;
 
 $document = JFactory::getDocument();
-$document->addScript('/media/com_vppi/js/jquery.v1.5.js');
-$document->addScript('/media/com_vppi/js/jquery.cycle.all.js');
+$document->addScript('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js');
+$document->addScript('/media/com_vppi/js/jquery.cycle2.js');
+$document->addScript('/media/com_vppi/js/jquery.cycle2.carousel.js');
 $document->addStyleSheet('/media/com_vppi/css/vppi.css');
+// fix javascript
 $document->addScriptDeclaration("
-    $(document).ready(function() {
-        $('#home-slideshow').cycle({
-            fx:         'fade',
-            speed:      500,
-            timeout:    5000,
-            next:       '#next',
-            prev:       '#prev',
-            pause:      1
-        });
-    });
+var slideshows = $('.cycle-slideshow').on('cycle-next cycle-prev', function(e, opts) {
+    // advance the other slideshow
+    slideshows.not(this).cycle('goto', opts.currSlide);
+});
+
+$('#home-carousel .cycle-slide').click(function(){
+    console.log('clicked');
+    var index = $('#home-carousel').data('cycle.API').getSlideIndex(this);
+    slideshows.cycle('goto', index);
+});
 ");
 
 if (!$this->item) {
     echo JText::_('COM_VPPI_ITEM_NOT_LOADED');
-
     return;
 }
 ?>
 <div id="home-listing">
     <?php if (!empty($this->poster['slide'])) { ?>
-    <div id="home-slideshow" class="pics">
-        <img src="/images/homes/<?php echo $this->item->id ?>/<?php echo $this->poster['slide'] ?>" width="100%" height="auto">
-        <?php if (!empty($this->photos)) {
-            foreach ($this->photos['slide'] as $photo) { ?>
-                <img src="/images/homes/<?php echo $this->item->id ?>/<?php echo $photo ?>" width="100%" height="auto">
-        <?php
-            }
-        }
-        ?>
-    </div>
-    <div id="next" class="arrow"><span>></span></div>
-    <div id="prev" class="arrow"><span><</span></div>
+        <div id="home-slideshow">
+            <div class="pics cycle-slideshow" data-cycle-fx="fadeout" data-cycle-speed="500" data-cycle-timeout="5000" data-cycle-prev="#home-slideshow #prev" data-cycle-next="#home-slideshow #next" data-cycle-pause-on-hover="true">
+                <img src="/images/homes/<?php echo $this->item->id ?>/<?php echo $this->poster['slide'] ?>" width="100%" height="auto">
+                <?php if (!empty($this->photos['slide'])) {
+                    foreach ($this->photos['slide'] as $photo) { ?>
+                        <img src="/images/homes/<?php echo $this->item->id ?>/<?php echo $photo ?>" width="100%" height="auto">
+                    <?php
+                    }
+                }
+                ?>
+                <div id="next" class="arrow"><span>></span></div>
+                <div id="prev" class="arrow"><span><</span></div>
+            </div>
+        </div>
+        <div id="home-carousel">
+            <div class="cycle-slideshow" data-cycle-fx="carousel" data-cycle-allow-wrap="false" data-cycle-speed="500" data-cycle-timeout="5000" data-cycle-carousel-visible="3" data-cycle-prev="#home-carousel #carPrev" data-cycle-next="#home-carousel #carNext" data-cycle-pause-on-hover="true">
+                <img src="/images/homes/<?php echo $this->item->id ?>/<?php echo $this->poster['thumb'] ?>">
+                <?php if (!empty($this->photos['thumb'])) {
+                    foreach ($this->photos['thumb'] as $photo) { ?>
+                        <img src="/images/homes/<?php echo $this->item->id ?>/<?php echo $photo ?>">
+                    <?php
+                    }
+                }
+                ?>
+                <div id="carNext" class="arrow"><span>></span></div>
+                <div id="carPrev" class="arrow"><span><</span></div>
+            </div>
+        </div>
     <div class="clear"></div><br />
     <?php
     }

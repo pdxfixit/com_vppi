@@ -45,15 +45,9 @@ div#homes-slideshow-listings {
     height: auto;
 }
 
-div#poster-pics {
-    width:   100%;
-    padding: 0;
-    margin:  0;
-}
-
-div#poster-pics img {
-    width:  100%;
-
+div#home-carousel img {
+    margin: 31px;
+    width: 250px;
 }
 
 div.pics {
@@ -68,20 +62,16 @@ div.pics img {
     height: 498px;
 }
 
-div#homes-slideshow-listings div.arrow{
-    top: 50%;
-}
-
 div.arrow {
     color: #c3c3c3;
 	position: absolute;
 	display: block;
 	width: 50px;
 	height: 54px;
-	top: 249px;
+	top: 50%;
 	margin-top: -12px;
 	cursor: pointer;
-	z-index: 10;
+	z-index: 110;
 	text-align: center;
 	font-size: 2.2em;
 }
@@ -115,15 +105,27 @@ div#prev {
     left: -5px;
 }
 
-div#next:hover span {
+div#carNext {
+    right: -10px;
+}
+
+div#carPrev {
+    left: -10px;
+}
+
+div#next:hover span,
+div#carNext:hover span {
     color: #6b7a28;
     text-shadow: 0 0 6px #a0b83c;
 }
 
-div#prev:hover span {
+div#prev:hover span,
+div#carPrev:hover span {
     color: #6b7a28;
     text-shadow: 0 0 6px #a0b83c;
 }
+
+
 
 div.home-list-listing {
     display: inline-block;
