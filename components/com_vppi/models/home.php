@@ -72,7 +72,7 @@ class VppiModelHome extends JModelItem {
                                              'a.energy_eff_features, a.state'
                            )
             );
-            $query->from('#__vppi_home AS a');
+            $query->from('#__vppi_homes AS a');
 
             $query->where('a.id = ' . (int)$id);
             $query->where('a.state = 1');

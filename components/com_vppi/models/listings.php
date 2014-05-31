@@ -35,6 +35,7 @@ class VppiModelListings extends JModelList {
                 'state', 'a.state',
                 'ordering', 'a.ordering',
                 'featured', 'a.featured',
+                'sold', 'a.sold',
             );
         }
 
@@ -72,7 +73,7 @@ class VppiModelListings extends JModelList {
                    'list.select', 'a.*'
               )
         );
-        $query->from($db->quoteName('#__vppi_home') . ' AS a');
+        $query->from($db->quoteName('#__vppi_homes') . ' AS a');
 
         // Add the list ordering clause.
         $orderCol = $this->state->get('list.ordering');

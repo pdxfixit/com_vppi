@@ -98,7 +98,7 @@ class VppiModelHome extends JModelAdmin {
             // Set ordering to the last item if not set
             if (empty($table->ordering)) {
                 $db = JFactory::getDbo();
-                $db->setQuery('SELECT MAX(ordering) FROM #__vppi_home');
+                $db->setQuery('SELECT MAX(ordering) FROM #__vppi_homes');
                 $max = $db->loadResult();
 
                 $table->ordering = $max + 1;
@@ -140,7 +140,7 @@ class VppiModelHome extends JModelAdmin {
             $db = $this->getDbo();
 
             $query = $db->getQuery(true);
-            $query->update('#__vppi_home');
+            $query->update('#__vppi_homes');
             $query->set('featured = ' . (int)$value);
             $query->where('id IN (' . implode(',', $pks) . ')');
             $db->setQuery($query);
@@ -209,7 +209,7 @@ class VppiModelHome extends JModelAdmin {
                         $oldValue = $oldOrder + 1;
                         for ($i = $oldValue; $i <= $newOrder; $i++) {
                             $query = $db->getQuery(true);
-                            $query->update('#__vppi_home');
+                            $query->update('#__vppi_homes');
                             $query->set('ordering = ' . (int)$newValue);
                             $query->where('ordering = ' . (int)$oldValue);
                             $db->setQuery($query);
@@ -222,7 +222,7 @@ class VppiModelHome extends JModelAdmin {
                         $oldValue = $newOrder;
                         for ($i = $oldValue; $i <= $oldOrder - 1; $i++) {
                             $query = $db->getQuery(true);
-                            $query->update('#__vppi_home');
+                            $query->update('#__vppi_homes');
                             $query->set('ordering = ' . (int)$newValue);
                             $query->where('ordering = ' . (int)$oldValue);
                             $db->setQuery($query);

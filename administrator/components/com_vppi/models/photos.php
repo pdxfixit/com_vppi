@@ -59,7 +59,7 @@ class VppiModelPhotos extends VppiModelHomes {
                                 'a.checked_out_time, a.ordering, a.featured, a.modified_by, a.modified, a.created_by, a.created'
               )
         );
-        $query->from($db->quoteName('#__vppi_home') . ' AS a');
+        $query->from($db->quoteName('#__vppi_homes') . ' AS a');
 
         // Join over the users for the checked out user.
         $query->select('uc.name AS editor');

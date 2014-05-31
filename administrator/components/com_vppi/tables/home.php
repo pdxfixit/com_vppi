@@ -21,7 +21,7 @@ class VppiTableHome extends JTable {
      * @param JDatabase A database connector object
      */
     public function __construct(&$db) {
-        parent::__construct('#__vppi_home', 'id', $db);
+        parent::__construct('#__vppi_homes', 'id', $db);
     }
 
     /**

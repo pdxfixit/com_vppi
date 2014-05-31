@@ -100,7 +100,7 @@ class VppiModelPhotoManage extends JModelAdmin {
             // Set ordering to the last item if not set
             if (empty($table->ordering)) {
                 $db = JFactory::getDbo();
-                $db->setQuery('SELECT MAX(ordering) FROM #__vppi_home');
+                $db->setQuery('SELECT MAX(ordering) FROM #__vppi_homes');
                 $max = $db->loadResult();
 
                 $table->ordering = $max + 1;

@@ -43,7 +43,6 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
                 ?>
                 <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
                 <br />
-
                 <div class="control-group">
                     <div class="control-label"><?php echo $this->form->getLabel('street_address'); ?></div>
                     <div class="controls"><?php echo $this->form->getInput('street_address'); ?></div>
@@ -65,6 +64,10 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
                     <div class="controls"><?php echo $this->form->getInput('ml_number'); ?></div>
                 </div>
                 <div class="control-group">
+                    <div class="control-label"><?php echo $this->form->getLabel('sold'); ?></div>
+                    <div class="controls"><?php echo $this->form->getInput('sold'); ?></div>
+                </div>
+                <div class="control-group">
                     <div class="control-label"><?php echo $this->form->getLabel('area'); ?></div>
                     <div class="controls"><?php echo $this->form->getInput('area'); ?></div>
                 </div>
@@ -80,6 +83,8 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
                     <div class="control-label"><?php echo $this->form->getLabel('high_school'); ?></div>
                     <div class="controls"><?php echo $this->form->getInput('high_school'); ?></div>
                 </div>
+            </div>
+            <div class="span4">
                 <div class="control-group">
                     <div class="control-label"><?php echo $this->form->getLabel('short_sale'); ?></div>
                     <div class="controls"><?php echo $this->form->getInput('short_sale'); ?></div>
@@ -88,8 +93,6 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
                     <div class="control-label"><?php echo $this->form->getLabel('bank_owned'); ?></div>
                     <div class="controls"><?php echo $this->form->getInput('bank_owned'); ?></div>
                 </div>
-            </div>
-            <div class="span4">
                 <div class="control-group">
                     <div class="control-label"><?php echo $this->form->getLabel('waterfront'); ?></div>
                     <div class="controls"><?php echo $this->form->getInput('waterfront'); ?></div>
@@ -146,6 +149,8 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
                     <div class="control-label"><?php echo $this->form->getLabel('acres'); ?></div>
                     <div class="controls"><?php echo $this->form->getInput('acres'); ?></div>
                 </div>
+            </div>
+            <div class="span4">
                 <div class="control-group">
                     <div class="control-label"><?php echo $this->form->getLabel('lot_size'); ?></div>
                     <div class="controls"><?php echo $this->form->getInput('lot_size'); ?></div>
@@ -154,8 +159,6 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
                     <div class="control-label"><?php echo $this->form->getLabel('lot_dimensions'); ?></div>
                     <div class="controls"><?php echo $this->form->getInput('lot_dimensions'); ?></div>
                 </div>
-            </div>
-            <div class="span4">
                 <div class="control-group">
                     <div class="control-label"><?php echo $this->form->getLabel('lot_description'); ?></div>
                     <div class="controls"><?php echo $this->form->getInput('lot_description'); ?></div>

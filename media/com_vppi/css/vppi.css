@@ -45,6 +45,25 @@ div#homes-slideshow-listings {
     height: auto;
 }
 
+.cycle-overlay {
+    font-size: 3em;
+    line-height: 40px;
+    position: absolute;
+    bottom: 0;
+    z-index: 600;
+    background: black;
+    color: white;
+    padding: 20px;
+    opacity: .5;
+}
+
+#homes-slideshow-listings img.sold {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+}
+
 div#home-carousel img {
     margin: 31px;
     width: 250px;
@@ -124,8 +143,6 @@ div#carPrev:hover span {
     color: #6b7a28;
     text-shadow: 0 0 6px #a0b83c;
 }
-
-
 
 div.home-list-listing {
     display: inline-block;

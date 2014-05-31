@@ -71,6 +71,7 @@ class VppiModelHomes extends JModelList {
                 'state', 'a.state',
                 'ordering', 'a.ordering',
                 'featured', 'a.featured',
+                'sold', 'a.sold',
             );
         }
 
@@ -137,7 +138,7 @@ class VppiModelHomes extends JModelList {
                    'list.select', 'a.*'
               )
         );
-        $query->from($db->quoteName('#__vppi_home') . ' AS a');
+        $query->from($db->quoteName('#__vppi_homes') . ' AS a');
 
         // Join over the users for the checked out user.
         $query->select('uc.name AS editor');
