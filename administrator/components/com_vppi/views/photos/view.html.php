@@ -24,10 +24,10 @@ class VppiViewPhotos extends JViewLegacy {
      * Display the view
      */
     public function display($tpl = null) {
-        $this->state        = $this->get('State');
-        $this->items        = $this->get('Items');
-        $this->pagination   = $this->get('Pagination');
-        $this->poster       = $this->get('Poster');
+        $this->state = $this->get('State');
+        $this->items = $this->get('Items');
+        $this->pagination = $this->get('Pagination');
+        $this->poster = $this->get('Poster');
 
         // Check for errors.
         if (count($errors = $this->get('Errors'))) {

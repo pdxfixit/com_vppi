@@ -27,7 +27,7 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
                 <div class="form-vertical">
                     <div class="control-group">
                         <fieldset class="actions">
-                            <label for="homeImageUpload"><?php echo JText::_('COM_VPPI_UPLOAD_POSTER_BUTTON_LABEL') ?></label>
+                            <label for="homeImageUpload"><?php echo JText::_('COM_VPPI_UPLOAD_POSTER_BUTTON_LABEL'); ?></label>
                             <input type="file" name="homeImageFiles" id="homeImageUpload" /><br />
                             <input type="submit" class="btn btn-primary" value="Upload Image" />
                         </fieldset>
@@ -43,7 +43,7 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
             if (!empty($this->poster['thumb'])) {
                 ?>
                 <div class="span9">
-                    <img src="/images/homes/<?php echo (int)$this->item->id ?>/poster-thumb.jpg" style="width: 250px">
+                    <img src="/images/homes/<?php echo (int)$this->item->id; ?>/poster-thumb.jpg" style="width: 250px">
                 </div>
             <?php
             } else {
@@ -67,7 +67,7 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
                 <div class="form-vertical">
                     <div class="control-group">
                         <fieldset class="actions">
-                            <label for="homeImageUpload"><?php echo JText::_('COM_VPPI_UPLOAD_BUTTON_LABEL') ?></label>
+                            <label for="homeImageUpload"><?php echo JText::_('COM_VPPI_UPLOAD_BUTTON_LABEL'); ?></label>
                             <input type="file" name="homeImageFiles[]" id="homeImageUpload" multiple /><br />
                             <input type="submit" class="btn btn-primary" value="Upload Images" />
                         </fieldset>
@@ -86,14 +86,17 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
                     <div style="overflow: hidden;">
                         <?php foreach ($this->photos['thumb'] as $photo) { ?>
                             <div class="span3">
-                                <input type="checkbox" name="photo[]" value="<?php echo $photo ?>">
-                                <img src="/images/homes/<?php echo (int)$this->item->id ?>/<?php echo $photo ?>" style="width: 200px"><br />
-                                <p><?php echo $photo ?></p>
+                                <input type="checkbox" name="photo[]" value="<?php echo $photo; ?>">
+                                <img src="/images/homes/<?php echo (int)$this->item->id; ?>/<?php echo $photo; ?>" style="width: 200px"><br />
+
+                                <p><?php echo $photo; ?></p>
                             </div>
                         <?php
                         }
                         ?>
-                    </div><br />
+                    </div>
+                    <br />
+
                     <div>
                         <input type="submit" class="btn btn-primary" value="Delete Images" />
                         <input type="hidden" name="task" value="photomanage.delete" />

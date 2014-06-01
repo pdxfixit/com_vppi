@@ -142,7 +142,7 @@ $sortFields = $this->getSortFields();
                                 $iconClass = ' inactive tip-top hasTooltip" title="' . JHtml::tooltipText('JORDERINGDISABLED');
                             }
                             ?>
-                            <span class="sortable-handler<?php echo $iconClass ?>">
+                            <span class="sortable-handler<?php echo $iconClass; ?>">
 							<i class="icon-menu"></i>
 						</span>
                             <?php if ($canChange && $saveOrder) { ?>
@@ -157,7 +157,7 @@ $sortFields = $this->getSortFields();
                         <?php if (!empty($this->poster['thumb'][$item->id])) { ?>
                             <td class="center">
                                 <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$item->id); ?>">
-                                    <img class="thumbnail" style="width: 150px" title="<?php echo $item->street_address ?>" src="<?php echo '/images/homes/' . $item->id . '/poster-thumb.jpg' ?>">
+                                    <img class="thumbnail" style="width: 150px" title="<?php echo $item->street_address; ?>" src="<?php echo '/images/homes/' . $item->id . '/poster-thumb.jpg'; ?>">
                                 </a>
                             </td>
                         <?php
@@ -165,7 +165,7 @@ $sortFields = $this->getSortFields();
                             ?>
                             <td class="center">
                                 <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$item->id); ?>">
-                                    <img class="thumbnail" style="width: 150px" title="<?php echo $item->street_address ?>" src="<?php echo '/media/com_vppi/images/image-not-available.jpg' ?>">
+                                    <img class="thumbnail" style="width: 150px" title="<?php echo $item->street_address; ?>" src="<?php echo '/media/com_vppi/images/image-not-available.jpg'; ?>">
                                 </a>
                             </td>
                         <?php

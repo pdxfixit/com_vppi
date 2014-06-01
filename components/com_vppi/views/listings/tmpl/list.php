@@ -21,19 +21,23 @@ if (!$this->items) {
 ?>
 <div id="homes-list-listings">
     <div id="slideshow-listings" id="poster-pics">
-    <?php if (!empty($this->posters['thumb']) && !empty($this->items)) {
+        <?php if (!empty($this->posters['thumb']) && !empty($this->items)) {
         foreach ($this->items as $item) {
-            if (!empty($this->posters['thumb'][$item->id]) && $item->state) { ?>
+            if (!empty($this->posters['thumb'][$item->id]) && $item->state) {
+                ?>
                 <div class="thumbnail home-list-listing">
-                    <a href="index.php?option=com_vppi&view=home&layout=default&id=<?php echo $item->id ?>">
-                        <img src="/images/homes/<?php echo $this->posters['thumb'][$item->id] ?>" width="100%" height="auto">
+                    <a href="index.php?option=com_vppi&view=home&layout=default&id=<?php echo $item->id; ?>">
+                        <img src="/images/homes/<?php echo $this->posters['thumb'][$item->id]; ?>" width="100%" height="auto">
                     </a>
+
                     <div class="caption-full">
-                        <a href="index.php?option=com_vppi&view=home&layout=default&id=<?php echo $item->id ?>">
-                            <h4><?php echo $item->ml_number ?></h4>
+                        <a href="index.php?option=com_vppi&view=home&layout=default&id=<?php echo $item->id; ?>">
+                            <h4><?php echo $item->ml_number; ?></h4>
                         </a>
-                        <p><?php echo $item->street_address ?></p>
-                        <p><?php echo $item->city ?>,&nbsp;<?php echo $item->state_prov ?>&nbsp;&nbsp;<?php echo $item->zip_code ?></p>
+
+                        <p><?php echo $item->street_address; ?></p>
+
+                        <p><?php echo $item->city; ?>,&nbsp;<?php echo $item->state_prov; ?>&nbsp;&nbsp;<?php echo $item->zip_code; ?></p>
                     </div>
                 </div>
 
@@ -42,7 +46,8 @@ if (!$this->items) {
         }
         ?>
     </div>
-    <div class="clearfix"></div><br />
+    <div class="clearfix"></div>
+    <br />
     <?php
     }
     ?>

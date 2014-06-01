@@ -34,8 +34,11 @@ div#feature-home-info {
 div#feature-home-info {
     padding-bottom: 30px;
 }
+
 div#homes-slideshow-listings,
-div#home-listing {
+div#home-listing,
+div#home-slideshow,
+div#home-carousel {
     position: relative;
 }
 
@@ -70,46 +73,46 @@ div#home-carousel img {
 }
 
 div.pics {
-    width:   100%;
+    width: 100%;
     height: 498px;
     padding: 0;
-    margin:  0;
+    margin: 0;
 }
 
 div.pics img {
-    width:  100%;
+    width: 100%;
     height: 498px;
 }
 
 div.arrow {
     color: #c3c3c3;
-	position: absolute;
-	display: block;
-	width: 50px;
-	height: 54px;
-	top: 50%;
-	margin-top: -12px;
-	cursor: pointer;
-	z-index: 110;
-	text-align: center;
-	font-size: 2.2em;
+    position: absolute;
+    display: block;
+    width: 50px;
+    height: 54px;
+    top: 50%;
+    margin-top: -12px;
+    cursor: pointer;
+    z-index: 110;
+    text-align: center;
+    font-size: 2.2em;
 }
 
 div.arrow span {
-    font-family:"Euphemia UCAS", Euphemia, Helvetica;
-	font-size: 65px;
-	line-height:45px;
-	display: block;
-	width: 50px;
-	height: 54px;
-	cursor: pointer;
-	z-index: 10;
-	text-align: center;
-	-webkit-transition: all 0.2s ease-in;
-	-moz-transition: all 0.2s ease-in;
-	-o-transition: all 0.2s ease-in;
-	-ms-transition: all 0.2s ease-in;
-	transition: all 0.2s ease-in;
+    font-family: "Euphemia UCAS", Euphemia, Helvetica;
+    font-size: 65px;
+    line-height: 45px;
+    display: block;
+    width: 50px;
+    height: 54px;
+    cursor: pointer;
+    z-index: 10;
+    text-align: center;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    -ms-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
 }
 
 div.arrow:hover {

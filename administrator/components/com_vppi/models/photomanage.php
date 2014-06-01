@@ -108,7 +108,7 @@ class VppiModelPhotoManage extends JModelAdmin {
         }
     }
 
-    public function getPoster () {
+    public function getPoster() {
         $poster = array();
         $poster['slide'] = '';
         $poster['thumb'] = '';
@@ -119,6 +119,7 @@ class VppiModelPhotoManage extends JModelAdmin {
         if (JFile::exists(JPATH_SITE . '/images/homes/' . (int)$item->id . '/poster-thumb.jpg')) {
             $poster['thumb'] = 'poster-thumb.jpg';
         }
+
         return $poster;
     }
 
@@ -149,6 +150,7 @@ class VppiModelPhotoManage extends JModelAdmin {
             }
 
         }
+
         return $photos;
     }
 

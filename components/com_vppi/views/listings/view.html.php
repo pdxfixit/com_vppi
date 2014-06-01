@@ -18,18 +18,15 @@ class VppiViewListings extends JViewLegacy {
     protected $posters;
 
     function display($tpl = null) {
-        $this->state        = $this->get('State');
-        $this->items        = $this->get('Items');
-        $this->pagination   = $this->get('Pagination');
-        $this->posters       = $this->get('Posters');
-
+        $this->state = $this->get('State');
+        $this->items = $this->get('Items');
+        $this->pagination = $this->get('Pagination');
+        $this->posters = $this->get('Posters');
 
         // Check for errors.
         if (count($errors = $this->get('Errors'))) {
             throw new Exception(implode("\n", $errors));
         }
-
-
 
         parent::display($tpl);
     }

@@ -118,16 +118,16 @@ class VppiControllerPhotoManage extends JControllerForm {
             $sourceImage = imagecreatefromjpeg($file['tmp_name']);
             $sourceWidth = imagesx($sourceImage);
             $sourceHeight = imagesy($sourceImage);
-            $ratio = $sourceHeight/$sourceWidth;
+            $ratio = $sourceHeight / $sourceWidth;
             if ($ratio != 0) {
-                if ($ratio <= ($destHeight/$destWidth)) {
-                    $newSourceWidth = ($sourceHeight*$destWidth)/$destHeight;
-                    $sourceX = (int)(($sourceWidth-$newSourceWidth)/2);
+                if ($ratio <= ($destHeight / $destWidth)) {
+                    $newSourceWidth = ($sourceHeight * $destWidth) / $destHeight;
+                    $sourceX = (int)(($sourceWidth - $newSourceWidth) / 2);
                     $sourceY = 0;
                     $sourceWidth = (int)$newSourceWidth;
                 } else {
-                    $newSourceHeight = ($sourceWidth*$destHeight)/$destWidth;
-                    $sourceY = (int)(($sourceHeight-$newSourceHeight)/2);
+                    $newSourceHeight = ($sourceWidth * $destHeight) / $destWidth;
+                    $sourceY = (int)(($sourceHeight - $newSourceHeight) / 2);
                     $sourceX = 0;
                     $sourceHeight = (int)$newSourceHeight;
                 }
@@ -150,7 +150,7 @@ class VppiControllerPhotoManage extends JControllerForm {
             // create thumbnail images
             $thumbFilepath = JFile::stripExt($file['filepath']) . '-thumb.jpg';
             $thumbWidth = 250;
-            $thumbHeight = (int)(($thumbWidth*$destHeight)/$destWidth);
+            $thumbHeight = (int)(($thumbWidth * $destHeight) / $destWidth);
             $slideImage = imagecreatefromjpeg($objectFile->filepath);
             $slideWidth = imagesx($slideImage);
             $slideHeight = imagesy($slideImage);

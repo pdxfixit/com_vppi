@@ -25,11 +25,11 @@ class VppiViewPhotoManage extends JViewLegacy {
      * Display the view
      */
     public function display($tpl = null) {
-        $this->state    = $this->get('State');
-        $this->item     = $this->get('Item');
-        $this->form     = $this->get('Form');
-        $this->poster   = $this->get('Poster');
-        $this->photos   = $this->get('Photos');
+        $this->state = $this->get('State');
+        $this->item = $this->get('Item');
+        $this->form = $this->get('Form');
+        $this->poster = $this->get('Poster');
+        $this->photos = $this->get('Photos');
 
         // Check for errors.
         if (count($errors = $this->get('Errors'))) {

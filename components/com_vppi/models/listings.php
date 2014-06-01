@@ -86,7 +86,7 @@ class VppiModelListings extends JModelList {
 
     }
 
-    public function getPosters () {
+    public function getPosters() {
         $posters = array();
         $posters['slide'] = array();
         $posters['thumb'] = array();

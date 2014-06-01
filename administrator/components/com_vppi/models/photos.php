@@ -94,7 +94,7 @@ class VppiModelPhotos extends VppiModelHomes {
         return $query;
     }
 
-    public function getPoster () {
+    public function getPoster() {
         $poster = array();
         $poster['slide'] = array();
         $poster['thumb'] = array();
