@@ -11,7 +11,7 @@
 defined('_JEXEC') or die;
 
 $document = JFactory::getDocument();
-$document->addScript('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js');
+$document->addScript('//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js');
 $document->addScript('/media/com_vppi/js/jquery.cycle2.js');
 $document->addStyleSheet('/media/com_vppi/css/vppi.css');
 
@@ -41,8 +41,8 @@ if (!$this->items) {
         }
         ?>
     </div>
-    <div id="next" class="arrow"><span>></span></div>
-    <div id="prev" class="arrow"><span><</span></div>
+    <div id="next" class="arrow"><span>&gt;</span></div>
+    <div id="prev" class="arrow"><span>&lt;</span></div>
     <div class="clearfix"></div>
     <br />
     <?php

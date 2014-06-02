@@ -130,8 +130,6 @@ class VppiModelHome extends JModelAdmin {
 
         if (empty($pks)) {
             throw new Exception(JText::_('COM_VPPI_NO_ITEM_SELECTED'));
-
-            return false;
         }
 
         $table = $this->getTable();
@@ -140,16 +138,12 @@ class VppiModelHome extends JModelAdmin {
             $db = $this->getDbo();
 
             $query = $db->getQuery(true);
-            $query->update('#__vppi_homes');
-            $query->set('featured = ' . (int)$value);
-            $query->where('id IN (' . implode(',', $pks) . ')');
+            $query->update('#__vppi_homes')->set('featured = ' . (int)$value)->where('id IN (' . implode(',', $pks) . ')');
             $db->setQuery($query);
 
             $db->execute();
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
-
-            return false;
         }
 
         $table->reorder();
@@ -195,8 +189,6 @@ class VppiModelHome extends JModelAdmin {
             // Bind the data.
             if (!$table->bind($data)) {
                 throw new Exception('There was an error with the data');
-
-                return false;
             }
 
             // Reorder home items
@@ -209,9 +201,7 @@ class VppiModelHome extends JModelAdmin {
                         $oldValue = $oldOrder + 1;
                         for ($i = $oldValue; $i <= $newOrder; $i++) {
                             $query = $db->getQuery(true);
-                            $query->update('#__vppi_homes');
-                            $query->set('ordering = ' . (int)$newValue);
-                            $query->where('ordering = ' . (int)$oldValue);
+                            $query->update('#__vppi_homes')->set('ordering = ' . (int)$newValue)->where('ordering = ' . (int)$oldValue);
                             $db->setQuery($query);
                             $db->execute();
                             $newValue++;
@@ -222,9 +212,7 @@ class VppiModelHome extends JModelAdmin {
                         $oldValue = $newOrder;
                         for ($i = $oldValue; $i <= $oldOrder - 1; $i++) {
                             $query = $db->getQuery(true);
-                            $query->update('#__vppi_homes');
-                            $query->set('ordering = ' . (int)$newValue);
-                            $query->where('ordering = ' . (int)$oldValue);
+                            $query->update('#__vppi_homes')->set('ordering = ' . (int)$newValue)->where('ordering = ' . (int)$oldValue);
                             $db->setQuery($query);
                             $db->execute();
                             $newValue++;
@@ -249,15 +237,11 @@ class VppiModelHome extends JModelAdmin {
 
             if (in_array(false, $result, true)) {
                 throw new Exception('There was an error with the data');
-
-                return false;
             }
 
             // Store the data.
             if (!$table->store()) {
                 throw new Exception('There was an error storing the data');
-
-                return false;
             }
 
             // Clean the cache.
@@ -267,8 +251,6 @@ class VppiModelHome extends JModelAdmin {
             $dispatcher->trigger($this->event_after_save, array($this->option . '.' . $this->name, $table, $isNew));
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
-
-            return false;
         }
 
         $pkName = $table->getKeyName();

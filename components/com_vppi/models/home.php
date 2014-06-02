@@ -45,13 +45,12 @@ class VppiModelHome extends JModelItem {
      */
     public function getItem($id = null) {
 
+        $defaultId = JFactory::getApplication()->input->get('id') ? JFactory::getApplication()->input->get('id') : null;
+
         if (empty($id)) {
-            $id = $this->getState('home.id');
-            if (empty($id)) {
-                // TODO: Ask Ben what he thinks about this
-                $id = $_GET['id'];
-            }
+            $id = $this->getState('home.id', $defaultId);
         }
+
         if ($this->_item === null) {
             $this->_item = array();
         }
@@ -61,21 +60,7 @@ class VppiModelHome extends JModelItem {
             $db = $this->getDbo();
             $query = $db->getQuery(true);
 
-            $query->select($this->getState(
-                                'item.select', 'a.id, a.street_address, a.city, a.state_prov, a.zip_code, a.ml_number, a.area, ' .
-                                             'a.elem_school, a.mid_school, a.high_school, a.short_sale, a.bank_owned, a.waterfront, ' .
-                                             'a.body_of_water, a.tax_per_year, a.property_type, a.neighborhood_building, a.levels, ' .
-                                             'a.garage, a.roof, a.ext_description, a.mast_bed_level, a.fireplace, a.basement_foundation, ' .
-                                             'a.view, a.acres, a.lot_size, a.lot_dimensions, a.lot_description, a.heat_fuel, a.cool, ' .
-                                             'a.water_sewer, a.hot_water, a.zoning, a.remarks, a.dining_room, a.family_room, ' .
-                                             'a.living_room, a.kitchen, a.interior, a.exterior, a.accessibility, a.green_certification, ' .
-                                             'a.energy_eff_features, a.state'
-                           )
-            );
-            $query->from('#__vppi_homes AS a');
-
-            $query->where('a.id = ' . (int)$id);
-            $query->where('a.state = 1');
+            $query->select($this->getState('item.select', 'a.*'))->from('#__vppi_homes AS a')->where('a.id = ' . (int)$id)->where('a.state = 1');
 
             try {
                 $db->setQuery($query);

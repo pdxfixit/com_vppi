@@ -11,10 +11,18 @@
 defined('_JEXEC') or die;
 
 $document = JFactory::getDocument();
-$document->addScript('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js');
+$document->addScript('//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js');
 $document->addScript('/media/com_vppi/js/jquery.cycle2.js');
 $document->addScript('/media/com_vppi/js/jquery.cycle2.carousel.js');
 $document->addStyleSheet('/media/com_vppi/css/vppi.css');
+// TODO: fix JS to goto slide in slideshow when photo in carousel is clicked
+$document->addScriptDeclaration("
+    $(document).ready(function() {
+        $('#home-carousel').click(function() {
+            $('#home-carousel').effect('slide');
+        });
+    });
+");
 
 if (!$this->item) {
     echo JText::_('COM_VPPI_ITEM_NOT_LOADED');
@@ -25,43 +33,43 @@ if (!$this->item) {
 <div id="home-listing">
 <?php if (!empty($this->poster['slide'])) { ?>
     <div id="home-slideshow">
-        <div id="something" class="pics cycle-slideshow" data-cycle-slides="> div" data-cycle-fx="fadeout" data-cycle-speed="500" data-cycle-timeout="5000" data-cycle-prev="#home-slideshow #prev" data-cycle-next="#home-slideshow #next" data-cycle-pause-on-hover="true">
+        <div id="slide-view" class="pics cycle-slideshow" data-cycle-slides="> div" data-cycle-fx="fadeout" data-cycle-speed="500" data-cycle-timeout="5000" data-cycle-prev="#home-slideshow #prev" data-cycle-next="#home-slideshow #next" data-cycle-pause-on-hover="true">
             <div id="<?php echo $this->poster['slidename']; ?>">
-                <img src="/images/homes/<?php echo $this->item->id; ?>/<?php echo $this->poster['slide']; ?>" width="100%" height="auto">
+                <img src="/images/homes/<?php echo (int)$this->item->id; ?>/<?php echo $this->poster['slide']; ?>" data-cycle-index="1" width="100%" height="auto">
             </div>
             <?php if (!empty($this->photos['slide'])) {
                 foreach ($this->photos['slide'] as $key => $photo) {
                     ?>
                     <div id="<?php echo $this->photos['slidename'][$key]; ?>">
-                        <img src="/images/homes/<?php echo $this->item->id; ?>/<?php echo $photo; ?>" width="100%" height="auto">
+                        <img src="/images/homes/<?php echo (int)$this->item->id; ?>/<?php echo $photo; ?>" data-cycle-index="<?php echo($key + 2); ?>" width="100%" height="auto">
                     </div>
                 <?php
                 }
             }
             ?>
         </div>
-        <div id="next" class="arrow"><span>></span></div>
-        <div id="prev" class="arrow"><span><</span></div>
+        <div id="next" class="arrow"><span>&gt;</span></div>
+        <div id="prev" class="arrow"><span>&lt;</span></div>
     </div>
     <?php if (!empty($this->poster['thumb'])) { ?>
         <div id="home-carousel">
-            <div class="cycle-slideshow" data-cycle-fx="carousel" data-cycle-slides="> div" data-cycle-allow-wrap="false" data-cycle-speed="500" data-cycle-timeout="5000" data-cycle-carousel-visible="3" data-cycle-prev="#home-carousel #carPrev" data-cycle-next="#home-carousel #carNext" data-cycle-pause-on-hover="true">
-                <div data-cycle-cmd="goto" data-cycle-context="#<?php echo $this->poster['slidename']; ?>">
-                    <img src="/images/homes/<?php echo $this->item->id; ?>/<?php echo $this->poster['thumb']; ?>">
+            <div id="thumb-view" class="cycle-slideshow" data-cycle-fx="carousel" data-cycle-slides="> div" data-cycle-allow-wrap="false" data-cycle-speed="500" data-cycle-timeout="5000" data-cycle-carousel-visible="3" data-cycle-prev="#home-carousel #carPrev" data-cycle-next="#home-carousel #carNext" data-cycle-pause-on-hover="true">
+                <div>
+                    <img src="/images/homes/<?php echo (int)$this->item->id; ?>/<?php echo $this->poster['thumb']; ?>" data-cycle-index="1">
                 </div>
                 <?php if (!empty($this->photos['thumb'])) {
                     foreach ($this->photos['thumb'] as $key => $photo) {
                         ?>
-                        <div data-cycle-cmd="pause" data-cycle-context="#home-something">
-                            <img src="/images/homes/<?php echo $this->item->id; ?>/<?php echo $photo; ?>">
+                        <div>
+                            <img src="/images/homes/<?php echo (int)$this->item->id; ?>/<?php echo $photo; ?>" data-cycle-index="<?php echo($key + 2); ?>">
                         </div>
                     <?php
                     }
                 }
                 ?>
             </div>
-            <div id="carNext" class="arrow"><span>></span></div>
-            <div id="carPrev" class="arrow"><span><</span></div>
+            <div id="carNext" class="arrow"><span>&gt;</span></div>
+            <div id="carPrev" class="arrow"><span>&lt;</span></div>
         </div>
     <?php
     }

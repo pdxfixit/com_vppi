@@ -53,17 +53,10 @@ class VppiModelPhotos extends VppiModelHomes {
         $user = JFactory::getUser();
 
         // Select the required fields from the table.
-        $query->select(
-              $this->getState(
-                   'list.select', 'a.id, a.street_address, a.city, a.state_prov, a.zip_code, a.ml_number, a.state, a.checked_out, ' .
-                                'a.checked_out_time, a.ordering, a.featured, a.modified_by, a.modified, a.created_by, a.created'
-              )
-        );
-        $query->from($db->quoteName('#__vppi_homes') . ' AS a');
+        $query->select($this->getState('list.select', 'a.*'))->from($db->quoteName('#__vppi_homes') . ' AS a');
 
         // Join over the users for the checked out user.
-        $query->select('uc.name AS editor');
-        $query->join('LEFT', '#__users AS uc ON uc.id=a.checked_out');
+        $query->select('uc.name AS editor')->join('LEFT', '#__users AS uc ON uc.id=a.checked_out');
 
         // Filter by published state
         $published = $this->getState('filter.state');

@@ -68,12 +68,7 @@ class VppiModelListings extends JModelList {
         $query = $db->getQuery(true);
 
         // Select the required fields from the table.
-        $query->select(
-              $this->getState(
-                   'list.select', 'a.*'
-              )
-        );
-        $query->from($db->quoteName('#__vppi_homes') . ' AS a');
+        $query->select($this->getState('list.select', 'a.*'))->from($db->quoteName('#__vppi_homes') . ' AS a');
 
         // Add the list ordering clause.
         $orderCol = $this->state->get('list.ordering');
