@@ -28,15 +28,17 @@ if (!$this->items) {
                 <div class="thumbnail home-list-listing">
                     <a href="index.php?option=com_vppi&view=home&layout=default&id=<?php echo $item->id; ?>">
                         <img src="/images/homes/<?php echo $this->posters['thumb'][$item->id]; ?>" width="100%" height="auto">
+                        <?php if ($item->sold) { ?>
+                            <img src="/media/com_vppi/images/sold-thumb.png" class="sold">
+                        <?php
+                        }
+                        ?>
                     </a>
-
                     <div class="caption-full">
                         <a href="index.php?option=com_vppi&view=home&layout=default&id=<?php echo $item->id; ?>">
                             <h4><?php echo $item->ml_number; ?></h4>
                         </a>
-
                         <p><?php echo $item->street_address; ?></p>
-
                         <p><?php echo $item->city; ?>,&nbsp;<?php echo $item->state_prov; ?>&nbsp;&nbsp;<?php echo $item->zip_code; ?></p>
                     </div>
                 </div>

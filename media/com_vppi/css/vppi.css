@@ -48,7 +48,7 @@ div#homes-slideshow-listings {
     height: auto;
 }
 
-.cycle-overlay {
+div.cycle-overlay {
     font-size: 3em;
     line-height: 40px;
     position: absolute;
@@ -60,7 +60,12 @@ div#homes-slideshow-listings {
     opacity: .5;
 }
 
-#homes-slideshow-listings img.sold {
+div.home-list-listing {
+    position: relative;
+}
+
+div.home-list-listing img.sold,
+div#homes-slideshow-listings img.sold {
     position: absolute;
     left: 0;
     top: 0;
@@ -68,7 +73,7 @@ div#homes-slideshow-listings {
 }
 
 div#home-carousel img {
-    margin: 31px;
+    margin: 26px;
     width: 250px;
 }
 

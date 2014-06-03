@@ -59,12 +59,12 @@ if (!$this->item) {
                     <img src="/images/homes/<?php echo (int)$this->item->id; ?>/<?php echo $this->poster['thumb']; ?>">
                 </div>
                 <?php if (!empty($this->photos['thumb'])) {
-                    foreach ($this->photos['thumb'] as $key => $photo) {
-                        ?>
-                        <div data-cycle-index="<?php echo($key); ?>">
+                    $i = 1;
+                    foreach ($this->photos['thumb'] as $photo) { ?>
+                        <div data-cycle-index="<?php echo($i); ?>">
                             <img src="/images/homes/<?php echo (int)$this->item->id; ?>/<?php echo $photo; ?>">
                         </div>
-                    <?php
+                    <?php $i++;
                     }
                 }
                 ?>
