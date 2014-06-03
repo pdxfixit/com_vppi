@@ -8,7 +8,7 @@
     <copyright>Copyleft (C) 2014. All rights reserved.</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <version>1.0.1</version>
-    <description><![CDATA[<p style="font-size: 18px;"><img src="../media/com_vppi/images/VPPI-logo.png" alt="VPPI Logo" title="Vantage Point Properties, Inc." style="float: left; margin: 0 10px 10px 0;">VPPI component v1.0.0<br>Released: April 23, 2014</p><p style="clear: left;"><a href="http://www.pdxfixit.com/" target="_blank" title="Made by PDXfixIT."><img src="http://www.pdxfixit.com/logo.png" alt="PDXfixIT" title="PDXfixIT"></a></p>]]></description>
+    <description><![CDATA[<p style="font-size: 18px;"><img src="../media/com_vppi/images/vppi-logo.png" alt="VPPI Logo" title="Vantage Point Properties, Inc." style="float: left; margin: 0 10px 10px 0;">VPPI component v1.0.1<br>Released: June 2, 2014</p><p style="clear: left;"><a href="http://www.pdxfixit.com/" target="_blank" title="Made by PDXfixIT."><img src="http://www.pdxfixit.com/logo.png" alt="PDXfixIT" title="PDXfixIT"></a></p>]]></description>
 
     <files folder="components/com_vppi">
         <folder>controllers</folder>
