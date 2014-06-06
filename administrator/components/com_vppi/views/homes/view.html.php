@@ -52,8 +52,7 @@ class VppiViewHomes extends JViewLegacy {
         $canDo = VppiHelper::getActions($state->get('filter.category_id'));
         $user = JFactory::getUser();
 
-        // TODO: Get new logo from Ben
-        JToolBarHelper::title(JText::_('COM_VPPI_MANAGER_VPPI'), 'VPPI-logo.png');
+        JToolBarHelper::title(JText::_('COM_VPPI_MANAGER_VPPI'), 'vppi-menu-logo.png');
         if ($canDo->get('core.create')) {
             JToolBarHelper::addNew('home.add');
         }

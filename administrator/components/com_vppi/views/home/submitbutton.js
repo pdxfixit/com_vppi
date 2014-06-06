@@ -25,21 +25,21 @@ Joomla.submitbutton = function (task) {
         else {
             var msg = new Object()
             msg.error = new Array();
-            msg.error.push('Invalid Input.  Please make the listed corrections and try again.');
+            msg.error.push('There was an invalid input.  Make the listed corrections and try again.');
             if ($('jform_ml_number').hasClass('invalid')) {
-                msg.error.push("The ML# must be between six and eight digits.");
+                msg.error.push("Please make sure that the ML# is between six and eight digits long");
             }
             if ($('jform_price').hasClass('invalid')) {
-                msg.error.push("The price value must be a number.");
+                msg.error.push("Please make sure that the price value is a number with no commas");
             }
             if ($('jform_zip_code').hasClass('invalid')) {
-                msg.error.push("The zip code must be in the format XXXXX or XXXXX-XXXX.");
+                msg.error.push("Please make sure that the zip is in the format XXXXX or XXXXX-XXXX.");
             }
             if ($('jform_acres').hasClass('invalid')) {
-                msg.error.push("The acres value must be a number.");
+                msg.error.push("Please make sure that the acres value is a number (values will be rounded to the second decimal place)");
             }
             if ($('jform_levels').hasClass('invalid')) {
-                msg.error.push("The levels value must be a number.");
+                msg.error.push("Please make sure that the levels value is an integer");
             }
             Joomla.renderMessages(msg);
             return false;

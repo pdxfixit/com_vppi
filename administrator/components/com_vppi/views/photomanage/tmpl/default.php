@@ -70,7 +70,7 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
                             <label for="homeImageUpload"><?php echo JText::_('COM_VPPI_UPLOAD_BUTTON_LABEL'); ?></label>
                             <?php // TODO: Make multiple image upload control use touch and not Ctrl/Shift button ?>
                             <input type="file" name="homeImageFiles[]" id="homeImageUpload" multiple /><br />
-                            <input type="submit" class="btn btn-primary" value="Upload Mulitple Images" />
+                            <input type="submit" class="btn btn-primary" value="Upload Multiple Images" />
                         </fieldset>
                     </div>
                 </div>
