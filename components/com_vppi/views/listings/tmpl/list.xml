@@ -2,7 +2,7 @@
 <metadata>
     <layout title="COM_VPPI_HOMES_LIST_TITLE" option="View">
         <message>
-            <![CDATA[COM_VPPI_HOME_DESC]]>
+            <![CDATA[COM_VPPI_HOMES_LIST_DESC]]>
         </message>
     </layout>
 </metadata>

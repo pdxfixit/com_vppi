@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS `#__vppi_homes` (
 `state_prov` VARCHAR(127)  NOT NULL ,
 `zip_code` INT(11)  NOT NULL ,
 `ml_number` INT(11)  NOT NULL ,
+`price` DECIMAL (18,2)  NOT NULL ,
 `area` VARCHAR(127)  NOT NULL ,
 `elem_school` VARCHAR(127)  NOT NULL ,
 `mid_school` VARCHAR(127)  NOT NULL ,

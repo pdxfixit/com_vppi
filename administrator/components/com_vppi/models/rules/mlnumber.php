@@ -23,5 +23,5 @@ class JFormRuleMlnumber extends JFormRule {
      * @var         string
      * @since       2.5
      */
-    protected $regex = '\d{8}';
+    protected $regex = '\d{6,8}';
 }

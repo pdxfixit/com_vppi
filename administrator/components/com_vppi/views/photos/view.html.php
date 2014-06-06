@@ -50,7 +50,7 @@ class VppiViewPhotos extends JViewLegacy {
     protected function addToolbar() {
         require_once JPATH_COMPONENT . '/helpers/vppi.php';
 
-        JToolBarHelper::title(JText::_('COM_VPPI_MANAGER_VPPI'), 'VPPI-logo.png');
+        JToolBarHelper::title(JText::_('COM_VPPI_IMAGE_MANAGER_VPPI'), 'VPPI-logo.png');
 
     }
 

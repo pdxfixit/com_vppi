@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
-    <layout title="COM_VPPI_POSTER_SLIDESHOW_TITLE" option="View">
+    <layout title="COM_VPPI_POSTER_FEATURED_SLIDESHOW_TITLE" option="View">
         <message>
-            <![CDATA[COM_VPPI_HOME_DESC]]>
+            <![CDATA[COM_VPPI_POSTER_FEATURED_SLIDESHOW_DESC]]>
         </message>
     </layout>
 </metadata>

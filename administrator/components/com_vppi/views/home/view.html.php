@@ -81,10 +81,9 @@ class VppiViewHome extends JViewLegacy {
             }
 
             // If checked out, we can still save
-            if ($canDo->get('core.create')) {
-                // TODO: have save2copy add "(Copy)" to the street address
+            /* if ($canDo->get('core.create')) {
                 JToolbarHelper::save2copy('home.save2copy');
-            }
+            } */
 
             JToolbarHelper::cancel('home.cancel', 'JTOOLBAR_CLOSE');
         }

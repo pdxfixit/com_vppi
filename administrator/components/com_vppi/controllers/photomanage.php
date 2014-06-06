@@ -99,6 +99,8 @@ class VppiControllerPhotoManage extends JControllerForm {
             }
         }
 
+        $uploadCount = 0;
+        $thumbUploadCount = 0;
         foreach ($files as &$file) {
 
             require_once(JPATH_SITE . '/libraries/cms/helper/media.php');
@@ -140,11 +142,10 @@ class VppiControllerPhotoManage extends JControllerForm {
             $objectFile = new JObject($file);
 
             if (!JFile::upload($objectFile->tmp_name, $objectFile->filepath)) {
-                // Error in upload
+                // Error in upload TODO: fix language string (not translating)
                 throw new Exception(JText::_('COM_VPPI_ERROR_UNABLE_TO_UPLOAD_FILE'));
             } else {
-                $app = JFactory::getApplication();
-                $app->enqueueMessage(JText::sprintf('COM_VPPI_UPLOAD_COMPLETE', substr($objectFile->filepath, strlen(JPATH_SITE))), 'message');
+                $uploadCount++;
             }
 
             // create thumbnail images
@@ -161,8 +162,25 @@ class VppiControllerPhotoManage extends JControllerForm {
                 // Error in upload
                 throw new Exception(JText::_('COM_VPPI_ERROR_UNABLE_TO_UPLOAD_THUMB_FILE'));
             } else {
+                $thumbUploadCount++;
+            }
+        }
+        if ($uploadCount > 0) {
+            if ($uploadCount == 1) {
                 $app = JFactory::getApplication();
-                $app->enqueueMessage(JText::sprintf('COM_VPPI_UPLOAD_THUMB_COMPLETE', substr($objectFile->filepath, strlen(JPATH_SITE))), 'message');
+                $app->enqueueMessage(JText::sprintf('COM_VPPI_SINGLE_UPLOAD_COMPLETE', $uploadCount), 'message');
+            } else {
+                $app = JFactory::getApplication();
+                $app->enqueueMessage(JText::sprintf('COM_VPPI_UPLOAD_COMPLETE', $uploadCount), 'message');
+            }
+        }
+        if ($thumbUploadCount > 0) {
+            if ($thumbUploadCount == 1) {
+                $app = JFactory::getApplication();
+                $app->enqueueMessage(JText::sprintf('COM_VPPI_SINGLE_UPLOAD_THUMB_COMPLETE', $thumbUploadCount), 'message');
+            } else {
+                $app = JFactory::getApplication();
+                $app->enqueueMessage(JText::sprintf('COM_VPPI_UPLOAD_THUMB_COMPLETE', $thumbUploadCount), 'message');
             }
         }
 

@@ -5,6 +5,11 @@ span.icon-VPPI-logo {
     height: 48px;
 }
 
+span.icon-back:before {
+    color: #bd362f;
+    content: "\4a";
+}
+
 div#remarks,
 div#basic-home-info,
 div#feature-home-info {
@@ -33,6 +38,10 @@ div#feature-home-info {
 
 div#feature-home-info {
     padding-bottom: 30px;
+}
+
+table.table td.vert-center {
+    vertical-align: middle;
 }
 
 div#homes-slideshow-listings,

@@ -30,6 +30,7 @@ class VppiModelHomes extends JModelList {
                 'state_prov', 'a.state_prov',
                 'zip_code', 'a.zip_code',
                 'ml_number', 'a.ml_number',
+                'price', 'a.price',
                 'area', 'a.area',
                 'elem_school', 'a.elem_school',
                 'mid_school', 'a.mid_school',

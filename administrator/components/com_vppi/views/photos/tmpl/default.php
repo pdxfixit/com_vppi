@@ -96,19 +96,19 @@ $sortFields = $this->getSortFields();
                     <th width="1%" class="hidden-phone">
                         <?php echo JHtml::_('grid.checkall'); ?>
                     </th>
-                    <th width="left" class="nowrap hidden-phone">
+                    <th width="15%" class="nowrap hidden-phone center">
                         <?php echo JText::_('COM_VPPI_IMAGE_LIST_LABEL'); ?>
                     </th>
-                    <th class="left">
+                    <th width="10%" class="center">
                         <?php echo JHtml::_('grid.sort', 'COM_VPPI_ML_NUMBER', 'a.ml_number', $listDirn, $listOrder); ?>
                     </th>
-                    <th width="left" class="nowrap hidden-phone">
+                    <th width="45%" class="center">
                         <?php echo JHtml::_('grid.sort', 'COM_VPPI_STREET_ADDRESS', 'a.street_address', $listDirn, $listOrder); ?>
                     </th>
-                    <th width="left" class="nowrap hidden-phone">
+                    <th width="15%" class="nowrap hidden-phone center">
                         <?php echo JHtml::_('grid.sort', 'COM_VPPI_CITY', 'a.city', $listDirn, $listOrder); ?>
                     </th>
-                    <th width="left" class="nowrap hidden-phone">
+                    <th width="10%" class="nowrap hidden-phone center">
                         <?php echo JHtml::_('grid.sort', 'COM_VPPI_STATE_PROV', 'a.state_prov', $listDirn, $listOrder); ?>
                     </th>
                     <th width="1%" class="nowrap center hidden-phone">
@@ -133,7 +133,7 @@ $sortFields = $this->getSortFields();
                     $canChange = $user->authorise('core.edit.state', 'com_vppi' . $item->id) && $canCheckin;
                     ?>
                     <tr class="row<?php echo $i % 2; ?>">
-                        <td class="order nowrap center hidden-phone">
+                        <td class="order nowrap center hidden-phone vert-center">
                             <?php
                             $iconClass = '';
                             if (!$canChange) {
@@ -151,13 +151,13 @@ $sortFields = $this->getSortFields();
                             }
                             ?>
                         </td>
-                        <td class="center hidden-phone">
+                        <td class="center hidden-phone vert-center">
                             <?php echo JHtml::_('grid.id', $i, $item->id); ?>
                         </td>
                         <?php if (!empty($this->poster['thumb'][$item->id])) { ?>
                             <td class="center">
                                 <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$item->id); ?>">
-                                    <img class="thumbnail" style="width: 150px" title="<?php echo $item->street_address; ?>" src="<?php echo '/images/homes/' . $item->id . '/poster-thumb.jpg'; ?>">
+                                    <img class="thumbnail" style="width: 150px; margin: auto;" title="<?php echo $item->street_address; ?>" src="<?php echo '/images/homes/' . $item->id . '/poster-thumb.jpg'; ?>">
                                 </a>
                             </td>
                         <?php
@@ -165,26 +165,26 @@ $sortFields = $this->getSortFields();
                             ?>
                             <td class="center">
                                 <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$item->id); ?>">
-                                    <img class="thumbnail" style="width: 150px" title="<?php echo $item->street_address; ?>" src="<?php echo '/media/com_vppi/images/image-not-available.jpg'; ?>">
+                                    <img class="thumbnail" style="width: 150px; margin: auto;" title="<?php echo $item->street_address; ?>" src="<?php echo '/media/com_vppi/images/image-not-available.jpg'; ?>">
                                 </a>
                             </td>
                         <?php
                         }
                         ?>
-                        <td class="nowrap has-context">
+                        <td class="nowrap center vert-center vert-center">
                             <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$item->id); ?>">
                                 <?php echo $this->escape($item->ml_number); ?></a>
                         </td>
-                        <td class="center hidden-phone">
+                        <td class="center has-context vert-center">
                             <?php echo $item->street_address; ?>
                         </td>
-                        <td class="center hidden-phone">
+                        <td class="center hidden-phone vert-center">
                             <?php echo $item->city; ?>
                         </td>
-                        <td class="center hidden-phone">
+                        <td class="center hidden-phone vert-center">
                             <?php echo $item->state_prov; ?>
                         </td>
-                        <td class="center">
+                        <td class="center vert-center">
                             <?php echo (int)$item->id; ?>
                         </td>
                     </tr>

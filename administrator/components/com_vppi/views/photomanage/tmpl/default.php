@@ -68,8 +68,9 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
                     <div class="control-group">
                         <fieldset class="actions">
                             <label for="homeImageUpload"><?php echo JText::_('COM_VPPI_UPLOAD_BUTTON_LABEL'); ?></label>
+                            <?php // TODO: Make multiple image upload control use touch and not Ctrl/Shift button ?>
                             <input type="file" name="homeImageFiles[]" id="homeImageUpload" multiple /><br />
-                            <input type="submit" class="btn btn-primary" value="Upload Images" />
+                            <input type="submit" class="btn btn-primary" value="Upload Mulitple Images" />
                         </fieldset>
                     </div>
                 </div>
@@ -81,15 +82,15 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
         <div class="span9 row-fluid form-horizontal">
             <?php
             if (!empty($this->photos['thumb'])) {
+                // TODO: Make CSS Responsive
+                // TODO: Create image ordering functionality
                 ?>
                 <form action="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$this->item->id); ?>" method="post" name="adminForm" id="home-images-delete-form">
-                    <div style="overflow: hidden;">
+                    <div class="row-fluid" style="overflow: hidden;">
                         <?php foreach ($this->photos['thumb'] as $photo) { ?>
-                            <div class="span3">
+                            <div style="width: 30%; display: inline-block;">
                                 <input type="checkbox" name="photo[]" value="<?php echo $photo; ?>">
-                                <img src="/images/homes/<?php echo (int)$this->item->id; ?>/<?php echo $photo; ?>" style="width: 200px"><br />
-
-                                <p><?php echo $photo; ?></p>
+                                <img src="/images/homes/<?php echo (int)$this->item->id; ?>/<?php echo $photo; ?>" style="width: 250px">
                             </div>
                         <?php
                         }

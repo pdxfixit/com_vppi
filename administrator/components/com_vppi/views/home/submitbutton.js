@@ -23,8 +23,25 @@ Joomla.submitbutton = function (task) {
             return true;
         }
         else {
-            alert(Joomla.JText._('COM_VPPI_ERROR_MESSAGE',
-                'Some values are unacceptable'));
+            var msg = new Object()
+            msg.error = new Array();
+            msg.error.push('Invalid Input.  Please make the listed corrections and try again.');
+            if ($('jform_ml_number').hasClass('invalid')) {
+                msg.error.push("The ML# must be between six and eight digits.");
+            }
+            if ($('jform_price').hasClass('invalid')) {
+                msg.error.push("The price value must be a number.");
+            }
+            if ($('jform_zip_code').hasClass('invalid')) {
+                msg.error.push("The zip code must be in the format XXXXX or XXXXX-XXXX.");
+            }
+            if ($('jform_acres').hasClass('invalid')) {
+                msg.error.push("The acres value must be a number.");
+            }
+            if ($('jform_levels').hasClass('invalid')) {
+                msg.error.push("The levels value must be a number.");
+            }
+            Joomla.renderMessages(msg);
             return false;
         }
     }

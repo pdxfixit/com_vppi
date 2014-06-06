@@ -96,25 +96,25 @@ $sortFields = $this->getSortFields();
                     <th width="1%" class="hidden-phone">
                         <?php echo JHtml::_('grid.checkall'); ?>
                     </th>
-                    <th width="left" style="min-width:55px" class="nowrap center">
+                    <th style="min-width:55px" class="nowrap center">
                         <?php echo JHtml::_('grid.sort', 'JPUBLISHED', 'a.state', $listDirn, $listOrder); ?>
                     </th>
-                    <th class="left">
+                    <th width="10%" class="center">
                         <?php echo JHtml::_('grid.sort', 'COM_VPPI_ML_NUMBER', 'a.ml_number', $listDirn, $listOrder); ?>
                     </th>
-                    <th width="5%" class="nowrap hidden-phone">
+                    <th width="5%" class="nowrap hidden-phone center">
                         <?php echo JHtml::_('grid.sort', 'JFEATURED', 'a.featured', $listDirn, $listOrder); ?>
                     </th>
-                    <th width="left" class="nowrap hidden-phone">
+                    <th width="45%" class="center">
                         <?php echo JHtml::_('grid.sort', 'COM_VPPI_STREET_ADDRESS', 'a.street_address', $listDirn, $listOrder); ?>
                     </th>
-                    <th width="left" class="nowrap hidden-phone">
+                    <th width="15%" class="nowrap hidden-phone center">
                         <?php echo JHtml::_('grid.sort', 'COM_VPPI_CITY', 'a.city', $listDirn, $listOrder); ?>
                     </th>
-                    <th width="left" class="nowrap hidden-phone">
+                    <th width="10%" class="nowrap hidden-phone center">
                         <?php echo JHtml::_('grid.sort', 'COM_VPPI_STATE_PROV', 'a.state_prov', $listDirn, $listOrder); ?>
                     </th>
-                    <th width="1%" class="nowrap center hidden-phone">
+                    <th width="1%" class="nowrap center hidden-phone center">
                         <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
                     </th>
                 </tr>
@@ -164,7 +164,7 @@ $sortFields = $this->getSortFields();
                         <?php
                         }
                         ?>
-                        <td class="nowrap has-context">
+                        <td class="nowrap center">
                             <?php if ($item->checked_out) { ?>
                                 <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'homes.', $canCheckin); ?>
                             <?php
@@ -183,8 +183,21 @@ $sortFields = $this->getSortFields();
                         <td class="center hidden-phone">
                             <?php echo JHtml::_('home.featured', $item->featured, $i, $canChange); ?>
                         </td>
-                        <td class="center hidden-phone">
-                            <?php echo $item->street_address; ?>
+                        <td class="nowrap has-context center">
+                            <?php if ($item->checked_out) { ?>
+                                <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'homes.', $canCheckin); ?>
+                            <?php
+                            }
+                            ?>
+                            <?php if ($canEdit) { ?>
+                                <a href="<?php echo JRoute::_('index.php?option=com_vppi&task=home.edit&id=' . (int)$item->id); ?>">
+                                    <?php echo $this->escape($item->street_address); ?></a>
+                            <?php
+                            } else {
+                                echo $this->escape($item->street_address); ?>
+                            <?php
+                            }
+                            ?>
                         </td>
                         <td class="center hidden-phone">
                             <?php echo $item->city; ?>

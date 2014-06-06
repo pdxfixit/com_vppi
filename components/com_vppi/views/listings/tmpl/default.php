@@ -20,32 +20,34 @@ if (!$this->items) {
 
     return;
 }
-?>
-<div id="homes-slideshow-listings">
-    <div id="slideshow-listings" class="pics cycle-slideshow" data-cycle-fx="fadeout" data-cycle-speed="500" data-cycle-timeout="5000" data-cycle-slides="> a" data-cycle-prev="#prev" data-cycle-next="#next" data-cycle-pause-on-hover="true">
-        <div class="cycle-overlay"></div>
-        <?php if (!empty($this->posters['slide']) || !empty($this->items)) {
-        foreach ($this->items as $item) {
-            if (!empty($this->posters['slide'][$item->id]) && $item->state && $item->featured) {
-                ?>
-                <a href="index.php?option=com_vppi&view=home&layout=default&id=<?php echo $item->id; ?>" class="cycle-slide" data-cycle-title="<?php echo $item->street_address; ?>" data-cycle-desc="<?php echo $item->city; ?>,&nbsp;<?php echo $item->state_prov; ?>&nbsp;&nbsp;<?php echo $item->zip_code; ?>">
-                    <img src="/images/homes/<?php echo $this->posters['slide'][$item->id]; ?>" width="100%" height="auto">
-                    <?php if ($item->sold) { ?>
-                        <img src="/media/com_vppi/images/sold.png" class="sold">
-                    <?php
-                    }
-                    ?>
-                </a>
-            <?php
-            }
+$featured = 0;
+$html = '';
+foreach ($this->items as $item) {
+    if (!empty($this->posters['slide'][$item->id]) && $item->state && $item->featured) {
+        $html .= '<a href="index.php?option=com_vppi&view=home&layout=default&id=' . $item->id . '" class="cycle-slide" data-cycle-title="' . $item->street_address . '" data-cycle-desc="' . $item->city . ',&nbsp;' . $item->state_prov . '&nbsp;&nbsp;' . $item->zip_code . '">';
+        $html .= '<img src="/images/homes/' . $this->posters['slide'][$item->id] . '" width="100%" height="auto">';
+        if ($item->sold) {
+            $html .= '<img src="/media/com_vppi/images/sold.png" class="sold">';
+        }
+        $html .= '</a>';
+        $featured++;
+    }
+}
+if ($featured > 0) {
+    ?>
+    <div id="homes-slideshow-listings">
+        <div id="slideshow-listings" class="pics cycle-slideshow" data-cycle-fx="fadeout" data-cycle-speed="500" data-cycle-timeout="5000" data-cycle-slides="> a" data-cycle-prev="#prev" data-cycle-next="#next" data-cycle-pause-on-hover="true">
+            <div class="cycle-overlay"></div>
+            <?php echo $html; ?>
+        </div>
+        <?php if ($featured > 1) { ?>
+            <div id="next" class="arrow"><span>&gt;</span></div>
+            <div id="prev" class="arrow"><span>&lt;</span></div>
+        <?php
         }
         ?>
+        <div class="clearfix"></div>
+        <br />
     </div>
-    <div id="next" class="arrow"><span>&gt;</span></div>
-    <div id="prev" class="arrow"><span>&lt;</span></div>
-    <div class="clearfix"></div>
-    <br />
-    <?php
-    }
-    ?>
-</div>
+<?php
+}

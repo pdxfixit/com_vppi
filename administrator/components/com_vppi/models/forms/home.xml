@@ -27,11 +27,17 @@
 
                validate="zipcode" required="false" filter="safehtml" />
 
-        <field name="ml_number" type="text" size="40" class="inputbox vaildate-mlnumber"
+        <field name="ml_number" type="text" size="40" class="inputbox validate-mlnumber"
 
                label="COM_VPPI_FORM_LBL_ML_NUMBER" description="COM_VPPI_FORM_DESC_ML_NUMBER" default=""
 
                validate="mlnumber" required="true" filter="safehtml" />
+
+        <field name="price" type="text" size="40" class="inputbox validate-acres"
+
+               label="COM_VPPI_FORM_LBL_PRICE" description="COM_VPPI_FORM_DESC_PRICE" default="00000"
+
+               validate="acres" required="false" filter="safehtml" />
 
         <field name="area" type="text" size="40" class="inputbox"
 
@@ -58,13 +64,13 @@
                required="false" filter="safehtml" />
 
         <field name="short_sale" type="radio" label="COM_VPPI_FORM_LBL_SHORT_SALE" description="COM_VPPI_FORM_DESC_SHORT_SALE" default="0" size="1" required="false">
-            <option value="0">No</option>
-            <option value="1">Yes</option>
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
         </field>
 
         <field name="bank_owned" type="radio" label="COM_VPPI_FORM_LBL_BANK_OWNED" description="COM_VPPI_FORM_DESC_BANK_OWNED" default="0" size="1" required="false">
-            <option value="0">No</option>
-            <option value="1">Yes</option>
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
         </field>
 
         <field name="waterfront" type="text" size="40" class="inputbox"
@@ -272,8 +278,8 @@
         </field>
 
         <field name="sold" type="radio" label="COM_VPPI_FORM_LBL_SOLD" description="COM_VPPI_FORM_DESC_SOLD" default="0" size="1" required="false">
-            <option value="0">No</option>
-            <option value="1">Yes</option>
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
         </field>
 
         <field name="created_by" type="createdby" default="" label="COM_VPPI_FORM_LBL_CREATED_BY" description="COM_VPPI_FORM_DESC_CREATED_BY" readonly="true" class="readonly" />

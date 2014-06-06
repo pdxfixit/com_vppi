@@ -9,7 +9,7 @@
 window.addEvent('domready', function () {
     document.formvalidator.setHandler('mlnumber',
         function (value) {
-            regex = /\d{8}/;
+            regex = /\d{6,8}/;
             return regex.test(value);
         });
 });

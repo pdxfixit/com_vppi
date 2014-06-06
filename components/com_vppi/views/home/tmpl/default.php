@@ -11,6 +11,7 @@
 defined('_JEXEC') or die;
 
 $document = JFactory::getDocument();
+// TODO: Pull in jQuery and get rid of deferment
 $document->addScript('/media/com_vppi/js/jquery.cycle2.js', 'text/javascript', true);
 $document->addScript('/media/com_vppi/js/jquery.cycle2.carousel.js', 'text/javascript', true);
 $document->addScriptDeclaration("
@@ -32,7 +33,9 @@ if (!$this->item) {
 }
 ?>
 <div id="home-listing">
-<?php if (!empty($this->poster['slide'])) { ?>
+<?php // TODO: Make CSS Responsive - proportional height
+if (!empty($this->poster['slide'])) {
+    ?>
     <div id="home-slideshow">
         <div id="slide-view" class="pics cycle-slideshow" data-cycle-slides="> div" data-cycle-fx="fadeout" data-cycle-speed="500" data-cycle-timeout="5000" data-cycle-prev="#home-slideshow #prev" data-cycle-next="#home-slideshow #next" data-cycle-pause-on-hover="true">
             <div>
@@ -60,11 +63,12 @@ if (!$this->item) {
                 </div>
                 <?php if (!empty($this->photos['thumb'])) {
                     $i = 1;
-                    foreach ($this->photos['thumb'] as $photo) { ?>
+                    foreach ($this->photos['thumb'] as $photo) {
+                        ?>
                         <div data-cycle-index="<?php echo($i); ?>">
                             <img src="/images/homes/<?php echo (int)$this->item->id; ?>/<?php echo $photo; ?>">
                         </div>
-                    <?php $i++;
+                        <?php $i++;
                     }
                 }
                 ?>
