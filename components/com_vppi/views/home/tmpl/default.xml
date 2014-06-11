@@ -7,7 +7,7 @@
     </layout>
     <fields name="params">
         <fieldset name="basic" label="COM_VPPI_FIELDSET_HOME_SELECT_LABEL">
-            <field name="home_id" query="SELECT id, CONCAT(ml_number, ' - ', street_address) AS home_id FROM #__vppi_homes ORDER BY id" type="sql" key_field="id" label="COM_VPPI_HOME_SELECT_LABEL" require="true" description="COM_VPPI_HOME_SELECT_DESC"></field>
+            <field name="home_id" query="SELECT id, CONCAT(ml_number, ' - ', name) AS home_id FROM #__vppi_homes ORDER BY id" type="sql" key_field="id" label="COM_VPPI_HOME_SELECT_LABEL" require="true" description="COM_VPPI_HOME_SELECT_DESC"></field>
         </fieldset>
     </fields>
 </metadata>

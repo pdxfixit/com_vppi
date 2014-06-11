@@ -27,7 +27,8 @@ class VppiModelListings extends JModelList {
         if (empty($config['filter_fields'])) {
             $config['filter_fields'] = array(
                 'id', 'a.id',
-                'street_address', 'a.street_address',
+                'name', 'a.name',
+                'alias', 'a.alias',
                 'city', 'a.city',
                 'state_prov', 'a.state_prov',
                 'zip_code', 'a.zip_code',
@@ -68,7 +69,8 @@ class VppiModelListings extends JModelList {
         $query = $db->getQuery(true);
 
         // Select the required fields from the table.
-        $query->select($this->getState('list.select', 'a.*'))->from($db->quoteName('#__vppi_homes') . ' AS a');
+        $slug = ' CASE WHEN CHAR_LENGTH(a.alias) THEN CONCAT_WS(\':\', a.id, a.alias) ELSE a.id END as slug ';
+        $query->select($this->getState('list.select', 'a.*') . ',' . $slug)->from($db->quoteName('#__vppi_homes') . ' AS a');
 
         // Add the list ordering clause.
         $orderCol = $this->state->get('list.ordering');

@@ -19,6 +19,7 @@ $document = JFactory::getDocument();
 $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
 ?>
 <form action="<?php echo JRoute::_('index.php?option=com_vppi&view=home&layout=edit&id=' . (int)$this->item->id); ?>" method="post" name="adminForm" id="home-form" class="form-validate">
+<?php echo JLayoutHelper::render('joomla.edit.title_alias', $this); ?>
 <div>
     <h1><?php echo JText::_('COM_VPPI_HOME'); ?></h1>
 </div>
@@ -43,11 +44,6 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
     ?>
     <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
     <br />
-
-    <div class="control-group">
-        <div class="control-label"><?php echo $this->form->getLabel('street_address'); ?></div>
-        <div class="controls"><?php echo $this->form->getInput('street_address'); ?></div>
-    </div>
     <div class="control-group">
         <div class="control-label"><?php echo $this->form->getLabel('city'); ?></div>
         <div class="controls"><?php echo $this->form->getInput('city'); ?></div>

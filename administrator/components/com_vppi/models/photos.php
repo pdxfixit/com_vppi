@@ -27,7 +27,8 @@ class VppiModelPhotos extends VppiModelHomes {
         if (empty($config['filter_fields'])) {
             $config['filter_fields'] = array(
                 'id', 'a.id',
-                'street_address', 'a.street_address',
+                'name', 'a.name',
+                'alias', 'a.alias',
                 'city', 'a.city',
                 'state_prov', 'a.state_prov',
                 'zip_code', 'a.zip_code',

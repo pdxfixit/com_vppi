@@ -92,7 +92,7 @@ class VppiViewHomes extends JViewLegacy {
             'a.published' => JText::_('JSTATUS'),
             'a.featured' => JText::_('JFEATURED'),
             'a.ml_number' => JText::_('COM_VPPI_ML_NUMBER'),
-            'a.street_address' => JText::_('COM_VPPI_STREET_ADDRESS'),
+            'a.name' => JText::_('COM_VPPI_STREET_ADDRESS'),
             'a.city' => JText::_('COM_VPPI_CITY'),
             'a.state_prov' => JText::_('COM_VPPI_STATE_PROV'),
             'a.id' => JText::_('JGRID_HEADING_ID')

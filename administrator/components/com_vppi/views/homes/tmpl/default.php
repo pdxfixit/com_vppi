@@ -106,7 +106,7 @@ $sortFields = $this->getSortFields();
                         <?php echo JHtml::_('grid.sort', 'JFEATURED', 'a.featured', $listDirn, $listOrder); ?>
                     </th>
                     <th width="45%" class="center">
-                        <?php echo JHtml::_('grid.sort', 'COM_VPPI_STREET_ADDRESS', 'a.street_address', $listDirn, $listOrder); ?>
+                        <?php echo JHtml::_('grid.sort', 'COM_VPPI_STREET_ADDRESS', 'a.name', $listDirn, $listOrder); ?>
                     </th>
                     <th width="15%" class="nowrap hidden-phone center">
                         <?php echo JHtml::_('grid.sort', 'COM_VPPI_CITY', 'a.city', $listDirn, $listOrder); ?>
@@ -191,10 +191,10 @@ $sortFields = $this->getSortFields();
                             ?>
                             <?php if ($canEdit) { ?>
                                 <a href="<?php echo JRoute::_('index.php?option=com_vppi&task=home.edit&id=' . (int)$item->id); ?>">
-                                    <?php echo $this->escape($item->street_address); ?></a>
+                                    <?php echo $this->escape($item->name); ?></a>
                             <?php
                             } else {
-                                echo $this->escape($item->street_address); ?>
+                                echo $this->escape($item->name); ?>
                             <?php
                             }
                             ?>

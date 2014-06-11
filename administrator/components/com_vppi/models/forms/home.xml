@@ -3,11 +3,17 @@
     <fieldset>
         <field name="id" type="text" default="0" label="JGLOBAL_FIELD_ID_LABEL" readonly="true" class="readonly" description="JGLOBAL_FIELD_ID_DESC" />
 
-        <field name="street_address" type="text" size="40" class="inputbox"
+        <field name="name" type="text" size="40" class="inputbox"
 
                label="COM_VPPI_FORM_LBL_STREET_ADDRESS" description="COM_VPPI_FORM_DESC_STREET_ADDRESS" default=""
 
                required="true" filter="safehtml" />
+
+        <field name="alias" type="text" size="45" class="inputbox"
+
+               label="JFIELD_ALIAS_LABEL" description="JFIELD_ALIAS_DESC"
+
+               hint="JFIELD_ALIAS_PLACEHOLDER" />
 
         <field name="city" type="text" size="40" class="inputbox"
 

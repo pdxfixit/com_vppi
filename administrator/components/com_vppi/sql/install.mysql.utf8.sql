@@ -3,7 +3,8 @@ CREATE TABLE IF NOT EXISTS `#__vppi_homes` (
 
 `asset_id` INT(10) UNSIGNED NOT NULL DEFAULT '0',
 
-`street_address` VARCHAR(127)  NOT NULL ,
+`name` VARCHAR(127)  NOT NULL ,
+`alias` VARCHAR(127)  NOT NULL ,
 `city` VARCHAR(127)  NOT NULL ,
 `state_prov` VARCHAR(127)  NOT NULL ,
 `zip_code` INT(11)  NOT NULL ,

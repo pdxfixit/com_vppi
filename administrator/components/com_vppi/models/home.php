@@ -186,6 +186,11 @@ class VppiModelHome extends JModelAdmin {
                 $isNew = false;
             }
 
+            // create alias if needed
+            if (empty($data['alias'])) {
+                $data['alias'] = JFilterOutput::stringURLSafe($data['name']);
+            }
+
             // Bind the data.
             if (!$table->bind($data)) {
                 throw new Exception('There was an error with the data');

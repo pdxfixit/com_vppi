@@ -26,7 +26,7 @@ if (!$this->items) {
             if (!empty($this->posters['thumb'][$item->id]) && $item->state) {
                 ?>
                 <div class="thumbnail home-list-listing">
-                    <a href="index.php?option=com_vppi&view=home&layout=default&id=<?php echo $item->id; ?>">
+                    <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=home&layout=default&id=' . $item->slug); ?>">
                         <img src="/images/homes/<?php echo $this->posters['thumb'][$item->id]; ?>" width="100%" height="auto">
                         <?php // TODO: Fix sold image CSS
                         if ($item->sold) {
@@ -38,11 +38,11 @@ if (!$this->items) {
                     </a>
 
                     <div class="caption-full">
-                        <a href="index.php?option=com_vppi&view=home&layout=default&id=<?php echo $item->id; ?>">
+                        <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=home&layout=default&id=' . $item->slug); ?>">
                             <h4><?php echo $item->ml_number; ?></h4>
                         </a>
 
-                        <p><?php echo $item->street_address; ?></p>
+                        <p><?php echo $item->name; ?></p>
 
                         <p><?php echo $item->city; ?>,&nbsp;<?php echo $item->state_prov; ?>&nbsp;&nbsp;<?php echo $item->zip_code; ?></p>
                     </div>

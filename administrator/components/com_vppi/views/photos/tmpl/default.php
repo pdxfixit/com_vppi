@@ -103,7 +103,7 @@ $sortFields = $this->getSortFields();
                         <?php echo JHtml::_('grid.sort', 'COM_VPPI_ML_NUMBER', 'a.ml_number', $listDirn, $listOrder); ?>
                     </th>
                     <th width="45%" class="center">
-                        <?php echo JHtml::_('grid.sort', 'COM_VPPI_STREET_ADDRESS', 'a.street_address', $listDirn, $listOrder); ?>
+                        <?php echo JHtml::_('grid.sort', 'COM_VPPI_STREET_ADDRESS', 'a.name', $listDirn, $listOrder); ?>
                     </th>
                     <th width="15%" class="nowrap hidden-phone center">
                         <?php echo JHtml::_('grid.sort', 'COM_VPPI_CITY', 'a.city', $listDirn, $listOrder); ?>
@@ -157,7 +157,7 @@ $sortFields = $this->getSortFields();
                         <?php if (!empty($this->poster['thumb'][$item->id])) { ?>
                             <td class="center">
                                 <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$item->id); ?>">
-                                    <img class="thumbnail" style="width: 150px; margin: auto;" title="<?php echo $item->street_address; ?>" src="<?php echo '/images/homes/' . $item->id . '/poster-thumb.jpg'; ?>">
+                                    <img class="thumbnail" style="width: 150px; margin: auto;" title="<?php echo $item->name; ?>" src="<?php echo '/images/homes/' . $item->id . '/poster-thumb.jpg'; ?>">
                                 </a>
                             </td>
                         <?php
@@ -165,7 +165,7 @@ $sortFields = $this->getSortFields();
                             ?>
                             <td class="center">
                                 <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$item->id); ?>">
-                                    <img class="thumbnail" style="width: 150px; margin: auto;" title="<?php echo $item->street_address; ?>" src="<?php echo '/media/com_vppi/images/image-not-available.jpg'; ?>">
+                                    <img class="thumbnail" style="width: 150px; margin: auto;" title="<?php echo $item->name; ?>" src="<?php echo '/media/com_vppi/images/image-not-available.jpg'; ?>">
                                 </a>
                             </td>
                         <?php
@@ -176,7 +176,7 @@ $sortFields = $this->getSortFields();
                                 <?php echo $this->escape($item->ml_number); ?></a>
                         </td>
                         <td class="center has-context vert-center">
-                            <?php echo $item->street_address; ?>
+                            <?php echo $item->name; ?>
                         </td>
                         <td class="center hidden-phone vert-center">
                             <?php echo $item->city; ?>

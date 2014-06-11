@@ -33,7 +33,7 @@ class JFormFieldHomeOrdering extends JFormFieldList {
 
         $db = JFactory::getDbo();
         $query = $db->getQuery(true)
-                    ->select('a.ordering AS value, CONCAT (a.ordering, ". ", a.street_address) AS text')
+                    ->select('a.ordering AS value, CONCAT (a.ordering, ". ", a.name) AS text')
                     ->from('#__vppi_homes AS a')
                     ->order('ordering');
 
