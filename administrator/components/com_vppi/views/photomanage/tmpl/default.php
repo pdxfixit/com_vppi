@@ -39,7 +39,7 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
             </form>
         </div>
         <?php
-        if (!empty($this->poster['slide']) || !empty($this->poster['thumb'])) {
+        if (!empty($this->poster['thumb'])) {
             if (!empty($this->poster['thumb'])) {
                 ?>
                 <div class="span9">

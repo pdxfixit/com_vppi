@@ -60,3 +60,12 @@ CREATE TABLE IF NOT EXISTS `#__vppi_homes` (
 `created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
 PRIMARY KEY (`id`)
 ) DEFAULT COLLATE=utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `#__vppi_images` (
+`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+
+`home_id` INT(11)  NOT NULL ,
+`name` VARCHAR (255)  NOT NULL ,
+`ordering` INT(11)  NOT NULL ,
+PRIMARY KEY (`id`)
+) DEFAULT COLLATE=utf8_general_ci;

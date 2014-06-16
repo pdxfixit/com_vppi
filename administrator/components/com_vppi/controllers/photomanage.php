@@ -145,6 +145,14 @@ class VppiControllerPhotoManage extends JControllerForm {
                 // Error in upload TODO: fix language string (not translating)
                 throw new Exception(JText::_('COM_VPPI_ERROR_UNABLE_TO_UPLOAD_FILE'));
             } else {
+                $firstImage = false;
+                if (strpos($objectFile->filepath, 'poster')) {
+                    $firstImage = true;
+                }
+                $path = preg_replace('@(.*?)(\\images.*?\.jpg)@', '\2', $objectFile->filepath);
+                $parts = explode('\\', $path);
+                $filepath = '/' . implode('/', $parts);
+                $this->store($this->input->get('id'), $filepath, $firstImage);
                 $uploadCount++;
             }
 
@@ -187,6 +195,21 @@ class VppiControllerPhotoManage extends JControllerForm {
         return true;
     }
 
+    public function store($homeId, $filepath, $firstImage) {
+        $db = JFactory::getDbo();
+
+        $columns = '(`home_id`, `name`, `ordering`)';
+        if ($firstImage) {
+            $values = $homeId . ', ' . $db->quote($filepath) . ', 1';
+            $query = 'INSERT INTO ' . $db->quoteName('#__vppi_images') . $columns . ' VALUES (' . $values . ')';
+        } else {
+            $values = $homeId . ', ' . $db->quote($filepath) . ', MAX(`ordering`) + 1';
+            $query = 'INSERT INTO ' . $db->quoteName('#__vppi_images') . $columns . ' SELECT ' . $values . ' FROM ' . $db->quoteName('#__vppi_images') . ' WHERE home_id = ' . $homeId;
+        }
+        $db->setQuery($query);
+        $db->execute();
+    }
+
     public function delete() {
         // Check for request forgeries
         JSession::checkToken('request') or jexit(JText::_('JINVALID_TOKEN'));
@@ -209,16 +232,58 @@ class VppiControllerPhotoManage extends JControllerForm {
         if ($deletePhotos) {
             foreach ($deletePhotos as $photo) {
                 $slidePhoto = str_replace('-thumb.jpg', '.jpg', $photo);
+                $photoId = $this->input->get('id');
                 try {
-                    JFile::delete(JPATH_SITE . '/images/homes/' . $this->input->get('id') . '/' . $slidePhoto);
-                    JFile::delete(JPATH_SITE . '/images/homes/' . $this->input->get('id') . '/' . $photo);
+                    JFile::delete(JPATH_SITE . '/images/homes/' . $photoId . '/' . $slidePhoto);
+                    JFile::delete(JPATH_SITE . '/images/homes/' . $photoId . '/' . $photo);
+                    $this->unstore($photoId, $slidePhoto);
                 } catch (Exception $e) {
                     throw new Exception($e->getMessage());
                 }
-
             }
         }
 
         return true;
+    }
+
+    public function unstore($photoId, $photoName) {
+        $db = JFactory::getDbo();
+
+        $query = $db->getQuery(true);
+        $conditions = array(
+            $db->quoteName('home_id') . ' = ' . $photoId,
+            $db->quoteName('name') . ' LIKE ' . $db->quote('%' . $photoName . '%')
+        );
+
+        // get the furrent order of the image
+        $query = $db->getQuery(true);
+        $query->select($db->quoteName('ordering'))->from($db->quoteName('#__vppi_images'))->where($conditions);
+        $db->setQuery($query);
+        $currentOrder = $db->loadResult();
+
+        // get the maximum order
+        $query = $db->getQuery(true);
+        $query->select('MAX(`ordering`)')->from($db->quoteName('#__vppi_images'))->where($db->quoteName('home_id') . ' = ' . $photoId);
+        $db->setQuery($query);
+        $maxOrder = $db->loadResult();
+
+        // delete the record
+        $query = $db->getQuery(true);
+        $query->delete($db->quoteName('#__vppi_images'))->where($conditions);
+        $db->setQuery($query);
+        $db->execute();
+
+        // reorder images
+        if ($currentOrder != $maxOrder) {
+            $newOrder = $currentOrder;
+            for ($i = $currentOrder; $i <= $maxOrder - 1; $i++) {
+                $oldOrder = $newOrder + 1;
+                $query = $db->getQuery(true);
+                $query->update($db->quoteName('#__vppi_images'))->set($db->quoteName('ordering') . ' = ' . $newOrder)->where($db->quoteName('ordering') . ' = ' . $oldOrder);
+                $db->setQuery($query);
+                $db->execute();
+                $newOrder = $oldOrder;
+            }
+        }
     }
 }

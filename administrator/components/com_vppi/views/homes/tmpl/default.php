@@ -26,7 +26,7 @@ $canOrder = $user->authorise('core.edit.state', 'com_vppi');
 $saveOrder = $listOrder == 'a.ordering';
 if ($saveOrder) {
     $saveOrderingUrl = 'index.php?option=com_vppi&task=homes.saveOrderAjax&tmpl=component';
-    JHtml::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
+    JHtml::_('sortablelist.sortable', 'vppiList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
 $sortFields = $this->getSortFields();
 ?>
@@ -87,7 +87,7 @@ $sortFields = $this->getSortFields();
                 </div>
             </div>
             <div class="clearfix"></div>
-            <table class="table table-striped">
+            <table class="table table-striped" id="vppiList">
                 <thead>
                 <tr>
                     <th width="1%" class="nowrap center hidden-phone">
@@ -142,10 +142,10 @@ $sortFields = $this->getSortFields();
                             if (!$canChange) {
                                 $iconClass = ' inactive';
                             } elseif (!$saveOrder) {
-                                $iconClass = ' inactive tip-top hasTooltip" title="' . JHtml::tooltipText('JORDERINGDISABLED');
+                                $iconClass = ' inactive tip-top" title="' . JHtml::tooltipText('JORDERINGDISABLED');
                             }
                             ?>
-                            <span class="sortable-handler<?php echo $iconClass; ?>">
+                            <span class="sortable-handler hasTooltip<?php echo $iconClass; ?>">
 							<i class="icon-menu"></i>
 						</span>
                             <?php if ($canChange && $saveOrder) { ?>
