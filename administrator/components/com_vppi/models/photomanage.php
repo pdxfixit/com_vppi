@@ -13,110 +13,110 @@ jimport('joomla.application.component.modeladmin');
 jimport('joomla.filesystem.file');
 jimport('joomla.filesystem.folder');
 
-class VppiModelPhotoManage extends JModelAdmin {
+class VppiModelPhotoManage extends JModelList {
 
     /**
-     * @var        string    The prefix to use with controller messages.
-     * @since    1.6
+     * Constructor.
+     *
+     * @param    array    An optional associative array of configuration settings.
+     *
+     * @see        JController
+     * @since      1.6
      */
-    protected $text_prefix = 'COM_VPPI';
+    public function __construct($config = array()) {
+        if (empty($config['filter_fields'])) {
+            $config['filter_fields'] = array(
+                'id', 'b.id',
+                'home_id', 'b.home_id',
+                'name', 'b.name',
+                'ordering', 'b.ordering',
+            );
+        }
 
-    /**
-     * Returns a reference to the a Table object, always creating it.
-     *
-     * @param    type      The table type to instantiate
-     * @param    string    A prefix for the table class name. Optional.
-     * @param    array     Configuration array for model. Optional.
-     *
-     * @return    JTable    A database object
-     * @since    1.6
-     */
-    public function getTable($type = 'PhotoManage', $prefix = 'VppiTable', $config = array()) {
-        return JTable::getInstance($type, $prefix, $config);
+        parent::__construct($config);
     }
 
     /**
-     * Method to get the record form.
-     *
-     * @param    array   $data     An optional array of data for the form to interrogate.
-     * @param    boolean $loadData True if the form is to load its own data (default case), false if not.
-     *
-     * @return    JForm    A JForm object on success, false on failure
+     * Method to auto-populate the model state.
+     * Note. Calling getState in this method will result in recursion.
      * @since    1.6
      */
-    public function getForm($data = array(), $loadData = true) {
+    protected function populateState() {
         // Initialise variables.
+        $app = JFactory::getApplication('administrator');
+
+        // Load the filter state.
+        $search = $app->getUserStateFromRequest($this->context . '.filter.search', 'filter_search');
+        $this->setState('filter.search', $search);
+
+        $published = $app->getUserStateFromRequest($this->context . '.filter.state', 'filter_published', '', 'string');
+        $this->setState('filter.state', $published);
+
+        // Load the parameters.
+        $params = JComponentHelper::getParams('com_vppi');
+        $this->setState('params', $params);
+
+        // List state information.
+        parent::populateState('b.ordering', 'asc');
+    }
+
+    /**
+     * Method to get a store id based on model configuration state.
+     * This is necessary because the model is used by the component and
+     * different modules that might need different sets of data or different
+     * ordering requirements.
+     *
+     * @param    string $id A prefix for the store id.
+     *
+     * @return    string        A store id.
+     * @since    1.6
+     */
+    protected function getStoreId($id = '') {
+        // Compile the store id.
+        $id .= ':' . $this->getState('filter.search');
+        $id .= ':' . $this->getState('filter.state');
+
+        return parent::getStoreId($id);
+    }
+
+    /**
+     * Build an SQL query to load the list data.
+     * @return    JDatabaseQuery
+     * @since    1.6
+     */
+    protected function getListQuery() {
         $app = JFactory::getApplication();
+        $input = $app->input;
+        $id = $input->get('id');
 
-        // Get the form.
-        $form = $this->loadForm('com_vppi.home', 'home', array('control' => 'jform', 'load_data' => $loadData));
+        // Create a new query object.
+        $db = $this->getDbo();
+        $query = $db->getQuery(true);
 
-        if (empty($form)) {
-            return false;
+        // Select the required fields from the table.
+        $query->select($this->getState('list.select', 'b.*'))->from($db->quoteName('#__vppi_images') . ' AS b')->where($db->quoteName('home_id') . ' = ' . $id);
+
+        // Add the list ordering clause.
+        $orderCol = $this->state->get('list.ordering');
+        $orderDirn = $this->state->get('list.direction');
+        if ($orderCol && $orderDirn) {
+            $query->order($db->escape($orderCol . ' ' . $orderDirn));
         }
 
-        return $form;
-    }
-
-    /**
-     * Method to get the data that should be injected in the form.
-     * @return    mixed    The data for the form.
-     * @since    1.6
-     */
-    protected function loadFormData() {
-        // Check the session for previously entered form data.
-        $data = JFactory::getApplication()->getUserState('com_vppi.edit.home.data', array());
-
-        if (empty($data)) {
-            $data = $this->getItem();
-
-        }
-
-        return $data;
-    }
-
-    /**
-     * Method to get a single record.
-     *
-     * @param    integer    The id of the primary key.
-     *
-     * @return    mixed    Object on success, false on failure.
-     * @since    1.6
-     */
-    public function getItem($pk = null) {
-        $item = parent::getItem($pk);
-
-        return $item;
-    }
-
-    /**
-     * Prepare and sanitise the table prior to saving.
-     * @since    1.6
-     */
-    protected function prepareTable(&$table) {
-        if (empty($table->id)) {
-            // Set the values
-
-            // Set ordering to the last item if not set
-            if (empty($table->ordering)) {
-                $db = JFactory::getDbo();
-                $db->setQuery('SELECT MAX(ordering) FROM #__vppi_homes');
-                $max = $db->loadResult();
-
-                $table->ordering = $max + 1;
-            }
-        }
+        return $query;
     }
 
     public function getPoster() {
         $poster = array();
         $poster['slide'] = '';
         $poster['thumb'] = '';
-        $item = $this->getItem();
-        if (JFile::exists(JPATH_SITE . '/images/homes/' . (int)$item->id . '/poster.jpg')) {
+        $app = JFactory::getApplication();
+        $input = $app->input;
+        $id = $input->get('id');
+        if (JFile::exists(JPATH_SITE . '/images/homes/' . (int)$id . '/poster.jpg')) {
             $poster['slide'] = 'poster.jpg';
         }
-        if (JFile::exists(JPATH_SITE . '/images/homes/' . (int)$item->id . '/poster-thumb.jpg')) {
+        if (JFile::exists(JPATH_SITE . '/images/homes/' . (int)$id . '/poster-thumb.jpg')) {
             $poster['thumb'] = 'poster-thumb.jpg';
         }
 
@@ -128,9 +128,11 @@ class VppiModelPhotoManage extends JModelAdmin {
         $slide = array();
         $thumb = array();
         $poster = $this->getPoster();
-        $item = $this->getItem();
+        $app = JFactory::getApplication();
+        $input = $app->input;
+        $id = $input->get('id');
         if (!empty($poster['slide']) || !empty($poster['thumb'])) {
-            $filePhotos = JFolder::files(JPATH_SITE . '/images/homes/' . (int)$item->id . '/');
+            $filePhotos = JFolder::files(JPATH_SITE . '/images/homes/' . (int)$id . '/');
             foreach ($filePhotos as $photo) {
                 if (strpos($photo, '-thumb.jpg')) {
                     $thumb[] = $photo;
@@ -154,5 +156,12 @@ class VppiModelPhotoManage extends JModelAdmin {
         return $photos;
     }
 
+    public function getHomeId () {
+        $app = JFactory::getApplication();
+        $input = $app->input;
+        $id = $input->get('id');
+
+        return $id;
+    }
 }
 

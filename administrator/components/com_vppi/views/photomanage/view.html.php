@@ -20,16 +20,18 @@ class VppiViewPhotoManage extends JViewLegacy {
     protected $form;
     protected $poster;
     protected $photos;
+    protected $homeId;
 
     /**
      * Display the view
      */
     public function display($tpl = null) {
         $this->state = $this->get('State');
-        $this->item = $this->get('Item');
-        $this->form = $this->get('Form');
+        $this->item = $this->get('Items');
+        $this->form = $this->get('Pagination');
         $this->poster = $this->get('Poster');
         $this->photos = $this->get('Photos');
+        $this->homeId = $this->get('homeId');
 
         // Check for errors.
         if (count($errors = $this->get('Errors'))) {
@@ -51,4 +53,14 @@ class VppiViewPhotoManage extends JViewLegacy {
         JToolbarHelper::back('JTOOLBAR_CLOSE', '/administrator/index.php?option=com_vppi&view=photos');
     }
 
+    /**
+     * Returns an array of fields the table can be sorted by
+     * @return  array  Array containing the field name to sort by as the key and display text as value
+     * @since   3.0
+     */
+    protected function getSortFields() {
+        return array(
+            'b.ordering' => JText::_('JGRID_HEADING_ORDERING'),
+        );
+    }
 }

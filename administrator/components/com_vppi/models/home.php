@@ -193,7 +193,7 @@ class VppiModelHome extends JModelAdmin {
 
             // Bind the data.
             if (!$table->bind($data)) {
-                throw new Exception('There was an error with the data');
+                throw new Exception(JText::_('There was an error with the data'));
             }
 
             // Reorder home items
@@ -234,19 +234,19 @@ class VppiModelHome extends JModelAdmin {
 
             // Check the data.
             if (!$table->check()) {
-                throw new Exception('There was an error with the data');
+                throw new Exception(JText::_('There was an error with the data'));
             }
 
             // Trigger the onContentBeforeSave event.
             $result = $dispatcher->trigger($this->event_before_save, array($this->option . '.' . $this->name, $table, $isNew));
 
             if (in_array(false, $result, true)) {
-                throw new Exception('There was an error with the data');
+                throw new Exception(JText::_('There was an error with the data'));
             }
 
             // Store the data.
             if (!$table->store()) {
-                throw new Exception('There was an error storing the data');
+                throw new Exception(JText::_('There was an error storing the data'));
             }
 
             // Clean the cache.

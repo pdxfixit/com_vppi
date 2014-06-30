@@ -146,8 +146,8 @@ $sortFields = $this->getSortFields();
                             }
                             ?>
                             <span class="sortable-handler hasTooltip<?php echo $iconClass; ?>">
-							<i class="icon-menu"></i>
-						</span>
+							    <i class="icon-menu"></i>
+						    </span>
                             <?php if ($canChange && $saveOrder) { ?>
                                 <input type="text" style="display:none" name="order[]" size="5" value="<?php echo $item->ordering; ?>" class="width-20 text-area-order " />
                             <?php

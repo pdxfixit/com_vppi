@@ -106,12 +106,12 @@ class VppiControllerPhotoManage extends JControllerForm {
             require_once(JPATH_SITE . '/libraries/cms/helper/media.php');
             if (!JHelperMedia::canUpload($file)) {
                 // The file can't be uploaded
-                throw new Exception('COM_VPPI_ERROR_UNABLE_TO_UPLOAD_FILE');
+                throw new Exception(JText::_('COM_VPPI_ERROR_UNABLE_TO_UPLOAD_FILE'));
             }
 
             $format = strtolower(JFile::getExt($file['name']));
             if ($format != 'jpg') {
-                throw new Exception('COM_VPPI_FILE_MUST_BE_JPG_FORMAT');
+                throw new Exception(JText::_('COM_VPPI_FILE_MUST_BE_JPG_FORMAT'));
             }
 
             // resize upload photo
@@ -142,14 +142,14 @@ class VppiControllerPhotoManage extends JControllerForm {
             $objectFile = new JObject($file);
 
             if (!JFile::upload($objectFile->tmp_name, $objectFile->filepath)) {
-                // Error in upload TODO: fix language string (not translating)
+                // Error in upload
                 throw new Exception(JText::_('COM_VPPI_ERROR_UNABLE_TO_UPLOAD_FILE'));
             } else {
                 $firstImage = false;
                 if (strpos($objectFile->filepath, 'poster')) {
                     $firstImage = true;
                 }
-                $path = preg_replace('@(.*?)(\\images.*?\.jpg)@', '\2', $objectFile->filepath);
+                $path = preg_replace('@(.*?)(\\images.*?\.jpg|\\images.*?\.jpeg)@', '\2', $objectFile->filepath);
                 $parts = explode('\\', $path);
                 $filepath = '/' . implode('/', $parts);
                 $this->store($this->input->get('id'), $filepath, $firstImage);
@@ -263,7 +263,7 @@ class VppiControllerPhotoManage extends JControllerForm {
 
         // get the maximum order
         $query = $db->getQuery(true);
-        $query->select('MAX(`ordering`)')->from($db->quoteName('#__vppi_images'))->where($db->quoteName('home_id') . ' = ' . $photoId);
+        $query->select('MAX(' . $db->quoteName('ordering') . ')')->from($db->quoteName('#__vppi_images'))->where($db->quoteName('home_id') . ' = ' . $photoId);
         $db->setQuery($query);
         $maxOrder = $db->loadResult();
 

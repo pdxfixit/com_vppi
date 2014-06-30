@@ -17,10 +17,26 @@ JHtml::_('behavior.formvalidation');
 // Import CSS
 $document = JFactory::getDocument();
 $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
+$document->addScript('/media/jui/js/jquery.min.js');
+$document->addScript('/media/jui/js/jquery-noconflict.js');
+$document->addScript('/media/jui/js/jquery-migrate.min.js');
+$document->addScriptDeclaration('
+$(document).ready(function() {
+    $("#sortlist").sortable();
+    $("#sortlist").disableSelection();
+});
+');
+
+$user = JFactory::getUser();
+$userId = $user->get('id');
+$listOrder = $this->state->get('list.ordering');
+$listDirn = $this->state->get('list.direction');
+$canOrder = $user->authorise('core.edit.state', 'com_vppi');
+$saveOrder = $listOrder == 'b.ordering';
 ?>
     <div class="row-fluid form-horizontal">
         <div class="span3">
-            <form action="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$this->item->id); ?>" method="post" name="adminForm" id="home-images-form" enctype="multipart/form-data">
+            <form action="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$this->homeId); ?>" method="post" name="adminForm" id="home-images-form" enctype="multipart/form-data">
                 <div>
                     <h1><?php echo JText::_('COM_VPPI_POSTER_IMAGE'); ?></h1>
                 </div>
@@ -43,7 +59,7 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
             if (!empty($this->poster['thumb'])) {
                 ?>
                 <div class="span9">
-                    <img src="/images/homes/<?php echo (int)$this->item->id; ?>/poster-thumb.jpg" style="width: 250px">
+                    <img src="/images/homes/<?php echo (int)$this->homeId; ?>/poster-thumb.jpg" style="width: 250px">
                 </div>
             <?php
             } else {
@@ -60,7 +76,7 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
     <p></p>
     <div class="row-fluid form-horizontal">
         <div class="span3">
-            <form action="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$this->item->id); ?>" method="post" name="adminForm" id="home-images-form" enctype="multipart/form-data">
+            <form action="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$this->homeId); ?>" method="post" name="adminForm" id="home-images-form" enctype="multipart/form-data">
                 <div>
                     <h1><?php echo JText::_('COM_VPPI_HOME_IMAGES'); ?></h1>
                 </div>
@@ -85,19 +101,20 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
                 // TODO: Make CSS Responsive
                 // TODO: Create image ordering functionality
                 ?>
-                <form action="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$this->item->id); ?>" method="post" name="adminForm" id="home-images-delete-form">
+                <form action="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$this->homeId); ?>" method="post" name="adminForm" id="home-images-delete-form">
                     <div class="row-fluid" style="overflow: hidden;">
-                        <?php foreach ($this->photos['thumb'] as $photo) { ?>
-                            <div style="width: 30%; display: inline-block;">
-                                <input type="checkbox" name="photo[]" value="<?php echo $photo; ?>">
-                                <img src="/images/homes/<?php echo (int)$this->item->id; ?>/<?php echo $photo; ?>" style="width: 250px">
-                            </div>
-                        <?php
-                        }
-                        ?>
+                        <ul id="sortlist" class="ui-sortable">
+                            <?php foreach ($this->photos['thumb'] as $photo) { ?>
+                                <li style="width: 30%; display: inline-block;" class="ui-state-default ui-sortable-handle">
+                                    <input type="checkbox" name="photo[]" value="<?php echo $photo; ?>">
+                                    <img src="/images/homes/<?php echo (int)$this->homeId; ?>/<?php echo $photo; ?>" style="width: 250px">
+                                </li>
+                            <?php
+                            }
+                            ?>
+                        </ul>
                     </div>
                     <br />
-
                     <div>
                         <input type="submit" class="btn btn-primary" value="Delete Images" />
                         <input type="hidden" name="task" value="photomanage.delete" />
