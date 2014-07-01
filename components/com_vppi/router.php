@@ -24,33 +24,28 @@ function VppiBuildRoute(&$query)
 	$app = JFactory::getApplication();
 	$menu = $app->getMenu();
 
-	if (empty($query['Itemid'])) {
-		$menuItem = $menu->getActive();
-	} else {
-		$menuItem = $menu->getItem($query['Itemid']);
-	}
-
-	if (isset($query['view'])) {
-		if (empty($query['Itemid']) || empty($menuItem) || $menuItem->component != 'com_vppi' || $query['view'] == 'home') {
-			$segments[] = $query['view'];
-		}
-		unset($query['view']);
-	}
-
-    if (isset($query['id'])) {
-        $parts = explode(':', $query['id']);
-        if (count($parts) > 1) {
-            $segments[] = $parts[0];
-            $segments[] = $parts[1];
-        } else {
-            $segments[] = $parts[0];
+    // get any id
+	if (!isset($query['Itemid'])) {
+		$menuItem = $menu->getItems('component', 'com_vppi', true);
+        if (isset($menuItem->id)) {
+            $query['Itemid'] = $menuItem->id;
         }
-        unset($query['id']);
+	}
+
+    if (array_key_exists('view', $query)) {
+        $segments[0] = $query['view'];
+
+        if (array_key_exists('id', $query)) {
+            $segments[1] = $query['id'];
+            unset($query['id']);
+        }
+
+        unset($query['view']);
     }
 
-	if (isset($query['layout'])) {
-        unset($query['layout']);
-	}
+    if (isset($query['layout'])) {
+        unset ($query['layout']);
+    }
 
 	return $segments;
 }
@@ -64,39 +59,40 @@ function VppiBuildRoute(&$query)
  */
 function VppiParseRoute($segments)
 {
+    $db = JFactory::getDbo();
 	$vars = array();
 
-	//Get the active menu item.
-	$app = JFactory::getApplication();
-	$menu = $app->getMenu();
-	$item = $menu->getActive();
-	$params = JComponentHelper::getParams('com_vppi');
-	$advanced = $params->get('sef_advanced_link', 0);
+    $count = count($segments);
+    if (isset($segments[0])) {
+        $vars['view'] = $segments[0];
 
-	// Count route segments
-	$count = count($segments);
+        if (isset($segments[$count - 1]) && $count > 1) {
+            if (is_numeric($segments[$count - 1])) {
+                if (preg_match('/^\d{6,8}$/', $segments[$count - 1])) {
+                    $query = $db->getQuery(true);
+                    $query->select($db->quoteName('id'))->from($db->quoteName('#__vppi_homes'))->where($db->quoteName('ml_number') . ' = ' . (int)$segments[$count - 1]);
 
-    $vars['view'] = $segments[0];
-    $vars['id'] = $segments[1];
+                    $db->setQuery($query);
+                    $id = $db->loadResult();
+                    if (isset($id)) {
+                        $vars['id'] = $id;
+                    }
+                } else {
+                    $vars['id'] = (int)$segments[$count - 1];
+                }
+            } else {
+                $alias = JFilterOutput::stringURLSafe($segments[$count - 1]);
+                $query = $db->getQuery(true);
+                $query->select($db->quoteName('id'))->from($db->quoteName('#__vppi_homes'))->where($db->quoteName('alias') . ' = ' . $db->quote($alias));
 
-    // TODO: add advanced functionality
-    /*$slug = str_replace(':', '-', $segments[2]);
-
-    if (!empty($slug)) {
-        try {
-            $db = JFactory::getDbo();
-            $query = $db->getQuery(true)
-                        ->select($db->quoteName('id'))
-                        ->from('#__vppi_homes')
-                        ->where($db->quoteName('id') . ' = ' . (int) $vars['id'])
-                        ->where($db->quoteName('alias') . ' = ' . $db->quote($slug) . ' OR ' . $db->quoteName('ml_number') . ' = ' . $db->quote($slug));
-            $db->setQuery($query);
-            $id = $db->loadResult();
-            $vars['id'] = $id;
-        } catch (Exception $e) {
-            throw new Exception ($e->getMessage());
+                $db->setQuery($query);
+                $id = $db->loadResult();
+                if (isset($id)) {
+                    $vars['id'] = $id;
+                }
+            }
         }
-    }*/
+    }
 
 	return $vars;
 }
