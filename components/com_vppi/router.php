@@ -43,10 +43,6 @@ function VppiBuildRoute(&$query)
         unset($query['view']);
     }
 
-    if (isset($query['layout'])) {
-        unset ($query['layout']);
-    }
-
 	return $segments;
 }
 
@@ -65,12 +61,13 @@ function VppiParseRoute($segments)
     $count = count($segments);
     if (isset($segments[0])) {
         $vars['view'] = $segments[0];
+        $i = $count - 1;
 
-        if (isset($segments[$count - 1]) && $count > 1) {
-            if (is_numeric($segments[$count - 1])) {
-                if (preg_match('/^\d{6,8}$/', $segments[$count - 1])) {
+        if (isset($segments[$i]) && $count > 1) {
+            if (is_numeric($segments[$i])) {
+                if (preg_match('/^\d{6,8}$/', $segments[$i])) {
                     $query = $db->getQuery(true);
-                    $query->select($db->quoteName('id'))->from($db->quoteName('#__vppi_homes'))->where($db->quoteName('ml_number') . ' = ' . (int)$segments[$count - 1]);
+                    $query->select($db->quoteName('id'))->from($db->quoteName('#__vppi_homes'))->where($db->quoteName('ml_number') . ' = ' . $db->quote((int)$segments[$i]));
 
                     $db->setQuery($query);
                     $id = $db->loadResult();
@@ -78,10 +75,10 @@ function VppiParseRoute($segments)
                         $vars['id'] = $id;
                     }
                 } else {
-                    $vars['id'] = (int)$segments[$count - 1];
+                    $vars['id'] = (int)$segments[$i];
                 }
             } else {
-                $alias = JFilterOutput::stringURLSafe($segments[$count - 1]);
+                $alias = JFilterOutput::stringURLSafe($segments[$i]);
                 $query = $db->getQuery(true);
                 $query->select($db->quoteName('id'))->from($db->quoteName('#__vppi_homes'))->where($db->quoteName('alias') . ' = ' . $db->quote($alias));
 
