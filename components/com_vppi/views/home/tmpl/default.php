@@ -33,8 +33,7 @@ if (!$this->item) {
 }
 ?>
 <div id="home-listing">
-<?php // TODO: Make CSS Responsive - proportional height
-if (!empty($this->poster['slide'])) {
+<?php if (!empty($this->poster['slide'])) {
     ?>
     <div id="home-slideshow">
         <div id="slide-view" class="pics cycle-slideshow" data-cycle-slides="> div" data-cycle-fx="fadeout" data-cycle-speed="500" data-cycle-timeout="5000" data-cycle-prev="#home-slideshow #prev" data-cycle-next="#home-slideshow #next" data-cycle-pause-on-hover="true">

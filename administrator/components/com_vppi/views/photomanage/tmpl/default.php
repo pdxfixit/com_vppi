@@ -22,8 +22,8 @@ $document->addScript('/media/jui/js/jquery-noconflict.js');
 $document->addScript('/media/jui/js/jquery-migrate.min.js');
 $document->addScriptDeclaration('
 $(document).ready(function() {
-    $("#sortlist").sortable();
-    $("#sortlist").disableSelection();
+    $("#image-sortlist").sortable();
+    $("#image-sortlist").disableSelection();
 });
 ');
 
@@ -103,11 +103,11 @@ $saveOrder = $listOrder == 'b.ordering';
                 ?>
                 <form action="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$this->homeId); ?>" method="post" name="adminForm" id="home-images-delete-form">
                     <div class="row-fluid" style="overflow: hidden;">
-                        <ul id="sortlist" class="ui-sortable">
+                        <ul id="image-sortlist" class="ui-sortable">
                             <?php foreach ($this->photos['thumb'] as $photo) { ?>
-                                <li style="width: 30%; display: inline-block;" class="ui-state-default ui-sortable-handle">
-                                    <input type="checkbox" name="photo[]" value="<?php echo $photo; ?>">
-                                    <img src="/images/homes/<?php echo (int)$this->homeId; ?>/<?php echo $photo; ?>" style="width: 250px">
+                                <li class="ui-state-default ui-sortable-handle">
+                                    <input style="display: inline;" type="checkbox" name="photo[]" value="<?php echo $photo; ?>">
+                                    <img src="/images/homes/<?php echo (int)$this->homeId; ?>/<?php echo $photo; ?>">
                                 </li>
                             <?php
                             }
