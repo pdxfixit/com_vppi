@@ -11,7 +11,7 @@
 defined('_JEXEC') or die;
 
 $document = JFactory::getDocument();
-$document->addScript('//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js');
+$document->addScript('/media/jui/js/jquery.min.js');
 $document->addScript('/media/com_vppi/js/jquery.cycle2.js');
 $document->addStyleSheet('/media/com_vppi/css/vppi.css');
 

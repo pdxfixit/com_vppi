@@ -16,16 +16,14 @@ JHtml::_('behavior.formvalidation');
 
 // Import CSS
 $document = JFactory::getDocument();
-$document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
 $document->addScript('/media/jui/js/jquery.min.js');
-$document->addScript('/media/jui/js/jquery-noconflict.js');
-$document->addScript('/media/jui/js/jquery-migrate.min.js');
 $document->addScriptDeclaration('
 $(document).ready(function() {
     $("#image-sortlist").sortable();
     $("#image-sortlist").disableSelection();
 });
 ');
+$document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
 
 $user = JFactory::getUser();
 $userId = $user->get('id');
@@ -98,7 +96,6 @@ $saveOrder = $listOrder == 'b.ordering';
         <div class="span9 row-fluid form-horizontal">
             <?php
             if (!empty($this->photos['thumb'])) {
-                // TODO: Make CSS Responsive
                 // TODO: Create image ordering functionality
                 ?>
                 <form action="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$this->homeId); ?>" method="post" name="adminForm" id="home-images-delete-form">

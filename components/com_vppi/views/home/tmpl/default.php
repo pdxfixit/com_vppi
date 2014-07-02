@@ -11,9 +11,9 @@
 defined('_JEXEC') or die;
 
 $document = JFactory::getDocument();
-// TODO: Pull in jQuery and get rid of deferment
-$document->addScript('/media/com_vppi/js/jquery.cycle2.js', 'text/javascript', true);
-$document->addScript('/media/com_vppi/js/jquery.cycle2.carousel.js', 'text/javascript', true);
+$document->addScript('/media/jui/js/jquery.min.js');
+$document->addScript('/media/com_vppi/js/jquery.cycle2.js');
+$document->addScript('/media/com_vppi/js/jquery.cycle2.carousel.js');
 $document->addScriptDeclaration("
     jQuery(document).ready(function() {
         jQuery( '.cycle-slideshow' ).cycle();

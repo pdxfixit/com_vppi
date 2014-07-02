@@ -57,5 +57,6 @@
     <media folder="media/com_vppi" destination="com_vppi">
         <folder>css</folder>
         <folder>images</folder>
+        <folder>js</folder>
     </media>
 </extension>
