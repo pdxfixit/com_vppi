@@ -12,25 +12,24 @@ defined('_JEXEC') or die;
 /**
  * Build the route for the com_vppi component
  *
- * @param   array  &$query  An array of URL arguments
+ * @param   array &$query An array of URL arguments
  *
  * @return  array  The URL arguments to use to assemble the subsequent URL.
  */
-function VppiBuildRoute(&$query)
-{
-	$segments = array();
+function VppiBuildRoute(&$query) {
+    $segments = array();
 
-	// get a menu item based on Itemid or currently active
-	$app = JFactory::getApplication();
-	$menu = $app->getMenu();
+    // get a menu item based on Itemid or currently active
+    $app = JFactory::getApplication();
+    $menu = $app->getMenu();
 
     // get any id
-	if (!isset($query['Itemid'])) {
-		$menuItem = $menu->getItems('component', 'com_vppi', true);
+    if (!isset($query['Itemid'])) {
+        $menuItem = $menu->getItems('component', 'com_vppi', true);
         if (isset($menuItem->id)) {
             $query['Itemid'] = $menuItem->id;
         }
-	}
+    }
 
     if (array_key_exists('view', $query)) {
         $segments[0] = $query['view'];
@@ -43,20 +42,19 @@ function VppiBuildRoute(&$query)
         unset($query['view']);
     }
 
-	return $segments;
+    return $segments;
 }
 
 /**
  * Parse the segments of a URL.
  *
- * @param   array  $segments  The segments of the URL to parse.
+ * @param   array $segments The segments of the URL to parse.
  *
  * @return  array  The URL attributes to be used by the application.
  */
-function VppiParseRoute($segments)
-{
+function VppiParseRoute($segments) {
     $db = JFactory::getDbo();
-	$vars = array();
+    $vars = array();
 
     $count = count($segments);
     if (isset($segments[0])) {
@@ -91,5 +89,5 @@ function VppiParseRoute($segments)
         }
     }
 
-	return $vars;
+    return $vars;
 }

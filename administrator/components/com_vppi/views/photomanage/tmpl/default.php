@@ -115,6 +115,7 @@ $saveOrder = $listOrder == 'b.ordering';
                         </ul>
                     </div>
                     <br />
+
                     <div>
                         <input type="submit" class="btn btn-primary" value="Delete Images" />
                         <input type="hidden" name="task" value="photomanage.delete" />

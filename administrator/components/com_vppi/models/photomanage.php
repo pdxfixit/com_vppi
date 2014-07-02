@@ -156,7 +156,7 @@ class VppiModelPhotoManage extends JModelList {
         return $photos;
     }
 
-    public function getHomeId () {
+    public function getHomeId() {
         $app = JFactory::getApplication();
         $input = $app->input;
         $id = $input->get('id');
