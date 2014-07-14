@@ -58,10 +58,14 @@ function VppiParseRoute($segments) {
 
     $count = count($segments);
     if (isset($segments[0])) {
-        $vars['view'] = $segments[0];
+        if ($count < 2) {
+            $vars['view'] = 'home';
+        } else {
+            $vars['view'] = $segments[0];
+        }
         $i = $count - 1;
 
-        if (isset($segments[$i]) && $count > 1) {
+        if (isset($segments[$i])) {
             if (is_numeric($segments[$i])) {
                 if (preg_match('/^\d{6,8}$/', $segments[$i])) {
                     $query = $db->getQuery(true);
