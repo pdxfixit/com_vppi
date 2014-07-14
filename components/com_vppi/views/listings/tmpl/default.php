@@ -25,7 +25,7 @@ $html = '';
 foreach ($this->items as $item) {
     if (!empty($this->posters['slide'][$item->id]) && $item->state && $item->featured) {
         $html .= '<a href="' . JRoute::_('index.php?option=com_vppi&view=home&id=' . $item->id) . '" class="cycle-slide" data-cycle-title="' . $item->name . '" data-cycle-desc="' . $item->city . ',&nbsp;' . $item->state_prov . '&nbsp;&nbsp;' . $item->zip_code . '">';
-        $html .= '<img src="/images/homes/' . $this->posters['slide'][$item->id] . '" width="100%" height="auto">';
+        $html .= '<img src="/images/homes/' . $this->posters['slide'][$item->id] . '">';
         if ($item->sold) {
             $html .= '<img src="/media/com_vppi/images/sold.png" class="sold">';
         }

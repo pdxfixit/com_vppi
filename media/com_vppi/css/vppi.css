@@ -1,3 +1,31 @@
+@media only screen and (min-width: 1200px) {
+    div#slide-view {
+        height: 500px;
+    }
+
+    div#homes-slideshow-listings {
+        height: 520px;
+    }
+
+    div#thumb-view,
+    div#home-slideshow img,
+    div#homes-slideshow-listings img {
+        position: relative;
+        left: 120px;
+    }
+
+    div.rt-container div#homes-slideshow-listings img.sold {
+        left: 120px;
+    }
+
+    div.cycle-overlay {
+        height: 80px;
+        position: relative;
+        left: 120px;
+        top: 351px;
+    }
+}
+
 @media only screen and (max-width: 980px) {
     div#thumb-view {
         width: 100% !important;
@@ -77,7 +105,7 @@ div#feature-home-info ul li {
 }
 
 div#home-listing p {
-    margin-left: 25px;
+    margin-left: 15px;
 }
 
 div#remarks,
@@ -100,7 +128,7 @@ div#home-carousel {
     position: relative;
 }
 
-div#homes-slideshow-listings {
+div#homes-slideshow-listings img {
     width: 100%;
     max-height: none;
     height: auto;
