@@ -37,13 +37,10 @@ if (!$this->items) {
                     </a>
 
                     <div class="caption-full">
-                        <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=home&id=' . $item->id); ?>">
-                            <h4><?php echo $item->ml_number; ?></h4>
-                        </a>
-
-                        <p><?php echo $item->name; ?></p>
-
-                        <p><?php echo $item->city; ?>,&nbsp;<?php echo $item->state_prov; ?>&nbsp;&nbsp;<?php echo $item->zip_code; ?></p>
+                        <address>
+                            <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=home&id=' . $item->id); ?>"><?php echo $item->name; ?></a><br />
+                            <?php echo $item->city; ?>,&nbsp;<?php echo $item->state_prov; ?>&nbsp;&nbsp;<?php echo $item->zip_code; ?>
+                        </address>
                     </div>
                 </div>
 
