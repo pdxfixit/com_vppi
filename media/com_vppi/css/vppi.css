@@ -146,6 +146,10 @@ div.cycle-overlay {
     opacity: .5;
 }
 
+div.cycle-overlay div {
+    font-family: 'PTSerifItalic', helvetica, arial, sans-serif;
+}
+
 div.home-list-listing {
     position: relative;
 }
