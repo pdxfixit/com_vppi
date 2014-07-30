@@ -30,7 +30,7 @@
     }
 }
 
-@media only screen and (max-width: 980px) {
+@media only screen and (max-width: 960px) {
     div#thumb-view {
         width: 100% !important;
     }
@@ -46,6 +46,14 @@
 
     div#homes-list-listings div.home-list-listing img.sold {
         top: -4px;
+    }
+
+    div#homes-list-listings div.home-list-listing {
+        width: 47%;
+    }
+
+    div#homes-list-listings div.overlay {
+        left: 2%;
     }
 }
 
@@ -75,6 +83,15 @@
     div#homes-list-listings div.home-list-listing img.sold {
         top: -2px;
     }
+
+    div#homes-list-listings div.home-list-listing {
+        width: 97%;
+        margin-bottom: 5px;
+    }
+
+    div#homes-list-listings div.overlay {
+        left: 1%;
+    }
 }
 
 @media only screen and (max-width: 480px) {
@@ -89,6 +106,14 @@
 
     div#homes-list-listings div.home-list-listing img.sold {
         top: -1px;
+    }
+
+    div#homes-list-listings div.home-list-listing div.overlay-address {
+         font-size: 0.8em;
+     }
+
+    div#homes-list-listings div.home-list-listing div.city-state-zip {
+        display: inline-block;
     }
 }
 
@@ -277,4 +302,27 @@ ul#image-sortlist img {
 div.home-list-listing {
     display: inline-block;
     width: 31%;
+}
+
+div.overlay {
+    background: #000000;
+    width: 50%;
+    opacity: 0.5;
+    position: absolute;
+    bottom: 0;
+    left: 3%;
+}
+
+div.home-list-listing address {
+    margin: 0;
+}
+
+div.overlay-address {
+    color: white;
+    padding: 4%;
+    line-height: 1em;
+}
+
+div.city-state-zip {
+    display: inline;
 }

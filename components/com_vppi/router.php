@@ -31,11 +31,25 @@ function VppiBuildRoute(&$query) {
         }
     }
 
+    $db = JFactory::getDbo();
     if (array_key_exists('view', $query)) {
-        $segments[0] = $query['view'];
+        $activeMenu = $menu->getActive()->id;
+        $defaultMenu = $menu->getDefault('*')->id;
+        if ($activeMenu == $defaultMenu) {
+            $segments[] = $query['view'];
+        }
 
         if (array_key_exists('id', $query)) {
-            $segments[1] = $query['id'];
+            $sql = $db->getQuery(true);
+            $sql->select($db->quoteName('alias'))->from($db->quoteName('#__vppi_homes'))->where($db->quoteName('id') . ' = ' . $db->quote((int)$query['id']));
+
+            $db->setQuery($sql);
+            $address = $db->loadResult();
+            if (isset($address)) {
+                $segments[] = $address;
+            } else {
+                $segments[] = $query['id'];
+            }
             unset($query['id']);
         }
 

@@ -20,7 +20,12 @@ if (!$this->items) {
 }
 ?>
 <div id="homes-list-listings">
-    <div id="slideshow-listings" id="poster-pics">
+    <div style="padding-left: 10px; padding-bottom: 15px;">
+        <h4>
+            Browse our listings or search the <a href="http://www.rmls.com/RC2/UI/search_residential.asp" target="_blank">RMLS Website</a>.
+        </h4>
+    </div>
+    <div id="slideshow-listings" id="poster-pics" class="container">
         <?php if (!empty($this->posters['thumb']) && !empty($this->items)) {
         foreach ($this->items as $item) {
             if (!empty($this->posters['thumb'][$item->id]) && $item->state) {
@@ -34,14 +39,13 @@ if (!$this->items) {
                         <?php
                         }
                         ?>
+                        <div class="overlay">
+                            <address>
+                                <div class="overlay-address"><div><?php echo $item->name; ?></div><br />
+                                <div class="city-state-zip"><?php echo $item->city; ?>,&nbsp;<?php echo $item->state_prov; ?></div>&nbsp;&nbsp;<div class="city-state-zip"><?php echo $item->zip_code; ?></div></div>
+                            </address>
+                        </div>
                     </a>
-
-                    <div class="caption-full">
-                        <address>
-                            <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=home&id=' . $item->id); ?>"><?php echo $item->name; ?></a><br />
-                            <?php echo $item->city; ?>,&nbsp;<?php echo $item->state_prov; ?>&nbsp;&nbsp;<?php echo $item->zip_code; ?>
-                        </address>
-                    </div>
                 </div>
 
             <?php
