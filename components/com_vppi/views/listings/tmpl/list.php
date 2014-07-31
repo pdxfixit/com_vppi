@@ -31,7 +31,7 @@ if (!$this->items) {
             if (!empty($this->posters['thumb'][$item->id]) && $item->state) {
                 ?>
                 <div class="thumbnail home-list-listing">
-                    <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=home&id=' . $item->id); ?>">
+                    <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=home&id=' . $item->id); ?>" style="display: block;">
                         <img src="/images/homes/<?php echo $this->posters['thumb'][$item->id]; ?>" width="100%" height="auto">
                         <?php if ($item->sold) {
                             ?>
