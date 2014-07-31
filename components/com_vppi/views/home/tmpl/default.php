@@ -33,6 +33,7 @@ if (!$this->item) {
 }
 ?>
 <div id="home-listing">
+<h1><?php echo $this->address; ?></h1>
 <?php if (!empty($this->poster['slide'])) {
     ?>
     <div id="home-slideshow">

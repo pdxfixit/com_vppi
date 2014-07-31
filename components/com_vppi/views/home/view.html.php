@@ -12,6 +12,7 @@ defined('_JEXEC') or die;
 
 class VppiViewHome extends JViewLegacy {
 
+    protected $address;
     protected $state;
     protected $item;
     protected $poster;
@@ -22,6 +23,9 @@ class VppiViewHome extends JViewLegacy {
         $this->item = $this->get('Item');
         $this->poster = $this->get('Poster');
         $this->photos = $this->get('Photos');
+
+        // standardized address
+        $this->address = $this->item->name . ', ' . $this->item->city . ', ' . $this->item->state_prov . ' ' . $this->item->zip_code;
 
         // Check for errors.
         if (count($errors = $this->get('Errors'))) {

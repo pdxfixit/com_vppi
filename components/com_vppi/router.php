@@ -81,6 +81,8 @@ function VppiParseRoute($segments) {
 
         if (isset($segments[$i])) {
             if (is_numeric($segments[$i])) {
+                // NOTE: This scheme won't work once IDs are past 6 digits
+                // TODO: Switch to WHERE ml_number = x OR id = x (?maybe?)
                 if (preg_match('/^\d{6,8}$/', $segments[$i])) {
                     $query = $db->getQuery(true);
                     $query->select($db->quoteName('id'))->from($db->quoteName('#__vppi_homes'))->where($db->quoteName('ml_number') . ' = ' . $db->quote((int)$segments[$i]));
