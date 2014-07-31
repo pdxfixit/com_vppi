@@ -32,6 +32,17 @@ class VppiViewHome extends JViewLegacy {
             throw new Exception(implode("\n", $errors));
         }
 
+        // remove any existing canonical links
+        $app = JFactory::getApplication();
+        $doc = JFactory::getDocument();
+        foreach ($doc->_links as $k => $array) {
+            if ($array['relation'] == 'canonical') {
+                unset($doc->_links[$k]);
+            }
+        }
+        // use our own canonical link generation process
+        $doc->addHeadLink(rtrim(JUri::base(), '/') . JRoute::_('index.php?option=com_vppi&view=home&id=' . $app->input->getInt('id', 0) . '&Itemid=103'), 'canonical');
+
         parent::display($tpl);
     }
 
