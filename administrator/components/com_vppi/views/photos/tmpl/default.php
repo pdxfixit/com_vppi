@@ -176,7 +176,8 @@ $sortFields = $this->getSortFields();
                                 <?php echo $this->escape($item->ml_number); ?></a>
                         </td>
                         <td class="center has-context vert-center">
-                            <?php echo $item->name; ?>
+                            <a href="<?php echo JRoute::_('index.php?option=com_vppi&view=photomanage&layout=default&id=' . (int)$item->id); ?>">
+                                <?php echo $item->name; ?></a>
                         </td>
                         <td class="center hidden-phone vert-center">
                             <?php echo $item->city; ?>

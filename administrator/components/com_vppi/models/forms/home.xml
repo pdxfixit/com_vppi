@@ -193,9 +193,15 @@
 
                required="false" filter="safehtml" />
 
-        <field name="water_sewer" type="text" size="40" class="inputbox"
+        <field name="water" type="text" size="40" class="inputbox"
 
-               label="COM_VPPI_FORM_LBL_WATER_SEWER" description="COM_VPPI_FORM_DESC_WATER_SEWER" default=""
+               label="COM_VPPI_FORM_LBL_WATER" description="COM_VPPI_FORM_DESC_WATER" default=""
+
+               required="false" filter="safehtml" />
+
+        <field name="sewer" type="text" size="40" class="inputbox"
+
+               label="COM_VPPI_FORM_LBL_SEWER" description="COM_VPPI_FORM_DESC_SEWER" default=""
 
                required="false" filter="safehtml" />
 

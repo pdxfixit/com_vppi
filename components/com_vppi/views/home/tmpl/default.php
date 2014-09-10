@@ -223,9 +223,14 @@ if (!$this->item) {
                 <b><?php echo JText::_('COM_VPPI_LBL_COOL'); ?>:</b>  <?php echo $this->item->cool; ?>
             </li>
         <?php } ?>
-        <?php if (!empty($this->item->water_sewer)) { ?>
+        <?php if (!empty($this->item->water)) { ?>
             <li>
-                <b><?php echo JText::_('COM_VPPI_LBL_WATER_SEWER'); ?>:</b>  <?php echo $this->item->water_sewer; ?>
+                <b><?php echo JText::_('COM_VPPI_LBL_WATER'); ?>:</b>  <?php echo $this->item->water; ?>
+            </li>
+        <?php } ?>
+        <?php if (!empty($this->item->sewer)) { ?>
+            <li>
+                <b><?php echo JText::_('COM_VPPI_LBL_SEWER'); ?>:</b>  <?php echo $this->item->sewer; ?>
             </li>
         <?php } ?>
         <?php if (!empty($this->item->hot_water)) { ?>

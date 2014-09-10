@@ -174,8 +174,12 @@ $document->addStyleSheet(JURI::root() . 'media/com_vppi/css/vppi.css');
                 <div class="controls"><?php echo $this->form->getInput('cool'); ?></div>
             </div>
             <div class="control-group">
-                <div class="control-label"><?php echo $this->form->getLabel('water_sewer'); ?></div>
-                <div class="controls"><?php echo $this->form->getInput('water_sewer'); ?></div>
+                <div class="control-label"><?php echo $this->form->getLabel('water'); ?></div>
+                <div class="controls"><?php echo $this->form->getInput('water'); ?></div>
+            </div>
+            <div class="control-group">
+                <div class="control-label"><?php echo $this->form->getLabel('sewer'); ?></div>
+                <div class="controls"><?php echo $this->form->getInput('sewer'); ?></div>
             </div>
             <div class="control-group">
                 <div class="control-label"><?php echo $this->form->getLabel('hot_water'); ?></div>
